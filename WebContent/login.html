@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="actions.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label class="menu_superior" id = "iniciar">Iniciar</label>
+                </td>
+                <td>
+                    <label class="menu_superior" id = "registrar">Registro</label>
+                </td>
+            </tr>
+        </table>
+      <!--********************************Formulario de inicio de sesion********************************-->
+        <form>
+            <table border="0" align="center"  id="formulario_inicio">
+                <tr>
+                    <td colspan="2" align="center">
+                        <label id="mensaje_bienvenido">Bienvenido!</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input class="inicio" type="text" name="correo" id="input_correo" placeholder="Correo*">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input class="inicio" type="password" name="clave" id="input_clave" placeholder="Contraseña*">
+                    </td>
+                </tr>
+                <tr >
+                    <td colspan="2" align="center">
+                        <input class="inicio" type="submit" value="Entrar" id="boton_entrar">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <!--******************************** Formulario de registro ********************************-->
+        <form>
+            <table border="0" align="center"  id="formulario_registro">
+                <tr>
+                    <td colspan="2" align="center">
+                        <label id="mensaje_registro">Ingresa tus datos</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">
+                        <input type="text" name="nombre" class="input_registros1" placeholder="Nombre*">
+                    </td>
+                    <td align="left">
+                        <input type="text" name="apellido" class="input_registros1" placeholder="Apellidos*">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="correo_registro" class="input_registros" placeholder="Correo*">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="password" name="clave_registro" class="input_registros" placeholder="Contraseña*">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Registrar" id="boton_registrar">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
