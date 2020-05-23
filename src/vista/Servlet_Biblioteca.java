@@ -1,6 +1,8 @@
-package es.proyectobiblioteca.servlet;
+package vista;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +38,19 @@ public class Servlet_Biblioteca extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		String nombre_registro=request.getParameter("nombre");
+		String apellidos_registro=request.getParameter("apellido");
+		String correo_registro=request.getParameter("correo");
+		String password_registro=request.getParameter("clave");
+
+		System.out.println(nombre_registro);
+		System.out.println(apellidos_registro);
+		System.out.println(correo_registro);
+		System.out.println(password_registro);
+				
+		//RequestDispatcher rd;
+		//rd = request.getRequestDispatcher("/principal.jsp");
+		//rd.forward(request, response);
 	}
 
 }

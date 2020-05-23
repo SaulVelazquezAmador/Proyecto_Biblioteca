@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body id="cuerpo">
 
     <div>
         <table>
@@ -31,12 +31,12 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input class="inicio" type="text" name="correo" id="input_correo" placeholder="Correo*">
+                        <input class="inicio" type="text" id="input_correo" placeholder="Correo*">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input class="inicio" type="password" name="clave" id="input_clave" placeholder="Contraseña*">
+                        <input class="inicio" type="password" id="input_clave" placeholder="Contraseña*">
                     </td>
                 </tr>
                 <tr >
@@ -47,7 +47,7 @@
             </table>
         </form>
         <!--******************************** Formulario de registro ********************************-->
-        <form>
+        <form id="f_registro">
             <table border="0" align="center"  id="formulario_registro">
                 <tr>
                     <td colspan="2" align="center">
@@ -56,20 +56,20 @@
                 </tr>
                 <tr>
                     <td align="left">
-                        <input type="text" name="nombre" class="input_registros1" placeholder="Nombre*">
+                        <input type="text" class="input_registros1" placeholder="Nombre*" id="nombre">
                     </td>
                     <td align="left">
-                        <input type="text" name="apellido" class="input_registros1" placeholder="Apellidos*">
+                        <input type="text" class="input_registros1" placeholder="Apellidos*" id="apellidos">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" name="correo_registro" class="input_registros" placeholder="Correo*">
+                        <input type="text" class="input_registros" placeholder="Correo*" id="correo">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="password" name="clave_registro" class="input_registros" placeholder="Contraseña*">
+                    	<input type="password" class="input_registros" placeholder="Contraseña*" id="contrasena">
                     </td>
                 </tr>
                 <tr>

@@ -21,4 +21,24 @@ $(document).ready(function(){
                 $('#formulario_inicio').fadeOut(0);
                 $('#formulario_registro').fadeIn(0);
         });
+//***************************************************************** */
+    	$("#f_registro").submit(function() {
+    		
+    		var nombreVar = $('#nombre').val();
+    		var apellidoVar = $('#apellidos').val();
+    		var correoVar = $('#correo').val();
+    		var claveVar = $('#contrasena').val();
+
+
+    		$.post('Servlet_Biblioteca', {
+    			nombre  : nombreVar,
+    			apellido: apellidoVar,
+    			correo  : correoVar,
+    			clave   : claveVar
+    		}, function(responseText) {
+    			location.href = "principal.jsp";
+    			//$("#cuerpo").text(responseText);
+    		});
+    		return false;
+    	});
 });
