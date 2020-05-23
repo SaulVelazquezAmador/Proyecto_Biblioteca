@@ -58,6 +58,7 @@ public class Servlet_Biblioteca extends HttpServlet {
 		else {
 			System.out.println("mal");
 		}
+		
 				
 		//RequestDispatcher rd;
 		//rd = request.getRequestDispatcher("/principal.jsp");

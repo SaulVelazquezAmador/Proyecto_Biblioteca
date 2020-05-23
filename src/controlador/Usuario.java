@@ -17,7 +17,9 @@ public class Usuario {
 	 
 	 public Boolean consultar_usuario(String nombre, String apellido,String correo, String clave) {
 		 int encontrado = 0;
+
 		 try {
+			 System.out.println("entra al try");
 			Conexion c=new Conexion();
 			Connection miConexion=c.getCon();
 			Statement miStatement=miConexion.createStatement();
@@ -27,7 +29,7 @@ public class Usuario {
 				if (this.nombre.equals(miResultset.getString("Nombre")) 
 						&& this.apellido.equals(miResultset.getString("Apellidos")) 
 						&& this.correo.equals(miResultset.getString("Correo")) 
-						&& this.apellido.equals(miResultset.getString("Contraseña"))) {
+						&& this.clave.equals(miResultset.getString("Contraseña"))) {
 						encontrado = 1;
 						System.out.println("encontrado");
 				}
@@ -35,7 +37,6 @@ public class Usuario {
 			miStatement.close();
 			miResultset.close();
 			c.cerrarConexion();
-			return true;
 		} catch (SQLException e) {
 			System.out.println("usuario");
 			e.printStackTrace();
