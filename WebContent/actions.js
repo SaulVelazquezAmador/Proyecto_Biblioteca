@@ -36,7 +36,8 @@ $(document).ready(function(){
     			correo  : correoVar,
     			clave   : claveVar
     		}, function(responseText) {
-    			location.href = "principal.jsp";
+    			alert("probando");
+    			//location.href = "principal.jsp";
     			//$("#cuerpo").text(responseText);
     		});
     		return false;
