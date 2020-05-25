@@ -14,12 +14,44 @@ public class Usuario {
 		 this.correo   = correo;
 		 this.clave    = clave;
 	 }
-	 
-	 public Boolean consultar_usuario(String nombre, String apellido,String correo, String clave) {
+	 public Usuario(String correo, String clave) {
+		 this.correo = correo;
+		 this.clave  = clave;
+	 }
+//****************************************************************************************
+	 public Boolean consultar_para_inicio(String correo, String clave) {
+		 int encontrado = 0;
+		 
+			try {
+				Conexion c            =new Conexion();
+				Connection miConexion =c.getCon();
+				Statement miStatement =miConexion.createStatement();
+				ResultSet miResultset = miStatement.executeQuery("select * from Clientes");
+				
+				while(miResultset.next()) {
+					if (this.correo.equals(miResultset.getString("Correo")) 
+							&& this.clave.equals(miResultset.getString("Contraseña"))) {
+							encontrado = 1;
+							System.out.println("encontrado 1");
+					}
+				}
+				miStatement.close();
+				miResultset.close();
+				c.cerrarConexion();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		 
+		 
+		if(encontrado == 1)
+			 return true;
+		 else
+			 return false;
+	 }
+//********************************************************************************************
+	 public Boolean consultar_para_registro(String nombre, String apellido,String correo, String clave) {
 		 int encontrado = 0;
 
 		 try {
-			 System.out.println("entra al try");
 			Conexion c=new Conexion();
 			Connection miConexion=c.getCon();
 			Statement miStatement=miConexion.createStatement();
@@ -38,7 +70,6 @@ public class Usuario {
 			miResultset.close();
 			c.cerrarConexion();
 		} catch (SQLException e) {
-			System.out.println("usuario");
 			e.printStackTrace();
 		}
 		 if(encontrado == 1)

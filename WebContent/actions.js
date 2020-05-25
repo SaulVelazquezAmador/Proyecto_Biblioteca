@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+		//$("#usuario_no_encontrado").fadeOut(0);
         $('#formulario_registro').fadeOut(0);
         $('#iniciar').css('background-color', '#01a87a');
         $('#iniciar').css('color', '#ffffffff');
@@ -36,9 +37,29 @@ $(document).ready(function(){
     			correo  : correoVar,
     			clave   : claveVar
     		}, function(responseText) {
-    			alert("probando");
     			//location.href = "principal.jsp";
     			//$("#cuerpo").text(responseText);
+    		});
+    		return false;
+    	});
+    	//***************************************************************** */
+    	$("#f_inicio").submit(function() {
+    		
+    		var correoVar1 = $('#input_correo').val();
+    		var claveVar1 = $('#input_clave').val();
+
+
+    		$.post('Servlet_Biblioteca', {
+    			correo_ini  : correoVar1,
+    			clave_ini   : claveVar1
+    		}, function(responseText) {
+
+    			if(responseText == 1){
+    				$("#usuario_no_encontrado").fadeIn(0);
+    			}
+    			else{
+    				$("#cuerpo").html(responseText);
+    			}
     		});
     		return false;
     	});
