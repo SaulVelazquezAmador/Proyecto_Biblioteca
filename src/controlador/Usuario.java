@@ -60,8 +60,8 @@ public class Usuario {
 			while(miResultset.next()) {
 				if (this.nombre.equals(miResultset.getString("Nombre")) 
 						&& this.apellido.equals(miResultset.getString("Apellidos")) 
-						&& this.correo.equals(miResultset.getString("Correo")) 
-						&& this.clave.equals(miResultset.getString("Contraseña"))) {
+						|| this.correo.equals(miResultset.getString("Correo")) 
+						/*&& this.clave.equals(miResultset.getString("Contraseña"))*/) {
 						encontrado = 1;
 						System.out.println("encontrado");
 				}
@@ -77,4 +77,6 @@ public class Usuario {
 		 else
 			 return false;
 	 }
+//**************************************************************************************
+	 
 }

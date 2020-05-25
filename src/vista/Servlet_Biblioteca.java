@@ -52,16 +52,25 @@ public class Servlet_Biblioteca extends HttpServlet {
 			}
 		}
 		
-		else {
+		else if(nombre_registro != null && apellidos_registro != null
+				&& correo_registro != null && password_registro != null){
+			
 			System.out.println("fue registro");
 			
 			Usuario user = new Usuario(nombre_registro, apellidos_registro, correo_registro, password_registro);
 			existe = user.consultar_para_registro(nombre_registro, apellidos_registro, correo_registro, password_registro);
-			
-			if(existe == true) 
-				System.out.println("exito registro");
-			else 
-				System.out.println("mal registro");			
+			//Si el usuario ya existe, entonces ya no se hace nada
+			if(existe == true) {
+				PrintWriter salida = response.getWriter();
+				salida.println(2);
+			} 
+			//si no hay que darlo de alta y mandar a la pagina principal
+			else {
+				
+				RequestDispatcher rd;
+				rd = request.getRequestDispatcher("/principal.jsp");
+				rd.forward(request, response);		
+			}
 		}
 	}
 

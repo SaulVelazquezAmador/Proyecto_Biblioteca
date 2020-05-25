@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 #cuerpo{
 	background-color: #c1bdba;
@@ -68,7 +69,7 @@ div{
 	color        : #a0b3b0;
 	margin-top   : 8%;
 	margin-left  : 30%;
-	/*width        : 40%;*/
+	width        : 40%;
 }
 #formulario_registro, #formulario_inicio{
 	height: 100%;	

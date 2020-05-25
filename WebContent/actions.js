@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-		//$("#usuario_no_encontrado").fadeOut(0);
+		$(".usuario_registrado").fadeOut(0);
+		$("#usuario_no_encontrado").fadeOut(0);
         $('#formulario_registro').fadeOut(0);
         $('#iniciar').css('background-color', '#01a87a');
         $('#iniciar').css('color', '#ffffffff');
@@ -30,15 +31,34 @@ $(document).ready(function(){
     		var correoVar = $('#correo').val();
     		var claveVar = $('#contrasena').val();
 
-
+    		if (nombreVar == ""){
+    			alert("Ingrese el nombre");
+    			return false;
+    		}
+    		if (apellidoVar == ""){
+    			alert("Ingrese los apellidos");
+    			return false;
+    		}
+    		if (correoVar == ""){
+    			alert("Ingrese el correo");
+    			return false;
+    		}
+    		if (claveVar == ""){
+    			alert("Ingrese la contraseña");
+    			return false;
+    		}
+    		
     		$.post('Servlet_Biblioteca', {
     			nombre  : nombreVar,
     			apellido: apellidoVar,
     			correo  : correoVar,
     			clave   : claveVar
     		}, function(responseText) {
-    			//location.href = "principal.jsp";
-    			//$("#cuerpo").text(responseText);
+    			
+    			if (responseText == 2)
+    				alert("Datos ya existentes");
+    			else
+    				$("#cuerpo").html(responseText);
     		});
     		return false;
     	});
@@ -48,18 +68,23 @@ $(document).ready(function(){
     		var correoVar1 = $('#input_correo').val();
     		var claveVar1 = $('#input_clave').val();
 
-
+    		if (correoVar1 == ""){
+    			alert("Ingrese el correo");
+    			return false;
+    		}
+    		if (claveVar1 == ""){
+    			alert("Ingrese la contraseña");
+    			return false;
+    		}
     		$.post('Servlet_Biblioteca', {
     			correo_ini  : correoVar1,
     			clave_ini   : claveVar1
     		}, function(responseText) {
-
-    			if(responseText == 1){
-    				$("#usuario_no_encontrado").fadeIn(0);
-    			}
-    			else{
+    			
+    			if(responseText == 1)
+    				alert("Usuario y/o contraseña incorrectos")
+    			else
     				$("#cuerpo").html(responseText);
-    			}
     		});
     		return false;
     	});
