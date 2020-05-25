@@ -58,7 +58,7 @@ $(document).ready(function(){
     			if (responseText == 2)
     				alert("Datos ya existentes");
     			else
-    				$("#cuerpo").html(responseText);
+					location.href="principal.jsp";
     		});
     		return false;
     	});
@@ -84,7 +84,7 @@ $(document).ready(function(){
     			if(responseText == 1)
     				alert("Usuario y/o contraseña incorrectos")
     			else
-    				$("#cuerpo").html(responseText);
+					location.href="principal.jsp";
     		});
     		return false;
     	});
