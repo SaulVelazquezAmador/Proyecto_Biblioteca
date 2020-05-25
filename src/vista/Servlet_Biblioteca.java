@@ -66,7 +66,7 @@ public class Servlet_Biblioteca extends HttpServlet {
 			} 
 			//si no hay que darlo de alta y mandar a la pagina principal
 			else {
-				
+				user.registrar_usuario(nombre_registro, apellidos_registro, correo_registro, password_registro);
 				RequestDispatcher rd;
 				rd = request.getRequestDispatcher("/principal.jsp");
 				rd.forward(request, response);		
