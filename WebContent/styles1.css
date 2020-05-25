@@ -113,3 +113,11 @@ div{
     text-align   	: center;
 	width           : 100%;
 }
+/***************************************/
+.cuerpo2{
+	background-color: #c1bdba;
+	font-family     : 'Titillium Web', sans-serif;
+}
+#menu_principal{
+	background-color: #42515b;
+}
