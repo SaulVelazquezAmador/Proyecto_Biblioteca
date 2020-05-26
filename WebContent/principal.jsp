@@ -14,33 +14,40 @@
     <div id="menu_principal">
         <table id="tabla">
             <tr>
-                <td class="opciones_principales" id="op_1">Inicio    </td>
+                <td id="op_0">Biblioteca     </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_2">Prestamos  </td>
+                <td id="op_1">Inicio         </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_3">Libros     </td>
+                <td id="op_2">Prestamos      </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_4">Clientes   </td>
+                <td id="op_3">Libros         </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_5">Categorias </td>
+                <td id="op_4">Clientes       </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_6">Editoriales</td>
+                <td id="op_5">Categorias     </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_7">Autores    </td>
+                <td id="op_6">Editoriales    </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_8">Reportes   </td>
+                <td id="op_7">Autores        </td>
             </tr>
             <tr>
-                <td class="opciones_principales" id="op_9">Usuarios   </td>
+                <td id="op_8">Reportes       </td>
+            </tr>
+            <tr>
+                <td id="op_9">Usuarios       </td>
+            </tr>
+            <tr>
+                <td id="op_10">Cerrar sesión </td>
             </tr>
         </table>
     </div>
+
 </body>
 </html>
