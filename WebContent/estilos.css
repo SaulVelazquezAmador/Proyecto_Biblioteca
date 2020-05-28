@@ -114,28 +114,55 @@ div{
 	width           : 100%;
 }
 /***************************************/
-.cuerpo2{
+#cuerpo2{
 	background-color: #c1bdba;
 	display         : flex;
-	flex-direction  : column;
-	height          : 100vh;
+	flex-direction  : row;
 	font-family     : 'Titillium Web', sans-serif;
 	margin          : 0;
 	padding         : 0;
 }
-#menu_principal, #cerrar{
+#menu_principal{
 	background-color: #222222;
 	border-radius   : 0px;
 	font-size       : 18px;
-	flex            : 1;
+	flex-basis		: 200px;
+	height          : 100vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
-	width           : 200px;
 	float: left;
 }
 #op_0, #op_1, #op_2, #op_3, #op_4, #op_5, #op_6, #op_7, #op_8, #op_9, #op_10{
 	cursor        : pointer;
 	padding-top   : 15px;
 	padding-bottom: 15px;
-	width         : 200px;
+	width         : 300px;
+}
+#prestamos{
+	border-radius	: 0px;
+	background-color: #ffffff;
+	display			: flex;
+	flex-direction	: column;
+	font-size       : 20;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	width: 100vw;
+	height          : 100vh;
+}
+#formulario_prestmos{
+	border-radius: 0%;
+	height: 40vh;
+	width: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+}
+#datos_prestamos{
+	background-color: #42515b;
+	border-radius	: 0%;
+	height			: 100vh;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	width: 100%;
 }
