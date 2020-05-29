@@ -138,6 +138,7 @@ div{
 	padding-bottom: 15px;
 	width         : 300px;
 }
+/*--------------------------------------*/
 #prestamos{
 	border-radius	: 0px;
 	background-color: #ffffff;
@@ -149,20 +150,71 @@ div{
 	width: 100vw;
 	height          : 100vh;
 }
-#formulario_prestmos{
-	border-radius: 0%;
-	height: 40vh;
-	width: 100%;
+/*       div        */
+#titulo_prestamos{
+	background-color: #ffffff;
+	border-radius	: 0%;	
+	height			: 10vh;
+	width			: 100%;
 	margin-left     : 0%;
 	margin-top      : 0%;
 	margin-bottom	: 0%;
 }
+#h2_prestamos{
+	padding-left: 50px;
+	color: black;
+}
+/*       div        */
+#formulario_prestmos{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	color			: black;
+	height			: 30vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	font-size		: 16px;
+}
+.columnas_formulario_prestamos{
+	padding-top   : 10px;
+	padding-left  : 50px;
+	padding-bottom: 10px;
+}
+#inputs_prestamos{
+	padding-top: 15px;
+}
+/*       div        */
 #datos_prestamos{
-	background-color: #42515b;
+	background-color: #ffffff;
 	border-radius	: 0%;
 	height			: 100vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
 	margin-bottom	: 0%;
-	width: 100%;
+	width			: 100%;
+}
+#tabla_prestamos{
+	border         : 1px solid;
+	border-collapse: collapse;
+	margin-top     : 50px;
+	margin-left    : 50px;
+	width          : 90%;
+}
+.col_tabla_prestamos{
+	border         : 1px solid black;
+	color          : black;
+	border-collapse: collapse;	
+}
+#c1{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	width: 100px;
+}
+#c3, #c4, #c6, #c7{
+	width: 100px;
+}
+#c5{
+	width: 150px;
 }
