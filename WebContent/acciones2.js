@@ -13,6 +13,7 @@ $(document).ready(function(){
         $("#op_9").css('background-color', '#222222');
         $("#op_10").css('background-color', '#222222');
     });
+    
     $("#op_2").click(function(){
         $("#prestamos").fadeIn(0);
         $(this).css('background-color', '#23303e');
