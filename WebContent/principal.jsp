@@ -7,7 +7,7 @@
     <title>Sistema Bibliotecario</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="actions2.js"></script>
+	<script src="acciones2.js"></script>
 </head>
 <body id="cuerpo2">
 
