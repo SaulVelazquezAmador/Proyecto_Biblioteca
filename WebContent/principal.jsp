@@ -7,7 +7,7 @@
     <title>Sistema Bibliotecario</title>
     <link rel="stylesheet" type="text/css" href="estilos.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="acciones2.js"></script>
+	<script src="actions2.js"></script>
 </head>
 <body id="cuerpo2">
 
@@ -52,7 +52,7 @@
     <div id="prestamos">
 
         <div id="titulo_prestamos">
-            <h2 id="h2_prestamos">Prestamos</h3>
+            <h2 id="h2_prestamos">Prestamos</h2>
         </div>
 
         <div id="formulario_prestmos">
@@ -115,6 +115,66 @@
             </table>
         </div>
 
+    </div>
+
+    <div id="libros">
+
+        <div id="titulo_libros">
+            <h2 id="h2_libros">Libros</h2>
+        </div>   
+        
+        <div id="formulario_libros">
+            <form>
+                <table>
+                    <tr>
+                        <td class="columnas_formulario_libros">
+                            <label>Agregar libro</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros">
+                            <label>ISBN: </label>
+                            <input type="text" class="inputs_libros">
+                        </td>
+                        <td class="columnas_formulario_libros">
+                            <label>Titulo: </label>
+                            <input type="text" class="inputs_libros">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros">
+                            <label>Editorial: </label>
+                            <input type="text" class="inputs_libros">
+                        </td>
+                        <td class="columnas_formulario_libros">
+                            <label>Autor: </label>
+                            <input type="text" class="inputs_libros">
+                        </td>
+                        <td class="columnas_formulario_libros">
+                            <label>Ejemplares: </label>
+                            <input type="text" class="inputs_libros">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_prestamos">
+                            <input type="button" value="Agrear">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div id="datos_libros">
+            <table id="tabla_libros">
+                <tr>
+                    <td id = "cl1" class = "col_tabla_libros"><label>ISBN       </label></td>
+                    <td id = "cl2" class = "col_tabla_libros"><label>Titulo     </label></td>
+                    <td id = "cl3" class = "col_tabla_libros"><label>Editorial  </label></td>
+                    <td id = "cl4" class = "col_tabla_libros"><label>Autor      </label></td>
+                    <td id = "cl5" class = "col_tabla_libros"><label>Ejemplares </label></td>
+                    <td id = "cl6" class = "col_tabla_libros"><label>Eliminar   </label></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>
