@@ -152,7 +152,7 @@ div{
 }
 /*       div        */
 #titulo_prestamos{
-	background-color: #ffffff;
+	background-color: #01a87a;
 	border-radius	: 0%;	
 	height			: 10vh;
 	width			: 100%;
@@ -227,11 +227,11 @@ div{
 	font-size       : 20;
 	margin-left     : 0%;
 	margin-top      : 0%;
-	width: 100vw;
+	width			: 100vw;
 	height          : 100vh;
 }
 #titulo_libros{
-	background-color: #ffffff;
+	background-color: #01a87a;
 	border-radius	: 0%;	
 	height			: 10vh;
 	width			: 100%;
@@ -247,7 +247,7 @@ div{
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
-	height			: 30vh;
+	height			: 40vh;
 	width			: 100%;
 	margin-left     : 0%;
 	margin-top      : 0%;
