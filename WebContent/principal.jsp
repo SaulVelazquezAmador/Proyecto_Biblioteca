@@ -4,10 +4,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
     <title>Sistema Bibliotecario</title>
-    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="actions2.js"></script>
+	<script src="acciones2.js"></script>
 </head>
 <body id="cuerpo2">
 
@@ -120,7 +121,7 @@
     <div id="libros">
 
         <div id="titulo_libros">
-            <h2 id="h2_libros">Libros</h2>
+            <h2 id="h2_libros">Líbros</h2>
         </div>   
         
         <div id="formulario_libros">
@@ -139,6 +140,14 @@
                         <td class="columnas_formulario_libros">
                             <label>Titulo: </label>
                             <input type="text" class="inputs_libros">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros" id="select_clasificacion">
+                            Clasificacion: <select></select>    
+                        </td>
+                        <td colspan="2" class="columnas_formulario_libros" id="select_subclasificacion">
+                            Subclasificacion: <select></select>
                         </td>
                     </tr>
                     <tr>
