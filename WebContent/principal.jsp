@@ -49,7 +49,7 @@
             </tr>
         </table>
     </div>
-    
+    <!--------------------------- Menu Prestamos ---------------------------------------->
     <div id="prestamos">
 
         <div id="titulo_prestamos">
@@ -117,7 +117,7 @@
         </div>
 
     </div>
-
+    <!--------------------------- Menu Libros ---------------------------------------->
     <div id="libros">
 
         <div id="titulo_libros">
@@ -151,9 +151,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="columnas_formulario_libros">
-                            <label>Editorial: </label>
-                            <input type="text" class="inputs_libros">
+                        <td class="columnas_formulario_libros" id="select_editorial">
+                            Editorial: <select></select>
                         </td>
                         <td class="columnas_formulario_libros">
                             <label>Autor: </label>
@@ -184,6 +183,53 @@
                 </tr>
             </table>
         </div>
+
+    </div>
+    <!--------------------------- Menu Editoriales ---------------------------------------->
+    <div id="editoriales">
+
+        <div id="titulo_editoriales">
+            <h2 id="h2_editoriales">Editoriales</h2>
+        </div>  
+        
+        <div id="formulario_editoriales">
+            <form>
+                <table>
+                    <tr>
+                        <td class="columnas_formulario_editoriales">
+                            <label>Agregar Editorial</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_editoriales">
+                            <label>Nombre: </label>
+                            <input type="text" class="inputs_editoriales" id="n_editorial">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_editoriales">
+                            <label>Ciudad: </label>
+                            <input type="text" class="inputs_editoriales" id="c_editorial">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_editoriales">
+                            <input type="button" value="Agregar" class="inputs_editoriales" id="b_editorial">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div id="datos_editoriales">
+            <table id="tabla_editoriales">
+                <tr>
+                    <td id = "cole1" class = "col_tabla_editoriales"><label>Nombre    </label></td>
+                    <td id = "cole2" class = "col_tabla_editoriales"><label>Ciudad    </label></td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 </body>
 </html>

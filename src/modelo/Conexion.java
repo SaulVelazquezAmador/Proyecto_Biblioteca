@@ -11,7 +11,6 @@ public class Conexion {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Biblioteca", "root", "12345");
 		
 		} catch (SQLException e) {
-			System.out.println("constructor conexion");
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -23,7 +22,6 @@ public class Conexion {
 	}
 //----------------------------------------------------------	
 	public Connection getCon() {
-		System.out.println("getcon");
 		return con;
 	}
 //----------------------------------------------------------		
@@ -31,7 +29,6 @@ public class Conexion {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("cerrarcon");
 			  e.printStackTrace();
 		  	}
 	}

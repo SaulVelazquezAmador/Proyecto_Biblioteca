@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import controlador.Control_Biblioteca;
 import controlador.Usuario;
 import modelo.Conexion;
 
@@ -44,12 +45,11 @@ public class Servlet_Biblioteca extends HttpServlet
 		String password_registro  =request.getParameter("clave");
 		String tipo_peticion      =request.getParameter("tipo_muestra");
 		String sub_clasificacion  =request.getParameter("sub_clas");
+		String nombre_editorial   =request.getParameter("n_editorial");
+		String ciudad_editorial   =request.getParameter("n_ciudad");
 		
-		
-		System.out.println("llego a serv");
 		if (correo_inicio != null && clave_inicio != null) 
 		{
-			System.out.println("llego a serv22");
 			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
 			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
 			
@@ -97,7 +97,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		//*********************************************************************
 		else if (tipo_peticion != null) {
 			int peticion = Integer.parseInt(tipo_peticion);
-			System.out.println("entro en if");
+
 			if(peticion == 3)
 			{
 				try {
@@ -120,12 +120,34 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}	
 			}
-			System.out.println("sahhhle");
+
+			if (peticion == 30) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Editorial: <select>");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Editorial") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}	
+			}
 		}
 		//***********************************************************************
-		
 		else if(sub_clasificacion != null) {
-			System.out.println("aaa");
+
 			try {
 				Conexion c            =new Conexion();
 				Connection miConexion =c.getCon();
@@ -158,6 +180,22 @@ public class Servlet_Biblioteca extends HttpServlet
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}		
+		}
+		//***********************************************************************
+		else if (nombre_editorial != null && ciudad_editorial != null) {
+			
+			Control_Biblioteca control = new Control_Biblioteca();
+			existe = control.consultar_editoriales(nombre_editorial, ciudad_editorial);
+
+			if (existe == true) {
+				PrintWriter salida = response.getWriter();
+				salida.println(1);
+			}
+			else{
+				control.agregar_editorial(nombre_editorial, ciudad_editorial);
+				PrintWriter salida = response.getWriter();
+				salida.println(2);
+			}	
 		}
 	}
 }
