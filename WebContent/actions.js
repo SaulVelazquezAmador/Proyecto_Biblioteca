@@ -79,12 +79,14 @@ $(document).ready(function(){
     			correo_ini  : correoVar1,
     			clave_ini   : claveVar1
     		}, function(responseText) {
-    			
+
     			if(responseText == 1)
     				alert("Usuario y/o contraseña incorrectos")
-    			else
+    			else{
+    				alert(responseText);
 					location.href="principal.jsp";
-    		});
+    			}
+    			});
     		return false;
     	});
 });
