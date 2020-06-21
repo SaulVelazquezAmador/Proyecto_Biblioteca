@@ -37,65 +37,19 @@ public class Servlet_Biblioteca extends HttpServlet
 		doGet(request, response);
 		
 		boolean existe = false;
-		String correo_inicio      =request.getParameter("correo_ini");
-		String clave_inicio       =request.getParameter("clave_ini");
-		String nombre_registro    =request.getParameter("nombre");
-		String apellidos_registro =request.getParameter("apellido");
-		String correo_registro    =request.getParameter("correo");
-		String password_registro  =request.getParameter("clave");
-		String tipo_peticion      =request.getParameter("tipo_muestra");
-		String sub_clasificacion  =request.getParameter("sub_clas");
-		String nombre_editorial   =request.getParameter("n_editorial");
-		String ciudad_editorial   =request.getParameter("n_ciudad");
+
+		String tipo_peticion      = request.getParameter("tipo_muestra");
 		
-		if (correo_inicio != null && clave_inicio != null) 
-		{
-			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
-			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
-			
-			if(existe == true) 
-			{ 
-				RequestDispatcher rd;
-				rd = request.getRequestDispatcher("/principal.jsp");
-				rd.forward(request, response);
-			}
-			else 
-			{
-				PrintWriter salida = response.getWriter();
-				salida.println(1);
-			}
-		}
-		//**************************************************************
-		else if(nombre_registro != null && apellidos_registro != null
-				&& correo_registro != null && password_registro != null)
-		{	
-			//separo los apellidos en caso de ser un registro nuevo
-			String[] apellidos      = apellidos_registro.split(" ");
-			String apellido_paterno = apellidos[0];
-			String apellido_materno = apellidos[1];
-			
-			//creamos objeto de tipo Usuario
-			//primero verificamos si el introducido existe
-			Usuario user = new Usuario(nombre_registro, apellido_paterno, apellido_materno, correo_registro, password_registro);
-			existe = user.consultar_para_registro(nombre_registro,  apellido_paterno, apellido_materno, correo_registro, password_registro);
-			
-			//Si el usuario ya existe, entonces ya no se hace nada
-			if(existe == true) 
-			{
-				PrintWriter salida = response.getWriter();
-				salida.println(2);
-			} 
-			//si no hay que darlo de alta y mandar a la pagina principal
-			else 
-			{
-				user.registrar_usuario(nombre_registro, apellido_paterno, apellido_materno, correo_registro, password_registro);
-				RequestDispatcher rd;
-				rd = request.getRequestDispatcher("/principal.jsp");
-				rd.forward(request, response);		
-			}
-		}
+		String sub_clasificacion  = request.getParameter("sub_clas");
+		String nombre_editorial   = request.getParameter("n_editorial");
+		String ciudad_editorial   = request.getParameter("n_ciudad");
+		
+		String nombre_a           = request.getParameter("nombre_autor");
+		String apellidos_a        = request.getParameter("apellido_autor");
+		String nacionalidad_a     = request.getParameter("nacionalidad_autor");
 		//************************* Actualizaciones dinamicas de paginas*****************
-		else if (tipo_peticion != null) {
+		if (tipo_peticion != null) {
+
 			int peticion = Integer.parseInt(tipo_peticion);
 
 			if(peticion == 3)
@@ -126,7 +80,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Conexion c            =new Conexion();
 					Connection miConexion =c.getCon();
 					Statement miStatement =miConexion.createStatement();
-					ResultSet miResultset = miStatement.executeQuery("select * from Editorial");
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
 
 					response.setContentType("text/html");
 					response.setCharacterEncoding("UFT-8");
@@ -144,12 +98,35 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}
 			}
+			if (peticion == 300) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select>");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor")+ " " + miResultset.getString("Apellido_Paterno_Autor")+ " "+ miResultset.getString("Apellido_Materno_Autor")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 			if (peticion == 6) {
 				try {
 					Conexion c            =new Conexion();
 					Connection miConexion =c.getCon();
 					Statement miStatement =miConexion.createStatement();
-					ResultSet miResultset = miStatement.executeQuery("select * from Editorial");
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
 
 					response.setContentType("text/html");
 					response.setCharacterEncoding("UFT-8");
@@ -164,6 +141,41 @@ public class Servlet_Biblioteca extends HttpServlet
 						salida.println("<tr>");
 						salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
 						salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
+						salida.println("</tr>");
+					}
+					salida.println("</table>");
+					
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
+			}
+			if (peticion == 7) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("<table id='tabla_autores'>");
+					salida.println("<tr>");
+					salida.println("<td id = 'col_au1' class = 'col_tabla_autores'><label>Nombre</label></td>");
+                    salida.println("<td id = 'col_au2' class = 'col_tabla_autores'><label>Apellido paterno</label></td>");
+                    salida.println("<td id = 'col_au3' class = 'col_tabla_autores'><label>Apellido materno  </label></td>");
+                    salida.println("<td id = 'col_au4' class = 'col_tabla_autores'><label>Nacionalidad      </label></td>");
+                    salida.println("</tr>");
+					while(miResultset.next()) {
+						salida.println("<tr>");
+						salida.println("<td id = 'col_au1' class = 'col_tabla_autores'>" + miResultset.getString("Nombre_Autor") + "</td>");
+						salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
+						salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");
+						salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Nacionalidad") + "</td>");
 						salida.println("</tr>");
 					}
 					salida.println("</table>");
@@ -218,19 +230,39 @@ public class Servlet_Biblioteca extends HttpServlet
 		}
 		//***********************************************************************
 		else if (nombre_editorial != null && ciudad_editorial != null) {
-			
-			Control_Biblioteca control = new Control_Biblioteca();
-			existe = control.consultar_editoriales(nombre_editorial, ciudad_editorial);
+
+			Control_Biblioteca control_editorial = new Control_Biblioteca();
+			existe = control_editorial.consultar_editoriales(nombre_editorial, ciudad_editorial);
 
 			if (existe == true) {
 				PrintWriter salida = response.getWriter();
 				salida.println(1);
 			}
 			else{
-				control.agregar_editorial(nombre_editorial, ciudad_editorial);
+				control_editorial.agregar_editorial(nombre_editorial, ciudad_editorial);
 				PrintWriter salida = response.getWriter();
 				salida.println(2);
 			}	
+		}
+		//*************************************************************************
+		else if (nombre_a != null && apellidos_a != null && nacionalidad_a != null) {
+
+			String[] apellidos      = apellidos_a.split(" ");
+			String apellido_paterno = apellidos[0];
+			String apellido_materno = apellidos[1];
+			
+			Control_Biblioteca control_autor = new Control_Biblioteca();
+			existe = control_autor.consultar_autores(nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
+		
+			if (existe == true) {
+				PrintWriter salida = response.getWriter();
+				salida.println(1);
+			}
+			else {
+				control_autor.agregar_autor(nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
+				PrintWriter salida = response.getWriter();
+				salida.println(2);
+			}
 		}
 	}
 }

@@ -48,7 +48,7 @@ $(document).ready(function(){
     			return false;
     		}
     		
-    		$.post('Servlet_Biblioteca', {
+    		$.post('Inicio_Registro', {
     			nombre  : nombreVar,
     			apellido: apellidoVar,
     			correo  : correoVar,
@@ -75,7 +75,7 @@ $(document).ready(function(){
     			alert("Ingrese la contraseña");
     			return false;
     		}
-    		$.post('Servlet_Biblioteca', {
+    		$.post('Inicio_Registro', {
     			correo_ini  : correoVar1,
     			clave_ini   : claveVar1
     		}, function(responseText) {
