@@ -39,10 +39,10 @@ public class Inicio_Registro extends HttpServlet {
 		
 		if (correo_inicio != null && clave_inicio != null) 
 		{
-			System.out.println("entro");
+
 			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
 			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
-			System.out.println(existe);
+
 			if(existe == true) 
 			{ 
 				RequestDispatcher rd;
