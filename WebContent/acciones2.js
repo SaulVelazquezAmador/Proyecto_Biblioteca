@@ -107,6 +107,13 @@ $(document).ready(function(){
         $("#op_8").css('background-color', '#222222');
         $("#op_9").css('background-color', '#222222');
         $("#op_10").css('background-color', '#222222');
+
+        $.post('Servlet_Biblioteca', {
+            tipo_muestra: 6
+        }, function(responseText){
+            $('#datos_editoriales').html(responseText);
+        });
+
     });
     $("#op_7").click(function(){
         $("#libros").fadeOut(0);
@@ -198,6 +205,12 @@ $(document).ready(function(){
             if (responseText == 2) {
                 alert("Registro exitoso!");
                 $('input[type="text"]').val('');
+                
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 6
+                }, function(responseText){
+                    $('#datos_editoriales').html(responseText);
+                });
             }
         });
     });

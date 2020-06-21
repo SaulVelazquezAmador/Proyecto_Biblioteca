@@ -94,7 +94,7 @@ public class Servlet_Biblioteca extends HttpServlet
 				rd.forward(request, response);		
 			}
 		}
-		//*********************************************************************
+		//************************* Actualizaciones dinamicas de paginas*****************
 		else if (tipo_peticion != null) {
 			int peticion = Integer.parseInt(tipo_peticion);
 
@@ -104,7 +104,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Conexion c            =new Conexion();
 					Connection miConexion =c.getCon();
 					Statement miStatement =miConexion.createStatement();
-					ResultSet miResultset = miStatement.executeQuery("select * from Clasificacion");
+					ResultSet miResultset = miStatement.executeQuery("select * from Clasificacion order by Nombre_Clasificacion asc");
 					response.setContentType("text/html");
 					response.setCharacterEncoding("UFT-8");
 					PrintWriter salida = response.getWriter();
@@ -142,7 +142,38 @@ public class Servlet_Biblioteca extends HttpServlet
 					c.cerrarConexion();
 				} catch (SQLException e) {
 					e.printStackTrace();
-				}	
+				}
+			}
+			if (peticion == 6) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("<table id='tabla_editoriales'>");
+					salida.println("<tr>");
+					salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'><label>Nombre    </label></td>");
+                    salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'><label>Ciudad    </label></td>");
+                    salida.println("</tr>");
+					while(miResultset.next()) {
+						salida.println("<tr>");
+						salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
+						salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
+						salida.println("</tr>");
+					}
+					salida.println("</table>");
+					
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
 			}
 		}
 		//***********************************************************************
@@ -159,15 +190,19 @@ public class Servlet_Biblioteca extends HttpServlet
 						int id_clasificacion = miResultset.getInt("ID_Clasificacion");
 						
 						Statement miStatement2 =miConexion.createStatement();
-						ResultSet miResultset2 = miStatement2.executeQuery("select * from Subclasificacion");
+						ResultSet miResultset2 = miStatement2.executeQuery("select * from Subclasificacion order by Nombre_Subclasificacion asc");
 						response.setContentType("text/html");
 						response.setCharacterEncoding("UFT-8");
 						PrintWriter salida = response.getWriter();
 						salida.println("Sublasificacion: <select>");
 						while(miResultset2.next()) {
 							if (miResultset2.getInt("ID_Subclasificacion") > id_clasificacion 
-									&& miResultset2.getInt("ID_Subclasificacion") < (id_clasificacion+10)){
-								salida.println("<option>" + miResultset2.getString("Nombre_Subclasificacion") + "</option>");
+									&& miResultset2.getInt("ID_Subclasificacion") < (id_clasificacion+10))
+							{
+								String sub_aux = miResultset2.getString("Nombre_Subclasificacion");
+								if (!sub_aux.equals("")) {
+									salida.println("<option>" + miResultset2.getString("Nombre_Subclasificacion") + "</option>");	
+								}
 							}
 						}
 						salida.println("</select>");

@@ -36,19 +36,6 @@
 	transition      : border-color .25s ease, box-shadow .25s ease;
 	width           : 90%;
 }
-.input_registros{
-	background      : none;
-	background-image: none;
-	border          : 1px solid #a0b3b0;
-	border-radius   : 0;
-	color           : #ffffff;
-	display         : block;
-	font-size       : 20px;
-	margin-bottom   : 30px;
-	padding         : 5px 10px;
-	transition      : border-color .25s ease, box-shadow .25s ease;
-	width           : 95%;
-}
 #input_clave, #input_correo{
 	background      : none;
 	background-image: none;
@@ -135,8 +122,15 @@ div{
 #op_0, #op_1, #op_2, #op_3, #op_4, #op_5, #op_6, #op_7, #op_8, #op_9, #op_10{
 	cursor        : pointer;
 	padding-top   : 15px;
+	padding-left  : 10px;
 	padding-bottom: 15px;
 	width         : 300px;
+	color: #ffffff;
+}
+svg{
+	height: 20px;
+	width: 20px;
+	fill: #ffffff;
 }
 /*--------------------------------------*/
 #prestamos{
