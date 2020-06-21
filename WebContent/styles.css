@@ -36,19 +36,6 @@
 	transition      : border-color .25s ease, box-shadow .25s ease;
 	width           : 90%;
 }
-.input_registros{
-	background      : none;
-	background-image: none;
-	border          : 1px solid #a0b3b0;
-	border-radius   : 0;
-	color           : #ffffff;
-	display         : block;
-	font-size       : 20px;
-	margin-bottom   : 30px;
-	padding         : 5px 10px;
-	transition      : border-color .25s ease, box-shadow .25s ease;
-	width           : 95%;
-}
 #input_clave, #input_correo{
 	background      : none;
 	background-image: none;
@@ -135,8 +122,15 @@ div{
 #op_0, #op_1, #op_2, #op_3, #op_4, #op_5, #op_6, #op_7, #op_8, #op_9, #op_10{
 	cursor        : pointer;
 	padding-top   : 15px;
+	padding-left  : 10px;
 	padding-bottom: 15px;
 	width         : 300px;
+	color: #ffffff;
+}
+svg{
+	height: 20px;
+	width: 20px;
+	fill: #ffffff;
 }
 /*--------------------------------------*/
 #prestamos{
@@ -285,5 +279,73 @@ div{
 	border-collapse: collapse;	
 }
 #cl5, #cl6, #cl1{
+	width: 100px;
+}
+/******************************************************************************/
+#editoriales{
+	border-radius	: 0px;
+	background-color: #ffffff;
+	display			: flex;
+	flex-direction	: column;
+	font-size       : 20;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	width			: 100vw;
+	height          : 100vh;
+}
+#titulo_editoriales{
+	background-color: #01a87a;
+	border-radius	: 0%;	
+	height			: 10vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+}
+#h2_editoriales{
+	padding-left: 50px;
+	color: black;
+}
+#formulario_editoriales{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	color			: black;
+	height			: 40vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	font-size		: 16px;
+}
+.columnas_formulario_editoriales{
+	padding-top   : 10px;
+	padding-left  : 50px;
+	padding-bottom: 10px;
+}
+#inputs_editoriales{
+	padding-top: 15px;
+}
+#datos_editoriales{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	height			: 100vh;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	width			: 100%;
+}
+#tabla_editoriales{
+	border         : 1px solid;
+	border-collapse: collapse;
+	margin-top     : 50px;
+	margin-left    : 50px;
+	width          : 90%;
+}
+.col_tabla_editoriales{
+	border         : 1px solid black;
+	color          : black;
+	border-collapse: collapse;	
+}
+#cole1, #cole2{
 	width: 100px;
 }

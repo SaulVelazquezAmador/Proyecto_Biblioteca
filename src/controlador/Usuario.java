@@ -38,7 +38,6 @@ public class Usuario {
 					if (this.correo.equals(miResultset.getString("Correo_Bibliotecario")) 
 							&& this.clave.equals(miResultset.getString("Contraseña_Bibliotecario"))) {
 							encontrado = 1;
-							System.out.println("encontrado 1");
 					}
 				}
 				miStatement.close();
@@ -73,7 +72,6 @@ public class Usuario {
 						|| this.correo.equals(miResultset.getString("Correo_Bibliotecario")) 
 						/*&& this.clave.equals(miResultset.getString("Contraseña"))*/) {
 						encontrado = 1;
-						System.out.println("encontrado");
 				}
 			}
 			miStatement.close();
@@ -90,29 +88,29 @@ public class Usuario {
 //**************************************************************************************
 	 public void registrar_usuario(String nombre, String apellido_paterno, String apellido_materno, String correo, String clave) {
 
-			try {
-				Conexion c=new Conexion();
-				Connection miConexion=c.getCon();
-				
-				this.nombre           = nombre;
-				this.apellido_paterno = apellido_paterno;
-				this.apellido_materno = apellido_materno;
-				this.correo           = correo;
-				this.clave            = clave;
-				
-				PreparedStatement sentencia = miConexion.prepareStatement("INSERT INTO Bibliotecario(Nombre_Bibliotecario, Apellido_Paterno_B, Apellido_Materno_B, Correo_Bibliotecario, Contraseña_Bibliotecario) VALUES (?,?,?,?,?)");
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			this.nombre           = nombre;
+			this.apellido_paterno = apellido_paterno;
+			this.apellido_materno = apellido_materno;
+			this.correo           = correo;
+			this.clave            = clave;
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("INSERT INTO Bibliotecario(Nombre_Bibliotecario, Apellido_Paterno_B, Apellido_Materno_B, Correo_Bibliotecario, Contraseña_Bibliotecario) VALUES (?,?,?,?,?)");
 
-				sentencia.setString(1, nombre);
-				sentencia.setString(2, apellido_paterno);
-				sentencia.setString(3, apellido_materno);
-				sentencia.setString(4, correo);
-				sentencia.setString(5, clave);
+			sentencia.setString(1, nombre);
+			sentencia.setString(2, apellido_paterno);
+			sentencia.setString(3, apellido_materno);
+			sentencia.setString(4, correo);
+			sentencia.setString(5, clave);
 
-				sentencia.executeUpdate();
-				c.cerrarConexion();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}	 
+			sentencia.executeUpdate();
+			c.cerrarConexion();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	 
 	 }
 }
