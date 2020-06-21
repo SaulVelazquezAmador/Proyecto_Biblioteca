@@ -208,7 +208,7 @@
                     </tr>
                     <tr>
                         <td class="columnas_formulario_prestamos">
-                            <input type="button" value="Agrear">
+                            <input type="button" value="Agregar">
                         </td>
                     </tr>
                 </table>
@@ -269,6 +269,8 @@
                 <tr>
                     <td id = "cole1" class = "col_tabla_editoriales"><label>Nombre    </label></td>
                     <td id = "cole2" class = "col_tabla_editoriales"><label>Ciudad    </label></td>
+                    <td id = 'cole3' class = 'col_tabla_editoriales'><label>Editar    </label></td>
+                    <td id = 'cole4' class = 'col_tabla_editoriales'><label>Eliminar  </label></td>
                 </tr>
             </table>
         </div>
@@ -321,6 +323,8 @@
                     <td id = "col_au2" class = "col_tabla_autores"><label>Apellido paterno  </label></td>
                     <td id = "col_au3" class = "col_tabla_autores"><label>Apellido materno  </label></td>
                     <td id = "col_au4" class = "col_tabla_autores"><label>Nacionalidad      </label></td>
+                    <td id = 'col_au5' class = 'col_tabla_autores'><label>Editar            </label></td>
+                    <td id = 'col_au6' class = 'col_tabla_autores'><label>Eliminar          </label></td>
                 </tr>
             </table>
         </div>

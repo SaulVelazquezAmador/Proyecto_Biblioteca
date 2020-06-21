@@ -199,6 +199,7 @@ $(document).ready(function(){
         $("#op_7").css('background-color', '#222222');
         $("#op_8").css('background-color', '#222222');
         $("#op_9").css('background-color', '#222222');
+        location.href="login.html";
     });
     //actualiza select de las clasificaciones de los libros
     $("#select_clasificacion").change(function(){

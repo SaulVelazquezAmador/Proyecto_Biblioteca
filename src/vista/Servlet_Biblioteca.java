@@ -130,18 +130,33 @@ public class Servlet_Biblioteca extends HttpServlet
 
 					response.setContentType("text/html");
 					response.setCharacterEncoding("UFT-8");
-
+					int imparese = 0;
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_editoriales'>");
-					salida.println("<tr>");
+					salida.println("<tr bgcolor='#01a87a'>");
 					salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'><label>Nombre    </label></td>");
                     salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'><label>Ciudad    </label></td>");
+					salida.println("<td id = 'cole3' class = 'col_tabla_editoriales'><label>Editar    </label></td>");
+                    salida.println("<td id = 'cole4' class = 'col_tabla_editoriales'><label>Eliminar  </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
-						salida.println("<tr>");
-						salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
-						salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
-						salida.println("</tr>");
+						if (imparese % 2 !=0) {
+							salida.println("<tr bgcolor='#01a87a'>");
+							salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
+							salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
+							salida.println("<td id = 'cole3' class = 'col_tabla_editoriales'></td>");
+		                    salida.println("<td id = 'cole4' class = 'col_tabla_editoriales'></td>");
+							salida.println("</tr>");							
+						}
+						else {
+							salida.println("<tr>");
+							salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
+							salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
+							salida.println("<td id = 'cole3' class = 'col_tabla_editoriales'></td>");
+		                    salida.println("<td id = 'cole4' class = 'col_tabla_editoriales'></td>");
+							salida.println("</tr>");
+						}
+						imparese += 1;
 					}
 					salida.println("</table>");
 					
@@ -161,22 +176,39 @@ public class Servlet_Biblioteca extends HttpServlet
 
 					response.setContentType("text/html");
 					response.setCharacterEncoding("UFT-8");
-
+					int impares = 0;
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_autores'>");
-					salida.println("<tr>");
-					salida.println("<td id = 'col_au1' class = 'col_tabla_autores'><label>Nombre</label></td>");
-                    salida.println("<td id = 'col_au2' class = 'col_tabla_autores'><label>Apellido paterno</label></td>");
+					salida.println("<tr bgcolor='#01a87a'>");
+					salida.println("<td id = 'col_au1' class = 'col_tabla_autores'><label>Nombre            </label></td>");
+                    salida.println("<td id = 'col_au2' class = 'col_tabla_autores'><label>Apellido paterno  </label></td>");
                     salida.println("<td id = 'col_au3' class = 'col_tabla_autores'><label>Apellido materno  </label></td>");
                     salida.println("<td id = 'col_au4' class = 'col_tabla_autores'><label>Nacionalidad      </label></td>");
+					salida.println("<td id = 'col_au5' class = 'col_tabla_autores'><label>Editar            </label></td>");
+                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'><label>Eliminar          </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
-						salida.println("<tr>");
-						salida.println("<td id = 'col_au1' class = 'col_tabla_autores'>" + miResultset.getString("Nombre_Autor") + "</td>");
-						salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
-						salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");
-						salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Nacionalidad") + "</td>");
-						salida.println("</tr>");
+						if (impares % 2 != 0) {
+							salida.println("<tr bgcolor='#01a87a'>");
+							salida.println("<td id = 'col_au1' class = 'col_tabla_autores'>" + miResultset.getString("Nombre_Autor") + "</td>");
+							salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
+							salida.println("<td id = 'col_au3' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");
+							salida.println("<td id = 'col_au4' class = 'col_tabla_autores'>" + miResultset.getString("Nacionalidad") + "</td>");
+							salida.println("<td id = 'col_au5' class = 'col_tabla_autores'></td>");
+		                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'></td>");
+							salida.println("</tr>");
+						}		
+						else{
+							salida.println("<tr>");
+							salida.println("<td id = 'col_au1' class = 'col_tabla_autores'>" + miResultset.getString("Nombre_Autor") + "</td>");
+							salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
+							salida.println("<td id = 'col_au3' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");
+							salida.println("<td id = 'col_au4' class = 'col_tabla_autores'>" + miResultset.getString("Nacionalidad") + "</td>");
+							salida.println("<td id = 'col_au5' class = 'col_tabla_autores'></td>");
+		                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'></td>");
+							salida.println("</tr>");						
+						}
+						impares += 1;
 					}
 					salida.println("</table>");
 					

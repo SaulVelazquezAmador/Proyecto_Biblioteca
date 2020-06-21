@@ -22,8 +22,7 @@ public class Inicio_Registro extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,9 +39,10 @@ public class Inicio_Registro extends HttpServlet {
 		
 		if (correo_inicio != null && clave_inicio != null) 
 		{
+			System.out.println("entro");
 			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
 			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
-			
+			System.out.println(existe);
 			if(existe == true) 
 			{ 
 				RequestDispatcher rd;
