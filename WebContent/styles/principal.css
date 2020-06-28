@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+/***************************************/
+#cuerpo2{
+	background-color: #c1bdba;
+	display         : flex;
+	flex-direction  : row;
+	font-family     : 'Titillium Web', sans-serif;
+	margin          : 0;
+	padding         : 0;
+}
+#menu_principal{
+	background-color: #222222;
+	border-radius   : 0px;
+	font-size       : 18px;
+	flex-basis		: 200px;
+	height          : 100vh;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	float: left;
+}
+#op_0, #op_1, #op_2, #op_3, #op_4, #op_5, #op_6, #op_7, #op_8, #op_9, #op_10{
+	cursor        : pointer;
+	padding-top   : 15px;
+	padding-left  : 10px;
+	padding-bottom: 15px;
+	width         : 300px;
+	color: #ffffff;
+}
+svg{
+	height: 20px;
+	width: 20px;
+	fill: #ffffff;
+}
+#vistas{
+	background-color: #ffffff;
+	display			: flex;
+	flex-direction	: column;
+	width: 100vw;
+	height : 100vh;
+}

@@ -83,7 +83,6 @@ $(document).ready(function(){
     			if(responseText == 1)
     				alert("Usuario y/o contraseña incorrectos")
     			else{
-    				alert(responseText);
 					location.href="principal.jsp";
     			}
     			});

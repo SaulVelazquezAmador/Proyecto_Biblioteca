@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/******************************************************************************/
+#libros{
+	border-radius	: 0px;
+	background-color: #ffffff;
+	display			: flex;
+	flex-direction	: column;
+	font-size       : 20;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	width			: 100vw;
+	height          : 100vh;
+}
+#titulo_libros{
+	background-color: #01a87a;
+	border-radius	: 0%;	
+	height			: 10vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+}
+#h2_libros{
+	padding-left: 50px;
+	color: black;
+}
+#formulario_libros{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	color			: black;
+	height			: 40vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	font-size		: 16px;
+}
+.columnas_formulario_libros{
+	padding-top   : 10px;
+	padding-left  : 50px;
+	padding-bottom: 10px;
+}
+#inputs_libros{
+	padding-top: 15px;
+}
+/*       div        */
+#datos_libros{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	height			: 100vh;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	width			: 100%;
+}
+#tabla_libros{
+	border         : 1px solid;
+	border-collapse: collapse;
+	margin-top     : 50px;
+	margin-left    : 50px;
+	width          : 70%;
+}
+.col_tabla_libros{
+	border         : 1px solid black;
+	color          : black;
+	border-collapse: collapse;	
+}
+#cl5, #cl6, #cl1{
+	width: 70px;
+}
