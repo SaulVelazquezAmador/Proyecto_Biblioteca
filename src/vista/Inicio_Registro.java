@@ -26,7 +26,6 @@ public class Inicio_Registro extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 		
 		boolean existe = false;
@@ -34,15 +33,16 @@ public class Inicio_Registro extends HttpServlet {
 		String clave_inicio       =request.getParameter("clave_ini");
 		String nombre_registro    =request.getParameter("nombre");
 		String apellidos_registro =request.getParameter("apellido");
+		
 		String correo_registro    =request.getParameter("correo");
 		String password_registro  =request.getParameter("clave");
 		
 		if (correo_inicio != null && clave_inicio != null) 
 		{
-			System.out.println("entro");
+
 			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
 			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
-			System.out.println(existe);
+
 			if(existe == true) 
 			{ 
 				RequestDispatcher rd;

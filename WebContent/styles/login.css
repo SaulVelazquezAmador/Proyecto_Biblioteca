@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+#cuerpo{
+	background-color: #c1bdba;
+	font-family     : 'Titillium Web', sans-serif;
+}
+.menu_superior{
+	background-color: #42515b;
+    color           : #a0b3b0;
+	cursor          : pointer;
+	display         : table;
+    float           : left;
+    font-size       : 18px;
+	margin-top      : 10px;
+	margin-left     : 40px;
+	margin-bottom   : 20px;
+	padding-right   : 60px;
+	padding-left    : 60px;
+	padding-top     : 10px;
+	padding-bottom  : 10px;
+    text-align      : center;
+	transition      : .5s ease;	
+	width           : 50%;
+}
+.input_registros1{
+	background      : none;
+	background-image: none;
+	border          : 1px solid #a0b3b0;
+	border-radius   : 0;
+	color           : #ffffff;
+	display         : block;
+	font-size       : 20px;
+	margin-bottom   : 30px;	
+	margin-top      : 20%;
+	padding         : 5px 10px;
+	transition      : border-color .25s ease, box-shadow .25s ease;
+	width           : 90%;
+}
+.input_registros{
+	background      : none;
+	background-image: none;
+	border          : 1px solid #a0b3b0;
+	border-radius   : 0;
+	color           : #ffffff;
+	display         : block;
+	font-size       : 20px;
+	margin-bottom   : 30px;	
+	padding         : 5px 10px;
+	transition      : border-color .25s ease, box-shadow .25s ease;
+	width           : 95%;
+}
+#input_clave, #input_correo{
+	background      : none;
+	background-image: none;
+	border          : 1px solid #a0b3b0;	
+	border-radius   : 0;
+	color           : #ffffff;
+	display         : block;
+	font-size       : 20px;
+	height          : 70%;
+	margin-top      : 30px;
+	padding         : 5px 10px;
+	transition      : border-color .25s ease, box-shadow .25s ease;
+	width           : 90%;
+}
+div{
+	background   : #13232f;
+	border-radius: 4px;
+	color        : #a0b3b0;
+	margin-top   : 8%;
+	margin-left  : 30%;
+	width        : 40%;
+}
+#formulario_registro, #formulario_inicio{
+	height: 100%;	
+	width : 90%;
+}
+#mensaje_bienvenido, #mensaje_registro{
+	background : none;
+	font-size  : 25px;
+	margin-left: 10px;
+	text-align : center;
+}
+
+#boton_entrar{
+	background-color: #01a87a;
+	border          : none;	
+	color           : #ffffffff;
+	cursor          : pointer;	
+	font-size       : 24px;
+    float        	: left;
+	height          : 100%;
+	margin-top      : 30px;
+	margin-left     : 15px;
+	margin-bottom   : 30px;
+	padding-top     : 10px;
+	padding-bottom  : 10px;
+	text-align      : center;
+	width           : 95%;
+}
+#boton_registrar{
+	background-color: #01a87a;
+	border          : none;
+    color        	: #ffffffff;
+	cursor          : pointer;	
+    font-size    	: 24px;
+    float        	: left;
+	height          : 100%;
+	margin-left     : 2px;
+	margin-bottom   : 30px;	
+	padding-top     : 10px;
+	padding-bottom  : 10px;
+    text-align   	: center;
+	width           : 100%;
+}

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/******************************************************************************/
+#autores{
+	border-radius	: 0px;
+	background-color: #ffffff;
+	display			: flex;
+	flex-direction	: column;
+	font-size       : 20;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	width			: 100vw;
+	height          : 100vh;
+}
+#titulo_autores{
+	background-color: #01a87a;
+	border-radius	: 0%;	
+	height			: 10vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+}
+#h2_autores{
+	padding-left: 50px;
+	color: black;
+}
+#formulario_autores{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	color			: black;
+	height			: 40vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	font-size		: 16px;
+}
+.columnas_formulario_autores{
+	padding-top   : 10px;
+	padding-left  : 50px;
+	padding-bottom: 10px;
+}
+#inputs_autores{
+	padding-top: 15px;
+}
+#datos_autores{
+	background-color: #ffffff;
+	border-radius	: 0%;
+	height			: 100vh;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	width			: 100%;
+}
+#tabla_autores{
+	border         : 1px solid;
+	border-collapse: collapse;
+	margin-top     : 50px;
+	margin-left    : 50px;
+	width          : 90%;
+}
+.col_tabla_autores{
+	border         : 1px solid black;
+	color          : black;
+	border-collapse: collapse;	
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 1%;
+	
+	width: 80%
+}
+#col_au1, #col_au4{
+	width: 15%;
+}
+#col_au2, #col_au3{
+	width: 25%;
+}
+#col_au5, #col_au6{
+	width: 10%;
+}
