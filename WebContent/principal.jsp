@@ -7,10 +7,6 @@
     <meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
     <title>Sistema Bibliotecario</title>
     <link rel="stylesheet" type="text/css" href="styles/principal.css">
-    <link rel="stylesheet" type="text/css" href="styles/prestamos.css">
-    <link rel="stylesheet" type="text/css" href="styles/libros.css">
-    <link rel="stylesheet" type="text/css" href="styles/autores.css">
-    <link rel="stylesheet" type="text/css" href="styles/editoriales.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="actions/principal.js"></script>
 </head>

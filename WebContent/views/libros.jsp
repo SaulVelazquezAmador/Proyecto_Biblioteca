@@ -7,7 +7,7 @@
     <title>Insert title here</title>
     <link rel="stylesheet" type="text/css" href="styles/libros.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="actions/principal.js"></script>
+    <script src="actions/libros.js"></script>
 </head>
 <body id="libros">
         <div id="titulo_libros">
@@ -25,11 +25,21 @@
                     <tr>
                         <td class="columnas_formulario_libros">
                             <label>ISBN: </label>
-                            <input type="text" class="inputs_libros">
+                            <input type="text" class="inputs_libros" id="isbn_lib">
                         </td>
                         <td class="columnas_formulario_libros">
                             <label>Titulo: </label>
-                            <input type="text" class="inputs_libros">
+                            <input type="text" class="inputs_libros" id="titulo_lib">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros">
+                            <label>Año: </label>
+                            <input type="text" class="inputs_libros" id="year_lib">
+                        </td>
+                        <td class="columnas_formulario_libros">
+                            <label>Ejemplares: </label>
+                            <input type="text" class="inputs_libros" id="ejemplares_lib">
                         </td>
                     </tr>
                     <tr>
@@ -41,25 +51,53 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="columnas_formulario_libros" id="col_select_autores">  
+                            Autores:<select name="autores" id="numero_autores">
+                                        <option value="0">----</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                        </td>
                         <td class="columnas_formulario_libros" id="select_editorial">
                             Editorial: <select></select>
                         </td>
-                        <td class="columnas_formulario_libros" id="select_autores">
-                            Autor: <select></select>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros" id="autor_1">
+                            Autor 1: <select></select>
                         </td>
-                        <td class="columnas_formulario_libros">
-                            <label>Ejemplares: </label>
-                            <input type="text" class="inputs_libros">
+                        <td class="columnas_formulario_libros" id="autor_2">
+                            Autor 2: <select></select>
+                        </td>
+                        <td class="columnas_formulario_libros" id="autor_3">
+                            Autor 3: <select></select>
                         </td>
                     </tr>
                     <tr>
-                        <td class="columnas_formulario_prestamos">
-                            <input type="button" value="Agregar">
+                        <td class="columnas_formulario_libros" id="autor_4">
+                            Autor 4: <select></select>
+                        </td>
+                        <td class="columnas_formulario_libros" id="autor_5">
+                            Autor 5: <select></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros" id="ubicacion">
+                            Ubicacion: <select></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="columnas_formulario_libros">
+                            <input type="button" value="Agregar Libro" id="b_libros">
                         </td>
                     </tr>
                 </table>
             </form>
         </div>
+        <!---
         <div id="datos_libros">
             <table id="tabla_libros">
                 <tr>
@@ -72,5 +110,6 @@
                 </tr>
             </table>
         </div>
+        -->
 </body>
 </html>

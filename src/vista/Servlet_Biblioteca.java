@@ -41,12 +41,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		String tipo_peticion      = request.getParameter("tipo_muestra");
 		
 		String sub_clasificacion  = request.getParameter("sub_clas");
-		String nombre_editorial   = request.getParameter("n_editorial");
-		String ciudad_editorial   = request.getParameter("n_ciudad");
 		
-		String nombre_a           = request.getParameter("nombre_autor");
-		String apellidos_a        = request.getParameter("apellido_autor");
-		String nacionalidad_a     = request.getParameter("nacionalidad_autor");
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
@@ -86,7 +81,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					response.setCharacterEncoding("UFT-8");
 
 					PrintWriter salida = response.getWriter();
-					salida.println("Editorial: <select>");
+					salida.println("Editorial: <select id=\"sel_edit\">>");
 					while(miResultset.next()) {
 						salida.println("<option>" + miResultset.getString("Nombre_Editorial") + "</option>");
 					}
@@ -98,7 +93,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}
 			}
-			if (peticion == 300) {
+			if (peticion == 301) {
 				try {
 					Conexion c            =new Conexion();
 					Connection miConexion =c.getCon();
@@ -109,9 +104,124 @@ public class Servlet_Biblioteca extends HttpServlet
 					response.setCharacterEncoding("UFT-8");
 
 					PrintWriter salida = response.getWriter();
-					salida.println("Autor: <select>");
+					salida.println("Autor: <select id=\"aut_1\">");
 					while(miResultset.next()) {
 						salida.println("<option>" + miResultset.getString("Nombre_Autor")+ " " + miResultset.getString("Apellido_Paterno_Autor")+ " "+ miResultset.getString("Apellido_Materno_Autor")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 302) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select id=\"aut_2\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor")+ " " + miResultset.getString("Apellido_Paterno_Autor")+ " "+ miResultset.getString("Apellido_Materno_Autor")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 303) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select id=\"aut_3\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor")+ " " + miResultset.getString("Apellido_Paterno_Autor")+ " "+ miResultset.getString("Apellido_Materno_Autor")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 304) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select id=\"aut_4\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor")+ " " + miResultset.getString("Apellido_Paterno_Autor")+ " "+ miResultset.getString("Apellido_Materno_Autor")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 305) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select id=\"aut_5\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor")+ " " + miResultset.getString("Apellido_Paterno_Autor")+ " "+ miResultset.getString("Apellido_Materno_Autor")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 306) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Libreros order by Nombre_Librero asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Ubicación: <select id=\"ubicacion_libro\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Librero")+ "</option>");
 					}
 					salida.println("</select>");
 					miStatement.close();
@@ -238,7 +348,7 @@ public class Servlet_Biblioteca extends HttpServlet
 						response.setContentType("text/html");
 						response.setCharacterEncoding("UFT-8");
 						PrintWriter salida = response.getWriter();
-						salida.println("Sublasificacion: <select>");
+						salida.println("Sublasificacion: <select id=\"sel_subclasif\">");
 						while(miResultset2.next()) {
 							if (miResultset2.getInt("ID_Subclasificacion") > id_clasificacion 
 									&& miResultset2.getInt("ID_Subclasificacion") < (id_clasificacion+10))
@@ -259,42 +369,6 @@ public class Servlet_Biblioteca extends HttpServlet
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}		
-		}
-		//***********************************************************************
-		else if (nombre_editorial != null && ciudad_editorial != null) {
-
-			Control_Biblioteca control_editorial = new Control_Biblioteca();
-			existe = control_editorial.consultar_editoriales(nombre_editorial, ciudad_editorial);
-
-			if (existe == true) {
-				PrintWriter salida = response.getWriter();
-				salida.println(1);
-			}
-			else{
-				control_editorial.agregar_editorial(nombre_editorial, ciudad_editorial);
-				PrintWriter salida = response.getWriter();
-				salida.println(2);
-			}	
-		}
-		//*************************************************************************
-		else if (nombre_a != null && apellidos_a != null && nacionalidad_a != null) {
-
-			String[] apellidos      = apellidos_a.split(" ");
-			String apellido_paterno = apellidos[0];
-			String apellido_materno = apellidos[1];
-			
-			Control_Biblioteca control_autor = new Control_Biblioteca();
-			existe = control_autor.consultar_autores(nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
-		
-			if (existe == true) {
-				PrintWriter salida = response.getWriter();
-				salida.println(1);
-			}
-			else {
-				control_autor.agregar_autor(nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
-				PrintWriter salida = response.getWriter();
-				salida.println(2);
-			}
 		}
 	}
 }

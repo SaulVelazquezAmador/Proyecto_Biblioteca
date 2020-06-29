@@ -37,26 +37,8 @@ public class Inicio_Registro extends HttpServlet {
 		String correo_registro    =request.getParameter("correo");
 		String password_registro  =request.getParameter("clave");
 		
-		if (correo_inicio != null && clave_inicio != null) 
-		{
-
-			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
-			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
-
-			if(existe == true) 
-			{ 
-				RequestDispatcher rd;
-				rd = request.getRequestDispatcher("/principal.jsp");
-				rd.forward(request, response);
-			}
-			else 
-			{
-				PrintWriter salida = response.getWriter();
-				salida.println(1);
-			}
-		}
 		//**************************************************************
-		else if(nombre_registro != null && apellidos_registro != null
+		if(nombre_registro != null && apellidos_registro != null
 				&& correo_registro != null && password_registro != null)
 		{	
 			//separo los apellidos en caso de ser un registro nuevo
@@ -79,9 +61,26 @@ public class Inicio_Registro extends HttpServlet {
 			else 
 			{
 				user.registrar_usuario(nombre_registro, apellido_paterno, apellido_materno, correo_registro, password_registro);
+				PrintWriter salida = response.getWriter();
+				salida.println(1);		
+			}
+		}
+		else if (correo_inicio != null && clave_inicio != null) 
+		{
+
+			Usuario user_inicio = new Usuario(correo_inicio, clave_inicio);
+			existe = user_inicio.consultar_para_inicio(correo_inicio, clave_inicio);
+
+			if(existe == true) 
+			{ 
 				RequestDispatcher rd;
 				rd = request.getRequestDispatcher("/principal.jsp");
-				rd.forward(request, response);		
+				rd.forward(request, response);
+			}
+			else 
+			{
+				PrintWriter salida = response.getWriter();
+				salida.println(1);
 			}
 		}
 	}
