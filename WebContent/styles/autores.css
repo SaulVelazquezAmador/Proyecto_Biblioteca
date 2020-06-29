@@ -2,7 +2,6 @@
 /******************************************************************************/
 #autores{
 	border-radius	: 0px;
-	background-color: #ffffff;
 	display			: flex;
 	flex-direction	: column;
 	font-size       : 20;
@@ -44,7 +43,8 @@
 	padding-top: 15px;
 }
 #datos_autores{
-	background-color: #ffffff;
+	overflow: 		: auto;
+	background-color: #B2AAA9;
 	border-radius	: 0%;
 	height			: 100vh;
 	margin-left     : 0%;

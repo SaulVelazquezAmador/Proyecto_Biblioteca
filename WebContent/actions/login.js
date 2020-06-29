@@ -57,7 +57,7 @@ $(document).ready(function(){
     			
     			if (responseText == 2)
     				alert("Datos ya existentes");
-    			else
+    			if (responseText == 1)
 					location.href="principal.jsp";
     		});
     		return false;

@@ -28,7 +28,7 @@
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
-	height			: 40vh;
+	height			: 50vh;
 	width			: 100%;
 	margin-left     : 0%;
 	margin-top      : 0%;
@@ -40,8 +40,10 @@
 	padding-left  : 50px;
 	padding-bottom: 10px;
 }
-#inputs_libros{
+.inputs_libros{
 	padding-top: 15px;
+	border:none;
+    border-bottom:1px solid #B4AAA8;
 }
 /*       div        */
 #datos_libros{
@@ -58,7 +60,7 @@
 	border-collapse: collapse;
 	margin-top     : 50px;
 	margin-left    : 50px;
-	width          : 70%;
+	width          : 90%;
 }
 .col_tabla_libros{
 	border         : 1px solid black;
@@ -66,5 +68,5 @@
 	border-collapse: collapse;	
 }
 #cl5, #cl6, #cl1{
-	width: 70px;
+	width: 90px;
 }
