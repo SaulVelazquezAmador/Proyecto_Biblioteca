@@ -25,7 +25,7 @@ public class Altas_Editoriales extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		
+		System.out.println("e");
 		boolean existe = false;
 		String nombre_editorial   = request.getParameter("n_editorial");
 		String ciudad_editorial   = request.getParameter("n_ciudad");

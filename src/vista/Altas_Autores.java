@@ -27,16 +27,25 @@ public class Altas_Autores extends HttpServlet {
 		doGet(request, response);
 		
 		boolean existe = false;
+		String apellido_paterno = "";
+		String apellido_materno = "";
 		String nombre_a           = request.getParameter("nombre_autor");
 		String apellidos_a        = request.getParameter("apellido_autor");
 		String nacionalidad_a     = request.getParameter("nacionalidad_autor");
 		//*************************************************************************
 		if (nombre_a != null && apellidos_a != null && nacionalidad_a != null) {
-
-			String[] apellidos      = apellidos_a.split(" ");
-			String apellido_paterno = apellidos[0];
-			String apellido_materno = apellidos[1];
+			int espacio = 0;
+			espacio = apellidos_a.indexOf(" ");
 			
+			if(espacio != -1) {
+				String[] apellidos = apellidos_a.split(" ");
+				apellido_paterno = apellidos[0];
+				apellido_materno = apellidos[1];	
+			}
+			else {
+				apellido_paterno = apellidos_a;
+				apellido_materno = "";
+			}
 			Control_Biblioteca control_autor = new Control_Biblioteca();
 			existe = control_autor.consultar_autores(nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
 		

@@ -11,7 +11,7 @@
     <div id="titulo_prestamos">
         <h2 id="h2_prestamos">Prestamos</h2>
     </div>
-
+ 
     <div id="formulario_prestmos">
         <form>
             <table>

@@ -13,7 +13,7 @@
 	<div id="titulo_autores">
         <h2 id="h2_autores">Autores</h2>
     </div>
-
+ 
     <div id="formulario_autores">
         <form>
             <table>  

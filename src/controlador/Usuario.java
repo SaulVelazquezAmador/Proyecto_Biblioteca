@@ -3,7 +3,7 @@ import modelo.Conexion;
 import java.sql.*;
 
 import javax.swing.JOptionPane;
-
+ 
 public class Usuario {
 	 private String nombre;
 	 private String apellido_paterno;
