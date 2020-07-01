@@ -41,12 +41,11 @@ public class Servlet_Biblioteca extends HttpServlet
 		String tipo_peticion      = request.getParameter("tipo_muestra");
 		
 		String sub_clasificacion  = request.getParameter("sub_clas");
-		
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
 			int peticion = Integer.parseInt(tipo_peticion);
-
+			System.out.println("aaaaaa");
 			if(peticion == 3)
 			{
 				try {

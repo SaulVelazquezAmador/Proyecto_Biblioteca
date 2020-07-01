@@ -14,7 +14,7 @@
     <div id="titulo_editoriales">
         <h2 id="h2_editoriales">Editoriales</h2>
     </div>  
-    
+     
     <div id="formulario_editoriales">
         <form>
             <table>

@@ -64,6 +64,7 @@ $(document).ready(function(){
     	});
     	//***************************************************************** */
     	$("#f_inicio").submit(function() {
+
     		var correoVar1 = $('#input_correo').val();
     		var claveVar1 = $('#input_clave').val();
 
@@ -82,10 +83,9 @@ $(document).ready(function(){
 
     			if(responseText == 1)
     				alert("Usuario y/o contraseña incorrectos")
-    			else{
+    			else
 					location.href="principal.jsp";
-    			}
-    			});
+    		});
     		return false;
     	});
 });

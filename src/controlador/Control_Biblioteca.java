@@ -102,7 +102,7 @@ public class Control_Biblioteca {
 //****************************************************************************************
 	public void agregar_autor(String nombre_autor, String apellido_paterno, String apellido_materno, String nacionalidad) {
 		
-		try {
+		try { 
 			Conexion c=new Conexion();
 			Connection miConexion=c.getCon();
 			
