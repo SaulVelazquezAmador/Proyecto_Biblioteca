@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_editoriales">
-                        <input type="button" value="Agregar" class="inputs_editoriales" id="b_editorial">
+                        <input type="button" value="Agregar" id="b_editorial">
                     </td>
                 </tr>
             </table>

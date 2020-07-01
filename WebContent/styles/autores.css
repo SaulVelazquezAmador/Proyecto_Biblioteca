@@ -39,8 +39,10 @@
 	padding-left  : 50px;
 	padding-bottom: 10px;
 }
-#inputs_autores{
+.inputs_autores{
 	padding-top: 15px;
+	border:none;
+    border-bottom:1px solid #B4AAA8;
 }
 #datos_autores{
 
