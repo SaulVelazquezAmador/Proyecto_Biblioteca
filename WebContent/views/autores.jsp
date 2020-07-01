@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_autores">
-                        <input type="button" value="Agregar Autor" class="inputs_autores" id="b_autores">
+                        <input type="button" value="Agregar Autor" id="b_autores">
                     </td>
                 </tr>
             </table>

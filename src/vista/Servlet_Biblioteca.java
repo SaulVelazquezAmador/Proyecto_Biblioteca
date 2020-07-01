@@ -45,7 +45,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		if (tipo_peticion != null) {
 
 			int peticion = Integer.parseInt(tipo_peticion);
-			System.out.println("aaaaaa");
+
 			if(peticion == 3)
 			{
 				try {

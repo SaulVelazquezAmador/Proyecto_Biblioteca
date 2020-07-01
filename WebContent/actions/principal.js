@@ -38,7 +38,9 @@ $(document).ready(function(){
         $("#op_8").css('background-color', '#222222');
         $("#op_9").css('background-color', '#222222');        
     });
+    /*   Clientes  */    
     $("#op_4").click(function(){
+        $('#vistas').load("views/clientes.jsp");
         $(this).css('background-color', '#23303e');
         $("#op_1").css('background-color', '#222222');
         $("#op_2").css('background-color', '#222222');

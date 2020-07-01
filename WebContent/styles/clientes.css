@@ -1,8 +1,7 @@
 @charset "UTF-8";
 /******************************************************************************/
-#editoriales{
+#clientes{
 	border-radius	: 0px;
-	background-color: #ffffff;
 	display			: flex;
 	flex-direction	: column;
 	font-size       : 20;
@@ -11,8 +10,7 @@
 	width			: 100vw;
 	height          : 100vh;
 }
-#titulo_editoriales{
-	
+#titulo_clientes{
 	background-color: #01a87a;
 	border-radius	: 0%;	
 	height			: 10vh;
@@ -21,11 +19,11 @@
 	margin-top      : 0%;
 	margin-bottom	: 0%;
 }
-#h2_editoriales{
+#h2_clientes{
 	padding-left: 50px;
 	color: black;
 }
-#formulario_editoriales{
+#formulario_clientes{
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
@@ -36,45 +34,13 @@
 	margin-bottom	: 0%;
 	font-size		: 16px;
 }
-.columnas_formulario_editoriales{
+.columnas_formulario_clientes{
 	padding-top   : 10px;
 	padding-left  : 50px;
 	padding-bottom: 10px;
 }
-.inputs_editoriales{
+.inputs_clientes{
 	padding-top: 15px;
 	border:none;
     border-bottom:1px solid #B4AAA8;
-}
-#datos_editoriales{
-	overflow: auto;
-	background-color: #ffffff;
-	border-radius	: 0%;
-	height			: 100vh;
-	margin-left     : 0%;
-	margin-top      : 0%;
-	margin-bottom	: 0%;
-	width			: 100%;
-}
-#tabla_editoriales{
-	border         : 1px solid;
-	border-collapse: collapse;
-	margin-top     : 50px;
-	margin-left    : 50px;
-	width          : 90%;
-}
-.col_tabla_editoriales{
-	border         : 1px solid black;
-	color          : black;
-	border-collapse: collapse;	
-	width		   : 80%
-	padding-top	   : 2%;
-	padding-bottom : 2%;
-	padding-left   : 1%;
-}
-#cole1, #cole2{
-	width: 40%;
-}
-#cole3, #cole4{
-	width: 10%;
 }
