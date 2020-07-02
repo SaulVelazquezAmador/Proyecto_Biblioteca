@@ -44,3 +44,41 @@
 	border:none;
     border-bottom:1px solid #B4AAA8;
 }
+#datos_clientes{
+	overflow		: auto;
+	background-color: #ffffff;
+	border-radius	: 0%;
+	height			: 100vh;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	width			: 100%;
+}
+#tabla_clientes{
+	border         : 1px solid;
+	border-collapse: collapse;
+	margin-top     : 50px;
+	margin-left    : 50px;
+	width          : 90%;
+}
+.col_tabla_clientes{
+	border         : 1px solid black;
+	color          : black;
+	border-collapse: collapse;	
+	width		   : 80%;
+	padding-top	   : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;
+}
+#col_cli1{
+	width: 20%;
+}
+#col_cli2, #col_cli3{
+	width: 22%;
+}
+#col_cli4{
+	width: 20%;
+}
+#col_cli5{
+	width: 15%;
+}

@@ -230,6 +230,57 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}
 			}
+			
+			if (peticion == 4) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Lector order by Nombre asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+					int impares = 0;
+					PrintWriter salida = response.getWriter();
+					salida.println("<table id='tabla_clientes'>");
+					salida.println("<tr bgcolor='#01a87a'>");
+					salida.println("<td id = 'col_cli1' class = 'col_tabla_clientes'><label>Nombre            </label></td>");
+                    salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'><label>Apellido paterno  </label></td>");
+                    salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'><label>Apellido materno  </label></td>");
+                    salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'><label>Correo Electronico</label></td>");
+					salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'><label>Telefono          </label></td>");
+                    salida.println("</tr>");
+					while(miResultset.next()) {
+						if (impares % 2 != 0) {
+							salida.println("<tr bgcolor='#01a87a'>");
+							salida.println("<td id = 'col_cli1' class = 'col_tabla_clientes'>" + miResultset.getString("Nombre") + "</td>");
+							salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Paterno") + "</td>");
+							salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Materno") + "</td>");
+							salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'>" + miResultset.getString("Correo_Electronico") + "</td>");
+							salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'>" + miResultset.getString("Telefono") + "</td>");
+							salida.println("</tr>");
+						}		
+						else{
+							salida.println("<tr>");
+							salida.println("<td id = 'col_cli1' class = 'col_tabla_clientes'>" + miResultset.getString("Nombre") + "</td>");
+							salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Paterno") + "</td>");
+							salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Materno") + "</td>");
+							salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'>" + miResultset.getString("Correo_Electronico") + "</td>");
+							salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'>" + miResultset.getString("Telefono") + "</td>");
+							salida.println("</tr>");						
+						}
+						impares += 1;
+					}
+					salida.println("</table>");
+					
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
+			} 
+			 
 			if (peticion == 6) {
 				try {
 					Conexion c            =new Conexion();
@@ -316,7 +367,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("<td id = 'col_au5' class = 'col_tabla_autores'></td>");
 		                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'></td>");
 							salida.println("</tr>");						
-						}
+						} 
 						impares += 1;
 					}
 					salida.println("</table>");

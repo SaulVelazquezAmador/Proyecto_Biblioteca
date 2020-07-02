@@ -1,5 +1,12 @@
 $(document).ready(function() {
-    // da de alta una editorial
+
+    $.post('Servlet_Biblioteca', {
+        tipo_muestra: 4
+    }, function(responseText){
+        $('#datos_clientes').html(responseText);
+    });
+    
+    // da de alta un cliente
     $("#b_clientes").click(function() {
 
         var nom  = $("#nom_cliente").val();

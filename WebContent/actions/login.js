@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+ 
 		$(".usuario_registrado").fadeOut(0);
 		$("#usuario_no_encontrado").fadeOut(0);
         $('#formulario_registro').fadeOut(0);
