@@ -61,19 +61,18 @@
             </table>
         </form>
     </div> 
-    <!--
-	    <div id="datos_clientes">
-	        <table id="tabla_clientes">
-	            <tr>
-	                <td id = "col_au1" class = "col_tabla_clientes"><label>Nombre            </label></td>
-	                <td id = "col_au2" class = "col_tabla_clientes"><label>Apellido paterno  </label></td>
-	                <td id = "col_au3" class = "col_tabla_clientes"><label>Apellido materno  </label></td>
-	                <td id = "col_au4" class = "col_tabla_clientes"><label>Nacionalidad      </label></td>
-	                <td id = 'col_au5' class = 'col_tabla_clientes'><label>Editar            </label></td>
-	                <td id = 'col_au6' class = 'col_tabla_clientes'><label>Eliminar          </label></td>
-	            </tr>
-	        </table>
-	    </div>
-	   -->
+    
+    <div id="datos_clientes">
+        <table id="tabla_clientes">
+            <tr>
+                <td id = "col_cli1" class = "col_tabla_clientes"><label>Nombre            </label></td>
+                <td id = "col_cli2" class = "col_tabla_clientes"><label>Apellido paterno  </label></td>
+                <td id = "col_cli3" class = "col_tabla_clientes"><label>Apellido materno  </label></td>
+                <td id = "col_cli4" class = "col_tabla_clientes"><label>Correo Electronico</label></td>
+                <td id = 'col_cli5' class = 'col_tabla_clientes'><label>Telefono            </label></td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 </html>
