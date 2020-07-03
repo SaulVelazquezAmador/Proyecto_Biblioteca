@@ -27,7 +27,7 @@ public class Inicio_Registro extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		System.out.println("inicio_registro");
+
 		boolean existe = false;
 		String correo_inicio      =request.getParameter("correo_ini");
 		String clave_inicio       =request.getParameter("clave_ini");
@@ -36,7 +36,7 @@ public class Inicio_Registro extends HttpServlet {
 		
 		String correo_registro    =request.getParameter("correo");
 		String password_registro  =request.getParameter("clave");
-		
+		System.out.println("registro");
 		//**************************************************************
 		if(nombre_registro != null && apellidos_registro != null
 				&& correo_registro != null && password_registro != null)

@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import controlador.Control_Biblioteca;
-import controlador.Usuario;
+//import controlador.Control_Biblioteca;
+//import controlador.Usuario;
 import modelo.Conexion;
 
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,17 +35,87 @@ public class Servlet_Biblioteca extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		boolean existe = false;
 
-		String tipo_peticion      = request.getParameter("tipo_muestra");
-		
+		String tipo_peticion      = request.getParameter("tipo_muestra");		
 		String sub_clasificacion  = request.getParameter("sub_clas");
+		System.out.println("biblioteca");
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
 			int peticion = Integer.parseInt(tipo_peticion);
+			
+			if (peticion == 20) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Lector order by Nombre asc");
 
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Cliente: <select id=\"sel_nombre\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if (peticion == 21) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Libro order by Titulo asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Libro: <select id=\"sel_libro\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Titulo") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (peticion == 22) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Tipo_prestamo order by Tipo asc");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Tipo de prestamo: <select id=\"sel_tipo\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Tipo") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			if(peticion == 3)
 			{
 				try {
