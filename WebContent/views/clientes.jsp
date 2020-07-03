@@ -11,7 +11,7 @@
 </head>
 <body id="clientes">
 	<div id="titulo_clientes">
-        <h2 id="h2_clientes">clientes</h2>
+        <h2 id="h2_clientes">Clientes</h2>
     </div>
  
     <div id="formulario_clientes">

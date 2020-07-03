@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    alert("editoriales");
+    
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 6
     }, function(responseText){

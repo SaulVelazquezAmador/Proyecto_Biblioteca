@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" type="text/css" href="styles/prestamos.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="actions/prestamos.js"></script>
 </head>
 <body id="prestamos">
     <div id="titulo_prestamos">
@@ -21,32 +23,29 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_formulario_prestamos">
-                        <label> Nombre:</label>
-                        <input type="text" class="inputs_prestamos">
+                    <td class="columnas_formulario_prestamos" id="select_nombre">
+                        <label> Cliente:</label>
+                        <select></select>
                     </td>
-                    <td class="columnas_formulario_prestamos">
-                        <label >Apellido paterno:</label>
-                        <input type="text" class="inputs_prestamos">
-                    </td>
-                    <td class="columnas_formulario_prestamos">
-                        <label >Apellido materno:</label>
-                        <input type="text" class="inputs_prestamos">
+                    <td class="columnas_formulario_prestamos" id="select_libro">
+                        <label >Libro:</label>
+                        <select></select>
                     </td>
                 </tr>
                 <tr>
                     <td class="columnas_formulario_prestamos">
-                        <label>Datos del libro:</label>
+                        <label>Fecha de inicio</label>
+                        <input type="date" name="f_inicio" id="f_actual">
+                    </td>
+                    <td class="columnas_formulario_prestamos">
+                        <label>Fecha devolucion</label>
+                        <input type="date" name="f_devolucion" id="">
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_formulario_prestamos">
-                        <label>ISBN: </label>
-                        <input type="text" class="inputs_prestamos">
-                    </td>
-                    <td class="columnas_formulario_prestamos">
-                        <label>Nombre libro: </label>
-                        <input type="text" class="inputs_prestamos">
+                    <td class="columnas_formulario_prestamos" id="select_tipo">
+                        <label >Tipo de prestamo:</label>
+                        <select></select>
                     </td>
                 </tr>
                 <tr>

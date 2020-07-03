@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     $("#autor_3").fadeOut(0);
     $("#autor_4").fadeOut(0);
     $("#autor_5").fadeOut(0);
-    alert("libros");
+
     $("#b_libros").click(function() {
         var isbn  = $("#isbn_lib").val();
         var titl  = $("#titulo_lib").val();
@@ -48,7 +48,7 @@ jQuery(document).ready(function() {
             });
         }
     });
-
+    
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 3
     }, function(responseText){
