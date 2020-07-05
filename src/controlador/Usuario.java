@@ -25,6 +25,35 @@ public class Usuario {
 		 this.clave  = clave;
 	 }
 //****************************************************************************************
+	 public String[] buscar_usuario(String correo, String clave) {
+		 String[] datos = new String[5];
+		 this.correo = correo;
+		 this.clave = clave;
+			try {
+				Conexion c            =new Conexion();
+				Connection miConexion =c.getCon();
+				Statement miStatement =miConexion.createStatement();
+				ResultSet miResultset = miStatement.executeQuery("select * from Bibliotecario");
+				
+				while(miResultset.next()) {
+					if (this.correo.equals(miResultset.getString("Correo_Bibliotecario")) 
+							&& this.clave.equals(miResultset.getString("Contraseña_Bibliotecario"))) {
+							datos[0] = miResultset.getString("Nombre_Bibliotecario");
+							datos[1] = miResultset.getString("Apellido_Paterno_B");
+							datos[2] = miResultset.getString("Apellido_Materno_B");
+							datos[3] = miResultset.getString("Correo_Bibliotecario");
+							datos[4] = miResultset.getString("Contraseña_Bibliotecario");
+					}
+				}
+				miStatement.close();
+				miResultset.close();
+				c.cerrarConexion();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		 return datos;
+	 }
+//****************************************************************************************
 	 public Boolean consultar_para_inicio(String correo, String clave) {
 		 int encontrado = 0;
 		 

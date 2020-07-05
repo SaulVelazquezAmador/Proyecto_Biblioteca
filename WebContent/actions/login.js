@@ -1,4 +1,5 @@
 $(document).ready(function(){
+		var correoVar1;
  
 		$(".usuario_registrado").fadeOut(0);
 		$("#usuario_no_encontrado").fadeOut(0);
@@ -65,7 +66,7 @@ $(document).ready(function(){
     	//***************************************************************** */
     	$("#f_inicio").submit(function() {
 
-    		var correoVar1 = $('#input_correo').val();
+    		correoVar1 = $('#input_correo').val();
     		var claveVar1 = $('#input_clave').val();
 
     		if (correoVar1 == ""){
@@ -83,8 +84,11 @@ $(document).ready(function(){
 
     			if(responseText == 1)
     				alert("Usuario y/o contraseña incorrectos")
-    			else
+    			else{
 					location.href="principal.jsp";
+					localStorage.setItem("correo", correoVar1);
+					localStorage.setItem("clave", claveVar1);
+				}
     		});
     		return false;
     	});
