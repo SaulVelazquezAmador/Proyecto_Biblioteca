@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import controlador.Usuario;
+
 @WebServlet("/Servlet_Biblioteca")
 public class Servlet_Biblioteca extends HttpServlet 
 {
@@ -28,22 +32,41 @@ public class Servlet_Biblioteca extends HttpServlet
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		String json = request.getParameter("test");
+		System.out.println(json);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
-
+		
+		System.out.println("biblioteca");
+		String[] datos_usuario = new String[5];
 		String tipo_peticion      = request.getParameter("tipo_muestra");		
 		String sub_clasificacion  = request.getParameter("sub_clas");
-		System.out.println("biblioteca");
+		String correo             = request.getParameter("Correo");
+		String clave              = request.getParameter("Clave");
+
+		
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
 			int peticion = Integer.parseInt(tipo_peticion);
-			
+			if (peticion == 0) {
+				//*********** rescatar datos de usuario ******************************
+				Usuario user = new Usuario(correo, clave);
+				datos_usuario = user.buscar_usuario(correo, clave);
+				
+				Gson gson = new Gson();
+				String usrJson = gson.toJson(datos_usuario);
+				
+				PrintWriter salida0 = response.getWriter();
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UFT-8");
+				salida0.write(usrJson);
+				salida0.close();
+			}
 			if (peticion == 20) {
 				try {
 					Conexion c            =new Conexion();

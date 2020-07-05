@@ -1,5 +1,16 @@
 $(document).ready(function(){
-     
+
+    let correo = localStorage.getItem("correo");
+    let clave = localStorage.getItem("clave");
+
+    $.post('Servlet_Biblioteca', {
+        tipo_muestra: 0,
+        Correo: correo,
+        Clave: clave
+    }, function(responseText){
+        console.log(responseText);
+    });
+
     $("#op_1").click(function(){
         $(this).css('background-color', '#23303e');
         $("#op_2").css('background-color', '#222222');
