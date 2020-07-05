@@ -1,8 +1,9 @@
-jQuery(document).ready(function() {
-
+$(document).ready(function() {
+    alert("aaaaa");
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 7
     }, function(responseText){
+        alert("devolvio");
         $('#datos_autores').html(responseText);
     });
     // da de alta los autores
@@ -11,7 +12,7 @@ jQuery(document).ready(function() {
         var nom_a = $("#nom_autor").val();
         var ap_a  = $("#ap_autor").val();
         var nac_a = $("#nac_autor").val();
-
+        
         $.post('Altas_Autores', 
         {
             nombre_autor: nom_a,

@@ -40,15 +40,13 @@ public class Servlet_Biblioteca extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		System.out.println("biblioteca");
+				
 		String[] datos_usuario = new String[5];
 		String tipo_peticion      = request.getParameter("tipo_muestra");		
 		String sub_clasificacion  = request.getParameter("sub_clas");
 		String correo             = request.getParameter("Correo");
 		String clave              = request.getParameter("Clave");
-
-		
+		System.out.println("Servlet_Biblioteca");
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
