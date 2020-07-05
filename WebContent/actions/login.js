@@ -58,8 +58,10 @@ $(document).ready(function(){
     			
     			if (responseText == 2)
     				alert("Datos ya existentes");
-    			if (responseText == 1)
+    			if (responseText == 1){
+					alert("encontrado");
 					location.href="principal.jsp";
+				}
     		});
     		return false;
     	});
