@@ -48,6 +48,7 @@
 }
 /*       div        */
 #datos_prestamos{
+	overflow		: auto;
 	background-color: #ffffff;
 	border-radius	: 0%;
 	height			: 100vh;
@@ -68,15 +69,21 @@
 	color          : black;
 	border-collapse: collapse;	
 }
-#c1{
+#p1{
 	padding-top: 5px;
 	padding-bottom: 5px;
 	padding-left: 5px;
-	width: 100px;
+	width		   : 27%;
+	padding-top	   : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;
 }
-#c3, #c4, #c6, #c7{
-	width: 100px;
+#p6, #p7{
+	width: 10%;
 }
-#c5{
-	width: 150px;
+#p3, #p4{
+	width: 10%;
+}
+#p2{
+	width: 30%;
 }

@@ -40,7 +40,14 @@ $(document).ready(function() {
             // si tuvo exito limpia los campos y actualiza la tabla
             if (responseText == 1) {
                 alert("Registro exitoso!");
-                $('input[type="text"]').val(''); 
+                $('input[type="text"]').val('');
+                    
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 4
+                }, function(responseText){
+                    $('#datos_clientes').html(responseText);
+                });
+                 
             }
             else{
                 alert("El cliente ya existe");

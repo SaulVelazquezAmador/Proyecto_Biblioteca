@@ -64,9 +64,8 @@
                 <td id = "c2" class = "col_tabla_prestamos"><label>Cliente  </label></td>
                 <td id = "c3" class = "col_tabla_prestamos"><label>Inicio   </label></td>
                 <td id = "c4" class = "col_tabla_prestamos"><label>Fin      </label></td>
-                <td id = "c5" class = "col_tabla_prestamos"><label>Estado   </label></td>
-                <td id = "c6" class = "col_tabla_prestamos"><label>Terminar </label></td>
-                <td id = "c7" class = "col_tabla_prestamos"><label>         </label></td>
+                <td id = "c5" class = "col_tabla_prestamos"><label>Terminar </label></td>
+                <td id = "c6" class = "col_tabla_prestamos"><label>         </label></td>
             </tr>
         </table>
     </div>	

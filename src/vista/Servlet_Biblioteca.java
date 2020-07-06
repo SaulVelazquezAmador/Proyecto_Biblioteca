@@ -136,6 +136,64 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}
 			}
+
+			if (peticion == 23) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select Prestamos.Fecha_Entrega, Prestamos.Fecha_Devolucion, Libro.Titulo, Lector.Nombre, Lector.Apellido_Paterno, Lector.Apellido_Materno"
+							+ "											from Prestamos inner join Libro"
+							+ "											on Prestamos.R_LIbro = Libro.ISBN"
+							+ "											inner join Lector"
+							+ "											on Prestamos.R_Lector = Lector.ID_Lector"
+							+ "                                         ORDER BY Lector.Nombre");
+
+					response.setContentType("text/html");
+					response.setCharacterEncoding("UFT-8");
+					int impares = 0;
+					PrintWriter salida = response.getWriter();
+					salida.println("<table id='tabla_prestamos'>");
+					salida.println("<tr bgcolor='#01a87a'>");
+					salida.println("<td id = 'p1' class = 'col_tabla_prestamos'><label>Libro    </label></td>");
+					salida.println("<td id = 'p2' class = 'col_tabla_prestamos'><label>Cliente  </label></td>");
+					salida.println("<td id = 'p3' class = 'col_tabla_prestamos'><label>Inicio   </label></td>");
+					salida.println("<td id = 'p4' class = 'col_tabla_prestamos'><label>Fin      </label></td>");
+					salida.println("<td id = 'p5' class = 'col_tabla_prestamos'><label>Terminar </label></td>");
+					salida.println("<td id = 'p6' class = 'col_tabla_prestamos'><label>         </label></td>");
+					salida.println("</tr>");
+					while(miResultset.next()) {
+						if (impares % 2 != 0) {
+							salida.println("<tr bgcolor='#01a87a'>");
+							salida.println("<td id = 'p1' class = 'col_tabla_prestamos'>" + miResultset.getString("Titulo") + "</td>");
+							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</td>");
+							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
+							salida.println("<td id = 'p4' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Devolucion") + "</td>");
+							salida.println("<td id = 'p5' class = 'col_tabla_prestamos'> </td>");
+							salida.println("<td id = 'p6' class = 'col_tabla_prestamos'> </td>");
+							salida.println("</tr>");
+						}		
+						else{
+							salida.println("<tr>");
+							salida.println("<td id = 'p1' class = 'col_tabla_prestamos'>" + miResultset.getString("Titulo") + "</td>");
+							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre")+" "+miResultset.getString("Apellido_Paterno")+" "+miResultset.getString("Apellido_Materno") + "</td>");
+							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
+							salida.println("<td id = 'p4' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Devolucion") + "</td>");
+							salida.println("<td id = 'p5' class = 'col_tabla_prestamos'> </td>");
+							salida.println("<td id = 'p6' class = 'col_tabla_prestamos'> </td>");
+							salida.println("</tr>");						
+						}
+						impares += 1;
+					}
+					salida.println("</table>");
+					
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 			
 			if(peticion == 3)
 			{

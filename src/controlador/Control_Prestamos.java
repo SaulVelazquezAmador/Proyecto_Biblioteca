@@ -10,7 +10,9 @@ import java.sql.Statement;
 import modelo.Conexion;
 
 public class Control_Prestamos {
+	
 	private String id_libro;
+	private int ejemplares_libro = 0;
 	private int id_lector = 0;
 	private int id_bibliotecario = 0;
 	private String nombre;
@@ -45,14 +47,14 @@ public class Control_Prestamos {
 			Statement miStatement=miConexion.createStatement();
 			ResultSet miResultset = miStatement.executeQuery("select * from Lector");
 			
-			int id_lector = 0;
 			while(miResultset.next()) {
 				if (this.nombre.equals(miResultset.getString("Nombre"))
 						&& this.apellido_paterno.equals(miResultset.getString("Apellido_Paterno"))
 						&& this.apellido_materno.equals(miResultset.getString("Apellido_Materno")))
 				{
 					this.id_lector = miResultset.getInt("ID_Lector");
-					System.out.println(this.id_lector);
+					System.out.println(miResultset.getString("Nombre"));
+					System.out.println("cte"+this.id_lector);
 				}
 			}
 			miStatement.close();
@@ -73,6 +75,7 @@ public class Control_Prestamos {
 				if (this.libro.equals(miResultset.getString("Titulo")))
 				{
 					this.id_libro = miResultset.getString("ISBN");
+					this.ejemplares_libro = miResultset.getInt("Ejemplares");
 					System.out.println(this.id_libro);
 				}
 			}
@@ -94,7 +97,7 @@ public class Control_Prestamos {
 				if (this.bibliotecario.equals(miResultset.getString("Correo_Bibliotecario")))
 				{
 					this.id_bibliotecario = miResultset.getInt("ID_Bibliotecario");
-					System.out.println(this.id_bibliotecario);
+					System.out.println("bib"+this.id_bibliotecario);
 				}
 			}
 			miStatement.close();
@@ -128,10 +131,7 @@ public class Control_Prestamos {
 			return true;
 		else {
 			
-//			SimpleDateFormat formatter1=new SimpleDateFormat("dd/MM/yyyy"); 
-//			formatter1.parse(this.fecha_actual);
-//			formatter1.parse(this.fecha_devolucion);
-			
+	//*********** Realizamos el prestamo **************************************
 			int id_tipo;
 			
 			if(this.tipo.equals("Para Biblioteca"))
@@ -158,9 +158,26 @@ public class Control_Prestamos {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+
+			try {
+				this.ejemplares_libro -= 1;
+				Conexion c=new Conexion();
+				Connection miConexion=c.getCon();
+				
+				PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Libro set Ejemplares = ? WHERE ISBN = ?");
+
+				sentencia.setInt(1, this.ejemplares_libro);
+				sentencia.setString(2, this.id_libro);
+
+				sentencia.executeUpdate();							
+				c.cerrarConexion();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
 			return false;
 		} 
-							
+						
 	}
 //*********************Agregamos libro ******************************************
 }
