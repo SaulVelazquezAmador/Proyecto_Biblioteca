@@ -39,7 +39,7 @@
                     </td>
                     <td class="columnas_formulario_prestamos">
                         <label>Fecha devolucion</label>
-                        <input type="date" name="f_devolucion" id="">
+                        <input type="date" name="f_devolucion" id="f_devolucion">
                     </td>
                 </tr>
                 <tr>
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_prestamos">
-                        <input type="button" value="Procesar">
+                        <input type="button" value="Procesar" id="b_prestamos">
                     </td>
                 </tr>
             </table>

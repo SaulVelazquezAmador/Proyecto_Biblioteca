@@ -1,9 +1,8 @@
 $(document).ready(function() {
-    alert("aaaaa");
+
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 7
     }, function(responseText){
-        alert("devolvio");
         $('#datos_autores').html(responseText);
     });
     // da de alta los autores
