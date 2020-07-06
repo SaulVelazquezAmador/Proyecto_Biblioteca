@@ -76,7 +76,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					response.setCharacterEncoding("UFT-8");
 
 					PrintWriter salida = response.getWriter();
-					salida.println("Cliente: <select id=\"sel_nombre\">");
+					salida.println("Cliente: <select id=\"prest_nombre\">");
 					while(miResultset.next()) {
 						salida.println("<option>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</option>");
 					}
@@ -100,7 +100,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					response.setCharacterEncoding("UFT-8");
 
 					PrintWriter salida = response.getWriter();
-					salida.println("Libro: <select id=\"sel_libro\">");
+					salida.println("Libro: <select id=\"prest_libro\">");
 					while(miResultset.next()) {
 						salida.println("<option>" + miResultset.getString("Titulo") + "</option>");
 					}
@@ -124,7 +124,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					response.setCharacterEncoding("UFT-8");
 
 					PrintWriter salida = response.getWriter();
-					salida.println("Tipo de prestamo: <select id=\"sel_tipo\">");
+					salida.println("Tipo de prestamo: <select id=\"prest_tipo\">");
 					while(miResultset.next()) {
 						salida.println("<option>" + miResultset.getString("Tipo") + "</option>");
 					}
