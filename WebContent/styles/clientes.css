@@ -23,7 +23,7 @@
 	padding-left: 50px;
 	color: black;
 }
-#formulario_clientes{
+#formulario_altas_clientes{
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
@@ -34,7 +34,7 @@
 	margin-bottom	: 0%;
 	font-size		: 16px;
 }
-.columnas_formulario_clientes{
+.columnas_datos_clientes{
 	padding-top   : 10px;
 	padding-left  : 50px;
 	padding-bottom: 10px;
@@ -81,4 +81,24 @@
 }
 #col_cli5{
 	width: 15%;
+}
+#div_opciones ul {
+	padding-left: 50px;
+	list-style  :none;
+	margin      : 0;
+}
+#div_opciones li{
+	cursor                    : pointer;
+	padding-right             : 10px;
+	padding-left              : 10px;
+	float                     :left;
+	border-left               : 1px solid #7C7C7C;
+	border-right              : 1px solid #7C7C7C;
+	border-bottom             : 1px solid #7C7C7C;
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+}
+#formulario_bajas_clientes{
+	height			: 40vh;
+	width			: 100%;
 }

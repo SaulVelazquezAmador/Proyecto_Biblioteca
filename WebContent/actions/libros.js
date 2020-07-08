@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     $("#autor_3").fadeOut(0);
     $("#autor_4").fadeOut(0);
     $("#autor_5").fadeOut(0);
-
+    //ALta de libro
     $("#b_libros").click(function() {
         var isbn  = $("#isbn_lib").val();
         var titl  = $("#titulo_lib").val();

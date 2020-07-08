@@ -2,16 +2,7 @@ $(document).ready(function(){
 
     if (localStorage.getItem("correo")) {
         let correo = localStorage.getItem("correo");
-        let clave = localStorage.getItem("clave"); 
-
-        $.post('Servlet_Biblioteca', {
-            tipo_muestra: 0,
-            Correo: correo,
-            Clave: clave
-        }, function(responseText){
-            alert(responseText);
-            //console.log(responseText);
-        });       
+        let clave = localStorage.getItem("clave");       
     }
     else{
         alert("Debe iniciar sesión")

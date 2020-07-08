@@ -11,6 +11,7 @@ import java.sql.Statement;
 //import controlador.Usuario;
 import modelo.Conexion;
 
+import javax.servlet.RequestDispatcher;
 //import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,8 +33,7 @@ public class Servlet_Biblioteca extends HttpServlet
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String json = request.getParameter("test");
-		System.out.println(json);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -72,8 +72,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Lector order by Nombre asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Cliente: <select id=\"prest_nombre\">");
@@ -96,8 +95,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Libro order by Titulo asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Libro: <select id=\"prest_libro\">");
@@ -120,8 +118,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Tipo_prestamo order by Tipo asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Tipo de prestamo: <select id=\"prest_tipo\">");
@@ -149,8 +146,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							+ "											on Prestamos.R_Lector = Lector.ID_Lector"
 							+ "                                         ORDER BY Lector.Nombre");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 					int impares = 0;
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_prestamos'>");
@@ -164,7 +160,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					salida.println("</tr>");
 					while(miResultset.next()) {
 						if (impares % 2 != 0) {
-							salida.println("<tr bgcolor='#01a87a'>");
+							salida.println("<tr bgcolor='#01a87a' id='fila_tabla_prestamos'>");
 							salida.println("<td id = 'p1' class = 'col_tabla_prestamos'>" + miResultset.getString("Titulo") + "</td>");
 							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
@@ -174,7 +170,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");
 						}		
 						else{
-							salida.println("<tr>");
+							salida.println("<tr id='fila_tabla_prestamos'>");
 							salida.println("<td id = 'p1' class = 'col_tabla_prestamos'>" + miResultset.getString("Titulo") + "</td>");
 							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre")+" "+miResultset.getString("Apellido_Paterno")+" "+miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
@@ -202,8 +198,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Connection miConexion =c.getCon();
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Clasificacion order by Nombre_Clasificacion asc");
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter salida = response.getWriter();
 					salida.println("Clasificacion: <select id=\"sel_clasif\">");
 					while(miResultset.next()) {
@@ -225,8 +220,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Editorial: <select id=\"sel_edit\">>");
@@ -248,8 +242,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Autor: <select id=\"aut_1\">");
@@ -271,8 +264,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Autor: <select id=\"aut_2\">");
@@ -294,8 +286,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Autor: <select id=\"aut_3\">");
@@ -317,8 +308,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Autor: <select id=\"aut_4\">");
@@ -340,8 +330,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Autor: <select id=\"aut_5\">");
@@ -363,8 +352,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Libreros order by Nombre_Librero asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 
 					PrintWriter salida = response.getWriter();
 					salida.println("Ubicación: <select id=\"ubicacion_libro\">");
@@ -379,7 +367,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}
 			}
-			
+//****************************************************************************			
 			if (peticion == 4) {
 				try {
 					Conexion c            =new Conexion();
@@ -387,8 +375,8 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Lector order by Nombre asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
+
 					int impares = 0;
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_clientes'>");
@@ -427,9 +415,31 @@ public class Servlet_Biblioteca extends HttpServlet
 					c.cerrarConexion();
 				} catch (SQLException e) {
 					e.printStackTrace();
-				}		
-			} 
+				}
+			}
 			 
+			if (peticion == 41) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Lector order by Nombre asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Cliente: <select id=\"sel_baja_cliente\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}	
+			}
 			if (peticion == 6) {
 				try {
 					Conexion c            =new Conexion();
@@ -437,8 +447,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 					int imparese = 0;
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_editoriales'>");
@@ -483,8 +492,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Statement miStatement =miConexion.createStatement();
 					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
 
-					response.setContentType("text/html");
-					response.setCharacterEncoding("UFT-8");
+					response.setContentType("text/html;charset=UTF-8");
 					int impares = 0;
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_autores'>");
@@ -544,8 +552,7 @@ public class Servlet_Biblioteca extends HttpServlet
 						
 						Statement miStatement2 =miConexion.createStatement();
 						ResultSet miResultset2 = miStatement2.executeQuery("select * from Subclasificacion order by Nombre_Subclasificacion asc");
-						response.setContentType("text/html");
-						response.setCharacterEncoding("UFT-8");
+						response.setContentType("text/html;charset=UTF-8");
 						PrintWriter salida = response.getWriter();
 						salida.println("Sublasificacion: <select id=\"sel_subclasif\">");
 						while(miResultset2.next()) {

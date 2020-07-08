@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,58 +13,79 @@
     <script src="actions/clientes.js"></script>
 </head>
 <body id="clientes">
+    <!--------------------------------------------------------------------->
 	<div id="titulo_clientes">
         <h2 id="h2_clientes">Clientes</h2>
     </div>
- 
-    <div id="formulario_clientes">
+    <!--------------------------------------------------------------------->
+    <div id="div_opciones">
+        <ul>
+            <li id="pestaña_agregar">Agregar Cliente</li>
+            <li id="pestaña_eliminar">Eliminar Cliente</li>
+            <li id="pestaña_editar">Editar Cliente</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------->
+    <div id="formulario_altas_clientes">
         <form>
-            <table>  
+            <table>                   
                 <tr>
-                    <td class="columnas_formulario_clientes">
-                        <label>Agregar Cliente</label>
-                    </td>
-                </tr>                    
-                <tr>
-                    <td class="columnas_formulario_clientes">
+                    <td class="columnas_datos_clientes">
                         <label>Nombre: </label>
                         <input type="text" class="inputs_clientes" id="nom_cliente">
                     </td>
 
-                    <td class="columnas_formulario_clientes">
+                    <td class="columnas_datos_clientes">
                         <label>Apellidos: </label>
                         <input type="text" class="inputs_clientes" id="ap_cliente">
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_formulario_clientes">
+                    <td class="columnas_datos_clientes">
                         <label>Edad: </label>
                         <input type="text" class="inputs_clientes" id="edad_cliente">
                     </td>
-                    <td class="columnas_formulario_clientes">
+                    <td class="columnas_datos_clientes">
                         <label>Direccion: </label>
                         <input type="text" class="inputs_clientes" id="direccion_cliente">
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_formulario_clientes">
+                    <td class="columnas_datos_clientes">
                         <label>Correo electronico: </label>
                         <input type="text" class="inputs_clientes" id="correo_cliente">
                     </td>
-                    <td class="columnas_formulario_clientes">
+                    <td class="columnas_datos_clientes">
                         <label>Telefono: </label>
                         <input type="text" class="inputs_clientes" id="telefono_cliente">
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_formulario_clientes">
-                        <input type="button" value="Agregar cliente" id="b_clientes">
+                    <td class="columnas_datos_clientes">
+                        <input type="button" value="Agregar cliente" id="agregar_cliente">
                     </td>
                 </tr>
             </table>
         </form>
     </div> 
-    
+    <!--------------------------------------------------------------------->
+    <div id="formulario_bajas_clientes">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_datos_clientes" id="nombre_baja">
+                        Cliente: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <input type="button" value="Eliminar cliente" id="eliminar_cliente">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="datos_clientes">
         <table id="tabla_clientes">
             <tr>

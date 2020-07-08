@@ -9,6 +9,7 @@ import java.sql.Statement;
 import modelo.Conexion;
 
 public class Control_Clientes {
+	private int id_lector = 0;
 	private String nombre;
 	private String apellido_paterno;
 	private String apellido_materno;
@@ -83,9 +84,44 @@ public class Control_Clientes {
 			sentencia.setInt(8, prestamos);
 			sentencia.executeUpdate();
 			c.cerrarConexion();
-			
+			System.out.println("dio baja");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	public void eliminar_cliente(String nombre, String apellido_paterno, String apellido_materno) {
+		
+		this.nombre = nombre;
+		this.apellido_paterno = apellido_paterno;
+		this.apellido_materno = apellido_materno;
+
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			Statement miStatement=miConexion.createStatement();
+			ResultSet miResultset = miStatement.executeQuery("select * from Lector");
+			
+			while(miResultset.next()) {
+				if (this.nombre.equals(miResultset.getString("Nombre"))
+						&& this.apellido_paterno.equals(miResultset.getString("Apellido_Paterno"))
+						&& this.apellido_materno.equals(miResultset.getString("Apellido_Materno")))
+				{
+					this.id_lector = miResultset.getInt("ID_Lector");
+					System.out.println(miResultset.getString("Nombre"));
+					System.out.println("cte"+this.id_lector);
+				}
+			}
+			System.out.println(this.id_lector);
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("DELETE From Lector WHERE ID_Lector = ?");
+
+			sentencia.setInt(1, this.id_lector);
+
+			c.cerrarConexion();
+			System.out.println("dio baja");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 	}
 }

@@ -30,43 +30,74 @@ public class Altas_Clientes extends HttpServlet {
 		String apellido_materno = "";
 		int edad = 0;
 		int telefono = 0;
-		String nombre      = request.getParameter("n_cliente");
-		String apellidos   = request.getParameter("a_cliente");
-		String e           = request.getParameter("e_cliente");
-		String direccion   = request.getParameter("d_cliente");
-		String correo      = request.getParameter("c_cliente");
-		String t           = request.getParameter("t_cliente");
 		
-		if (nombre != null && apellidos != null && e != null && direccion != null &&
-				correo != null && t != null) {
-			
-			edad = Integer.parseInt(e); 
-			telefono = Integer.parseInt(t);
-			
-			int espacio = 0;
-			espacio = apellidos.indexOf(" ");
-			
-			if(espacio != -1) {
-				String[] apellidosc = apellidos.split(" ");
-				apellido_paterno = apellidosc[0];
-				apellido_materno = apellidosc[1];	
+		String tipo_peticion = request.getParameter("peticion"); 
+		String nombre        = request.getParameter("n_cliente");
+		String apellidos     = request.getParameter("a_cliente");
+		String e             = request.getParameter("e_cliente");
+		String direccion     = request.getParameter("d_cliente");
+		String correo        = request.getParameter("c_cliente");
+		String t             = request.getParameter("t_cliente");
+		String nombre_baja   = request.getParameter("nom_baja");
+		
+		if (tipo_peticion != null) {
+			System.out.println("no fue null");
+			int peticion = Integer.parseInt(tipo_peticion);
+			// Si la peticion es = 1 entonces es una alta
+			if(peticion == 1) {
+				edad = Integer.parseInt(e); 
+				telefono = Integer.parseInt(t);
+				
+				int espacio = 0;
+				espacio = apellidos.indexOf(" ");
+				
+				if(espacio != -1) {
+					String[] apellidosc = apellidos.split(" ");
+					apellido_paterno = apellidosc[0];
+					apellido_materno = apellidosc[1];	
+				}
+				else {
+					apellido_paterno = apellidos;
+					apellido_materno = "";
+				}	
+				
+				Control_Clientes cliente = new Control_Clientes();
+				existe = cliente.consultar_clientes(nombre, apellido_paterno, apellido_materno, correo, telefono);
+				
+				if(existe == false) {
+					cliente.agregar_cliente(nombre, apellido_paterno, apellido_materno, edad, direccion, correo, telefono);
+		    		PrintWriter salida = response.getWriter();
+					salida.println(1);
+				}
+				else {
+		    		PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}	
 			}
-			else {
-				apellido_paterno = apellidos;
-				apellido_materno = "";
-			}	
-			
-			Control_Clientes cliente = new Control_Clientes();
-			existe = cliente.consultar_clientes(nombre, apellido_paterno, apellido_materno, correo, telefono);
-			
-			if(existe == false) {
-				cliente.agregar_cliente(nombre, apellido_paterno, apellido_materno, edad, direccion, correo, telefono);
-	    		PrintWriter salida = response.getWriter();
-				salida.println(1);
-			}
-			else {
-	    		PrintWriter salida = response.getWriter();
-				salida.println(2);
+			//Si la peticion = 2 entonces es una baja
+			if (peticion == 2) {
+				
+				String nombre_cliente = "";
+				int tamaño = 0;
+				
+				String[] nombre_completo = nombre_baja.split(" ");
+				tamaño = nombre_completo.length;
+				
+				if (tamaño == 3) {
+					nombre_cliente   = nombre_completo[0];		
+					apellido_paterno = nombre_completo[1];
+					apellido_materno = nombre_completo[2];
+				}
+				if(tamaño == 4) {
+					nombre_cliente   = nombre_completo[0];
+					nombre_cliente   += " ";
+					nombre_cliente   += nombre_completo[1];
+					apellido_paterno = nombre_completo[2];
+					apellido_materno = nombre_completo[3];			
+				}
+				System.out.println("llego aqui");
+				Control_Clientes cliente = new Control_Clientes();
+				cliente.eliminar_cliente(nombre_cliente, apellido_paterno, apellido_materno);
 			}
 		}
 	}

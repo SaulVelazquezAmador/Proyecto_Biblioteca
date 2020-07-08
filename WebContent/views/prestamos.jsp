@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" type="text/css" href="styles/prestamos.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -13,13 +12,21 @@
     <div id="titulo_prestamos">
         <h2 id="h2_prestamos">Prestamos</h2>
     </div>
- 
-    <div id="formulario_prestmos">
+    <!--------------------------------------------------------------------->
+    <div id="div_opciones_p">
+        <ul>
+            <li id="pestaña_agregar_p">Agregar Prestamo</li>
+            <li id="pestaña_eliminar_p">Eliminar Prestamo</li>
+            <li id="pestaña_editar_p">Editar Prestamo</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------->
+    <div id="formulario_altas_prestamos">
         <form>
             <table>
                 <tr>
                     <td class="columnas_formulario_prestamos">
-                        <label>Datos del cliente:</label>
+                        <label>Datos del prestamo:</label>
                     </td>
                 </tr>
                 <tr>
@@ -56,7 +63,29 @@
             </table>
         </form>
     </div>
-
+    <!--------------------------------------------------------------------->
+    <div id="formulario_bajas_prestamos">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_formulario_prestamos" id="nombre_baja">
+                        Cliente: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_prestamos" id="nombre_baja">
+                        Libros prestados: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_prestamos">
+                        <input type="button" value="Eliminar prestamo" id="eliminar_prestamo">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="datos_prestamos">
         <table id="tabla_prestamos">
             <tr>

@@ -1,5 +1,23 @@
 $(document).ready(function() {
 
+    $("#formulario_bajas_prestamos").fadeOut(0);
+
+    $("#pestaña_agregar_p").click(function(){
+        $("#formulario_altas_prestamos").fadeIn(0);
+        $("#formulario_bajas_prestamos").fadeOut(0);
+    });
+
+    $("#pestaña_eliminar_p").click(function(){
+        $("#formulario_altas_prestamos").fadeOut(0);
+        $("#formulario_bajas_prestamos").fadeIn(0);
+
+        $.post('Servlet_Biblioteca', {
+            tipo_muestra: 25
+        }, function(responseText){
+            $('#select_nombre').html(responseText);
+        });
+    });
+
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 20
     }, function(responseText){
