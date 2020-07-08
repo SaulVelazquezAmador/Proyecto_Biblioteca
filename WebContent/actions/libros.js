@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
     $("#autor_3").fadeOut(0);
     $("#autor_4").fadeOut(0);
     $("#autor_5").fadeOut(0);
-
+    //ALta de libro
     $("#b_libros").click(function() {
         var isbn  = $("#isbn_lib").val();
         var titl  = $("#titulo_lib").val();
@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
         var ejem  = $("#ejemplares_lib").val();
         var ubc   = $("#ubicacion_libro").val();
         var na    = "NA";
-
+        alert(autor);
         if (autor == 1){
             var au1  = $("#aut_1").val();
             $.post('Altas_Libros', 
@@ -26,6 +26,141 @@ jQuery(document).ready(function() {
                 Autor3: na,
                 Autor4: na,
                 Autor5: na,
+                ISBN: isbn,
+                Titulo: titl,
+                Editorial: edit,
+                Clasificacion: clas,
+                Subclasificacion: subc,
+                NAutor: autor,
+                Year: yr,
+                Ejemplares: ejem,
+                Ubicacion: ubc 
+            },
+            function(responseText) 
+            {
+                if (responseText == 1){
+                    alert("Libro registrado exitosamente!");
+                    $('input[type="text"]').val('');
+                }
+                else{
+                    alert("Libro ya en existencia");
+                }
+            });
+        }
+    //***********************************************************
+        if (autor == 2){
+            alert("2 autores");
+            var au1  = $("#aut_1").val();
+            var au2  = $("#aut_2").val();
+            $.post('Altas_Libros', 
+            {
+                Autor1: au1,
+                Autor2: au2,
+                Autor3: na,
+                Autor4: na,
+                Autor5: na,
+                ISBN: isbn,
+                Titulo: titl,
+                Editorial: edit,
+                Clasificacion: clas,
+                Subclasificacion: subc,
+                NAutor: autor,
+                Year: yr,
+                Ejemplares: ejem,
+                Ubicacion: ubc 
+            },
+            function(responseText) 
+            {
+                if (responseText == 1){
+                    alert("Libro registrado exitosamente!");
+                    $('input[type="text"]').val('');
+                }
+                else{
+                    alert("Libro ya en existencia");
+                }
+            });
+        }
+    //***********************************************************
+        if (autor == 3){
+            var au1  = $("#aut_1").val();
+            var au2  = $("#aut_2").val();
+            var au3  = $("#aut_3").val();
+            $.post('Altas_Libros', 
+            {
+                Autor1: au1,
+                Autor2: au2,
+                Autor3: au3,
+                Autor4: na,
+                Autor5: na,
+                ISBN: isbn,
+                Titulo: titl,
+                Editorial: edit,
+                Clasificacion: clas,
+                Subclasificacion: subc,
+                NAutor: autor,
+                Year: yr,
+                Ejemplares: ejem,
+                Ubicacion: ubc 
+            },
+            function(responseText) 
+            {
+                if (responseText == 1){
+                    alert("Libro registrado exitosamente!");
+                    $('input[type="text"]').val('');
+                }
+                else{
+                    alert("Libro ya en existencia");
+                }
+            });
+        }
+    //***********************************************************
+        if (autor == 4){
+            var au1  = $("#aut_1").val();
+            var au2  = $("#aut_2").val();
+            var au3  = $("#aut_3").val();
+            var au4  = $("#aut_4").val();
+            $.post('Altas_Libros', 
+            {
+                Autor1: au1,
+                Autor2: au2,
+                Autor3: au3,
+                Autor4: au4,
+                Autor5: na,
+                ISBN: isbn,
+                Titulo: titl,
+                Editorial: edit,
+                Clasificacion: clas,
+                Subclasificacion: subc,
+                NAutor: autor,
+                Year: yr,
+                Ejemplares: ejem,
+                Ubicacion: ubc 
+            },
+            function(responseText) 
+            {
+                if (responseText == 1){
+                    alert("Libro registrado exitosamente!");
+                    $('input[type="text"]').val('');
+                }
+                else{
+                    alert("Libro ya en existencia");
+                }
+            });
+        }
+    //***********************************************************
+        if (autor == 5){
+            var au1  = $("#aut_1").val();
+            var au2  = $("#aut_2").val();
+            var au3  = $("#aut_3").val();
+            var au4  = $("#aut_4").val();
+            var au5  = $("#aut_5").val();
+            $.post('Altas_Libros', 
+            {
+                Autor1: au1,
+                Autor2: au2,
+                Autor3: au3,
+                Autor4: au4,
+                Autor5: au5,
                 ISBN: isbn,
                 Titulo: titl,
                 Editorial: edit,

@@ -1,5 +1,23 @@
 $(document).ready(function() {
 
+    $("#formulario_bajas_prestamos").fadeOut(0);
+
+    $("#pestaña_agregar_p").click(function(){
+        $("#formulario_altas_prestamos").fadeIn(0);
+        $("#formulario_bajas_prestamos").fadeOut(0);
+    });
+
+    $("#pestaña_eliminar_p").click(function(){
+        $("#formulario_altas_prestamos").fadeOut(0);
+        $("#formulario_bajas_prestamos").fadeIn(0);
+
+        $.post('Servlet_Biblioteca', {
+            tipo_muestra: 25
+        }, function(responseText){
+            $('#select_nombre').html(responseText);
+        });
+    });
+
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 20
     }, function(responseText){
@@ -16,6 +34,12 @@ $(document).ready(function() {
         tipo_muestra: 22
     }, function(responseText){
         $('#select_tipo').html(responseText);
+    });
+
+    $.post('Servlet_Biblioteca', {
+        tipo_muestra: 23
+    }, function(responseText){
+        $('#datos_prestamos').html(responseText);
     });
 
     $("#b_prestamos").click(function() {
@@ -39,6 +63,12 @@ $(document).ready(function() {
                 if (responseText == 2){
                     alert("Prestamo registrado exitosamente!");
                     $('input[type="text"]').val('');
+                    
+                    $.post('Servlet_Biblioteca', {
+                        tipo_muestra: 23
+                    }, function(responseText){
+                        $('#datos_prestamos').html(responseText);
+                    });
                 }
                 else
                     alert("Prestamo ya en existencia");

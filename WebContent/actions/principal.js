@@ -1,15 +1,14 @@
 $(document).ready(function(){
 
-    let correo = localStorage.getItem("correo");
-    let clave = localStorage.getItem("clave");
+    if (localStorage.getItem("correo")) {
+        let correo = localStorage.getItem("correo");
+        let clave = localStorage.getItem("clave");       
+    }
+    else{
+        alert("Debe iniciar sesión")
+        location.href="index.jsp";
+    }
 
-    $.post('Servlet_Biblioteca', {
-        tipo_muestra: 0,
-        Correo: correo,
-        Clave: clave
-    }, function(responseText){
-        console.log(responseText);
-    });
 
     $("#op_1").click(function(){
         $(this).css('background-color', '#23303e');
@@ -121,6 +120,7 @@ $(document).ready(function(){
         $("#op_6").css('background-color', '#222222');
         $("#op_7").css('background-color', '#222222');
         $("#op_8").css('background-color', '#222222');
-        location.href="login.html";
+        localStorage.clear();
+        location.href="index.jsp";
     });
 });

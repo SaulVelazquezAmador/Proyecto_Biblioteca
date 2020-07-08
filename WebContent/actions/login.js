@@ -59,7 +59,8 @@ $(document).ready(function(){
     			if (responseText == 2)
     				alert("Datos ya existentes");
     			if (responseText == 1){
-					alert("encontrado");
+					localStorage.setItem("correo", correoVar);
+                    localStorage.setItem("clave", claveVar);
 					location.href="principal.jsp";
 				}
     		});
@@ -87,9 +88,9 @@ $(document).ready(function(){
     			if(responseText == 1)
     				alert("Usuario y/o contraseña incorrectos")
     			else{
+                    localStorage.setItem("correo", correoVar1);
+                    localStorage.setItem("clave", claveVar1);
 					location.href="principal.jsp";
-					localStorage.setItem("correo", correoVar1);
-					localStorage.setItem("clave", claveVar1);
 				}
     		});
     		return false;

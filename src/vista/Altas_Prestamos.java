@@ -26,6 +26,7 @@ public class Altas_Prestamos extends HttpServlet {
 		doGet(request, response);
 
 		boolean existe = false;
+		int tamaño = 0;
 		String nombre_cliente   = "";
 		String apellido_paterno = "";
 		String apellido_materno = "";
@@ -37,9 +38,22 @@ public class Altas_Prestamos extends HttpServlet {
 		String Tipo             = request.getParameter("tipo");
 		
 		String[] nombre_completo = Nombre.split(" ");
-		nombre_cliente   = nombre_completo[0];		
-		apellido_paterno = nombre_completo[1];
-		apellido_materno = nombre_completo[2];
+		tamaño = nombre_completo.length;
+		if (tamaño == 3) {
+			nombre_cliente   = nombre_completo[0];		
+			apellido_paterno = nombre_completo[1];
+			apellido_materno = nombre_completo[2];
+		}
+		if(tamaño == 4) {
+			nombre_cliente   = nombre_completo[0];
+			nombre_cliente   += " ";
+			nombre_cliente   += nombre_completo[1];
+			apellido_paterno = nombre_completo[2];
+			apellido_materno = nombre_completo[3];			
+		}
+		System.out.println(nombre_cliente);
+		System.out.println(apellido_paterno);
+		System.out.println(apellido_materno);
 		
 		Control_Prestamos prestamo = new Control_Prestamos();
 		existe = prestamo.consultar_prestamos(Libro, nombre_cliente, apellido_paterno, apellido_materno, Correo, F_inicio, F_devolucion, Tipo);

@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
     
+
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 6
     }, function(responseText){

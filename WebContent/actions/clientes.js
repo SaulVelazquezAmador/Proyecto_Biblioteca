@@ -1,13 +1,35 @@
 $(document).ready(function() {
 
-    $.post('Servlet_Biblioteca', {
-        tipo_muestra: 4
-    }, function(responseText){
+//******* Tabla de los clientes ***********************************************
+    $.post('Servlet_Biblioteca', 
+        {
+            tipo_muestra: 4
+        }, 
+        function(responseText){
         $('#datos_clientes').html(responseText);
     });
-    
-    // da de alta un cliente
-    $("#b_clientes").click(function() {
+
+    $("#formulario_bajas_clientes").fadeOut(0);
+
+    $("#pestaña_agregar").click(function(){
+        $("#formulario_altas_clientes").fadeIn(0);
+        $("#formulario_bajas_clientes").fadeOut(0);
+    });
+
+    $("#pestaña_eliminar").click(function(){
+        $("#formulario_altas_clientes").fadeOut(0);
+        $("#formulario_bajas_clientes").fadeIn(0);
+    //******* Select con los nombres para baja *********************************************
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 41
+            }, 
+            function(responseText){
+            $('#nombre_baja').html(responseText);
+        });
+    });
+//******** Alta de cliente *****************************************************
+    $("#agregar_cliente").click(function() {
 
         var nom  = $("#nom_cliente").val();
         var ap   = $("#ap_cliente").val();
@@ -40,11 +62,40 @@ $(document).ready(function() {
             // si tuvo exito limpia los campos y actualiza la tabla
             if (responseText == 1) {
                 alert("Registro exitoso!");
-                $('input[type="text"]').val(''); 
+                $('input[type="text"]').val('');  
+
+                $.post('Servlet_Biblioteca', 
+                {
+                    tipo_muestra: 4
+                }, 
+                    function(responseText){
+                    $('#datos_clientes').html(responseText);
+                });               
             }
             else{
                 alert("El cliente ya existe");
             }
+        });
+    });
+
+//********** Baja de cliente *************************************************
+    $("#eliminar_cliente").click(function(){
+        var nom = $("#sel_baja_cliente").val();
+
+        $.post('Altas_Clientes',
+        {
+            peticion: 2,
+            nom_baja: nom
+        },
+            function(){
+                alert("hecho");
+                $.post('Servlet_Biblioteca', 
+                {
+                	tipo_muestra: 4
+                }, 
+                 	function(responseText){
+                	$('#datos_clientes').html(responseText);
+                });
         });
     });
 });    
