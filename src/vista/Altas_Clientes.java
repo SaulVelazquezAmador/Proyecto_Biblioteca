@@ -29,7 +29,6 @@ public class Altas_Clientes extends HttpServlet {
 		String apellido_paterno = "";
 		String apellido_materno = "";
 		int edad = 0;
-		int telefono = 0;
 		
 		String tipo_peticion = request.getParameter("peticion"); 
 		String nombre        = request.getParameter("n_cliente");
@@ -37,7 +36,7 @@ public class Altas_Clientes extends HttpServlet {
 		String e             = request.getParameter("e_cliente");
 		String direccion     = request.getParameter("d_cliente");
 		String correo        = request.getParameter("c_cliente");
-		String t             = request.getParameter("t_cliente");
+		String telefono      = request.getParameter("t_cliente");
 		String nombre_baja   = request.getParameter("nom_baja");
 		
 		if (tipo_peticion != null) {
@@ -45,7 +44,6 @@ public class Altas_Clientes extends HttpServlet {
 			// Si la peticion es = 1 entonces es una alta
 			if(peticion == 1) {
 				edad = Integer.parseInt(e); 
-				telefono = Integer.parseInt(t);
 				
 				int espacio = 0;
 				espacio = apellidos.indexOf(" ");
@@ -94,7 +92,6 @@ public class Altas_Clientes extends HttpServlet {
 					apellido_paterno = nombre_completo[2];
 					apellido_materno = nombre_completo[3];			
 				}
-				System.out.println("llego aqui");
 				Control_Clientes cliente = new Control_Clientes();
 				cliente.eliminar_cliente(nombre_cliente, apellido_paterno, apellido_materno);
 			}

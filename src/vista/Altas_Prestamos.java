@@ -25,7 +25,7 @@ public class Altas_Prestamos extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 
-		boolean existe = false;
+		String resultado = "";
 		int tamaño = 0;
 		String nombre_cliente   = "";
 		String apellido_paterno = "";
@@ -58,21 +58,21 @@ public class Altas_Prestamos extends HttpServlet {
 					apellido_paterno = nombre_completo[2];
 					apellido_materno = nombre_completo[3];			
 				}
-				System.out.println(nombre_cliente);
-				System.out.println(apellido_paterno);
-				System.out.println(apellido_materno);
 				
 				Control_Prestamos prestamo = new Control_Prestamos();
-				existe = prestamo.consultar_prestamos(Libro, nombre_cliente, apellido_paterno, apellido_materno, Correo, F_inicio, F_devolucion, Tipo);
-				if (existe == true) {
-					System.out.println("Ya existe");
+				resultado = prestamo.altas_prestamos(Libro, nombre_cliente, apellido_paterno, apellido_materno, Correo, F_inicio, F_devolucion, Tipo);
+				if (resultado.equals("no hay libros")) {
 					PrintWriter salida = response.getWriter();
 					salida.println(1);
 				}
-				else {
+				if (resultado.equals("prestamo ya existe")) {
+					PrintWriter salida = response.getWriter();
+					salida.println(2);					
+				}
+				if (resultado.equals("exito")) {
 					System.out.println("Registrado");
 					PrintWriter salida = response.getWriter();
-					salida.println(2);
+					salida.println(3);
 				}		
 			}
 //*************** Si la peticion es = 2 entonces es una baja *********************************			
@@ -92,9 +92,6 @@ public class Altas_Prestamos extends HttpServlet {
 					apellido_paterno = nombre_completo[2];
 					apellido_materno = nombre_completo[3];			
 				}
-				System.out.println(nombre_cliente);
-				System.out.println(apellido_paterno);
-				System.out.println(apellido_materno);
 				
 				Control_Prestamos baja = new Control_Prestamos();
 				baja.baja_prestamos(nombre_cliente, apellido_paterno, apellido_materno, Libro);

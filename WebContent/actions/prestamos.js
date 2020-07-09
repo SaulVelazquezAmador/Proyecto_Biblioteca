@@ -61,6 +61,14 @@ $(document).ready(function() {
         var tip = $("#prest_tipo").val();
         let correo = localStorage.getItem("correo");
 
+        if (fa == "") {
+            alert("Agregue fecha inicial");
+            return false;
+        }
+        if (fd == "") {
+            alert("Agregue fecha final");
+            return false;
+        }
         $.post('Altas_Prestamos', 
             {
                 peticion: 1,
@@ -72,8 +80,15 @@ $(document).ready(function() {
                 tipo : tip
             }, 
             function(responseText) {
-                if (responseText == 2){
+                if (responseText == 1) {
+                    alert("No hay ejemplares disponibles");
+                }
+                if (responseText == 2) {
+                    alert("El pestamo ya existe");
+                }
+                if (responseText == 3){
                     alert("Prestamo registrado exitosamente!");
+
                     $('input[type="text"]').val('');
                     
                     $.post('Servlet_Biblioteca', {
@@ -82,8 +97,6 @@ $(document).ready(function() {
                         $('#datos_prestamos').html(responseText);
                     });
                 }
-                else
-                    alert("Prestamo ya en existencia");
         });
     });
 //********** Baja de prestamos *****************************

@@ -51,6 +51,7 @@ $(document).ready(function() {
 
         $.post('Altas_Clientes', 
         {
+            peticion: 1,
             n_cliente: nom,
             a_cliente: ap,
             e_cliente: ed,

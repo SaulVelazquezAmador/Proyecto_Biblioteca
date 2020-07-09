@@ -16,10 +16,10 @@ public class Control_Clientes {
 	private int edad;
 	private String direccion;
 	private String correo;
-	private int telefono;
+	private String telefono;
  	//********************************************************************************************
 	public Boolean consultar_clientes(String nombre, String apellido_paterno, String apellido_materno,
-			String correo, int telefono) 
+			String correo, String telefono) 
 	 {
 		this.nombre = nombre;
 		this.apellido_paterno = apellido_paterno;
@@ -38,7 +38,7 @@ public class Control_Clientes {
 						&& this.apellido_paterno.equals(miResultset.getString("Apellido_Paterno"))
 						&& this.apellido_materno.equals(miResultset.getString("Apellido_Materno"))
 						&& this.correo.equals(miResultset.getString("Correo_Electronico"))
-						&& this.telefono == miResultset.getInt("Telefono"))
+						&& this.telefono == miResultset.getString("Telefono"))
 				{
 						encontrado = 1;
 				}
@@ -57,7 +57,7 @@ public class Control_Clientes {
 	 }
 //*************************************************************************************
 	public void agregar_cliente(String nombre, String apellido_paterno, String apellido_materno,
-			int edad, String direccion, String correo, int telefono){
+			int edad, String direccion, String correo, String telefono){
 		
 		this.nombre = nombre;
 		this.apellido_paterno = apellido_paterno;
@@ -80,11 +80,10 @@ public class Control_Clientes {
 			sentencia.setInt(4, this.edad);
 			sentencia.setString(5, this.direccion);
 			sentencia.setString(6, this.correo);
-			sentencia.setInt(7, this.telefono);
+			sentencia.setString(7, this.telefono);
 			sentencia.setInt(8, prestamos);
 			sentencia.executeUpdate();
 			c.cerrarConexion();
-			System.out.println("dio baja");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -108,18 +107,14 @@ public class Control_Clientes {
 						&& this.apellido_materno.equals(miResultset.getString("Apellido_Materno")))
 				{
 					this.id_lector = miResultset.getInt("ID_Lector");
-					System.out.println(miResultset.getString("Nombre"));
-					System.out.println("cte"+this.id_lector);
 				}
 			}
-			System.out.println(this.id_lector);
 			
 			PreparedStatement sentencia = miConexion.prepareStatement("DELETE From Lector WHERE ID_Lector = ?");
 
 			sentencia.setInt(1, this.id_lector);
 
 			c.cerrarConexion();
-			System.out.println("dio baja");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

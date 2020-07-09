@@ -12,6 +12,7 @@ import modelo.Conexion;
 public class Control_Prestamos {
 	
 	private String id_libro;
+	private int prestamos_activos;
 	private int ejemplares_libro = 0;
 	private int id_lector = 0;
 	private int id_bibliotecario = 0;
@@ -45,8 +46,7 @@ public class Control_Prestamos {
 						&& this.apellido_materno.equals(miResultset.getString("Apellido_Materno")))
 				{
 					this.id_lector = miResultset.getInt("ID_Lector");
-					System.out.println(miResultset.getString("Nombre"));
-					System.out.println("cte"+this.id_lector);
+					this.prestamos_activos = miResultset.getInt("Prestamos_Activos");
 				}
 			}
 			miStatement.close();
@@ -68,7 +68,6 @@ public class Control_Prestamos {
 				{
 					this.id_libro = miResultset.getString("ISBN");
 					this.ejemplares_libro = miResultset.getInt("Ejemplares");
-					System.out.println(this.id_libro);
 				}
 			}
 			miStatement.close();
@@ -94,11 +93,44 @@ public class Control_Prestamos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		//------------- Actualizar ejemplares de libro -------------------------------
+		try {
+			this.ejemplares_libro += 1;
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Libro set Ejemplares = ? WHERE ISBN = ?");
+
+			sentencia.setInt(1, this.ejemplares_libro);
+			sentencia.setString(2, this.id_libro);
+
+			sentencia.executeUpdate();							
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+//--------------- Actualizar prestamos activos del lector---------------------------------
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			this.prestamos_activos -= 1;
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Lector set Prestamos_Activos = ? WHERE ID_Lector = ?");
+
+			sentencia.setInt(1, this.prestamos_activos);
+			sentencia.setInt(2, this.id_lector);
+
+			sentencia.executeUpdate();							
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 //***************************************************************************
 //*************************** Altas de prestamos *****************************
 //***************************************************************************
-	public Boolean consultar_prestamos(String libro, String nombre, 
+	public String altas_prestamos(String libro, String nombre, 
 			String apellido_paterno, String apellido_materno,
 			String bibliotecario, String fecha_actual, 
 			String fecha_devolucion, String tipo) {
@@ -126,9 +158,8 @@ public class Control_Prestamos {
 						&& this.apellido_paterno.equals(miResultset.getString("Apellido_Paterno"))
 						&& this.apellido_materno.equals(miResultset.getString("Apellido_Materno")))
 				{
+					this.prestamos_activos = miResultset.getInt("Prestamos_Activos");
 					this.id_lector = miResultset.getInt("ID_Lector");
-					System.out.println(miResultset.getString("Nombre"));
-					System.out.println("cte"+this.id_lector);
 				}
 			}
 			miStatement.close();
@@ -150,7 +181,6 @@ public class Control_Prestamos {
 				{
 					this.id_libro = miResultset.getString("ISBN");
 					this.ejemplares_libro = miResultset.getInt("Ejemplares");
-					System.out.println(this.id_libro);
 				}
 			}
 			miStatement.close();
@@ -159,6 +189,8 @@ public class Control_Prestamos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		if (this.ejemplares_libro == 0)
+			return "no hay libros";
 //************** buscamos el id del bibliotecario ******************************
 		try {
 			Conexion c=new Conexion();
@@ -171,7 +203,6 @@ public class Control_Prestamos {
 				if (this.bibliotecario.equals(miResultset.getString("Correo_Bibliotecario")))
 				{
 					this.id_bibliotecario = miResultset.getInt("ID_Bibliotecario");
-					System.out.println("bib"+this.id_bibliotecario);
 				}
 			}
 			miStatement.close();
@@ -202,7 +233,7 @@ public class Control_Prestamos {
 			e.printStackTrace();
 		}
 		if(encontrado == 1)
-			return true;
+			return "prestamo ya existe";
 		else {
 			
 	//*********** Realizamos el prestamo **************************************
@@ -232,7 +263,7 @@ public class Control_Prestamos {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
+//------------- Actualizar ejemplares de libro -------------------------------
 			try {
 				this.ejemplares_libro -= 1;
 				Conexion c=new Conexion();
@@ -248,10 +279,25 @@ public class Control_Prestamos {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			
-			return false;
+//--------------- Actualizar prestamos activos del lector---------------------------------
+			try {
+				Conexion c=new Conexion();
+				Connection miConexion=c.getCon();
+				
+				this.prestamos_activos += 1;
+				
+				PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Lector set Prestamos_Activos = ? WHERE ID_Lector = ?");
+
+				sentencia.setInt(1, this.prestamos_activos);
+				sentencia.setInt(2, this.id_lector);
+
+				sentencia.executeUpdate();							
+				c.cerrarConexion();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return "exito";
 		} 
 						
 	}
-//********************* libro ******************************************
 }
