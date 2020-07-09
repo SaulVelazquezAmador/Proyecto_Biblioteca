@@ -47,7 +47,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		String correo             = request.getParameter("Correo");
 		String clave              = request.getParameter("Clave");
 		String nom_completo       = request.getParameter("n_completo");
-		System.out.println("Servlet_Biblioteca");
+
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
@@ -482,7 +482,7 @@ public class Servlet_Biblioteca extends HttpServlet
                     salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'><label>Apellido paterno  </label></td>");
                     salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'><label>Apellido materno  </label></td>");
                     salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'><label>Correo Electronico</label></td>");
-					salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'><label>Telefono          </label></td>");
+					salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'><label>Prestamos          </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
 						if (impares % 2 != 0) {
@@ -491,7 +491,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Paterno") + "</td>");
 							salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'>" + miResultset.getString("Correo_Electronico") + "</td>");
-							salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'>" + miResultset.getString("Telefono") + "</td>");
+							salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'>" + miResultset.getInt("Prestamos_Activos") + "</td>");
 							salida.println("</tr>");
 						}		
 						else{
@@ -500,7 +500,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Paterno") + "</td>");
 							salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'>" + miResultset.getString("Correo_Electronico") + "</td>");
-							salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'>" + miResultset.getString("Telefono") + "</td>");
+							salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'>" + miResultset.getInt("Prestamos_Activos") + "</td>");
 							salida.println("</tr>");						
 						}
 						impares += 1;
