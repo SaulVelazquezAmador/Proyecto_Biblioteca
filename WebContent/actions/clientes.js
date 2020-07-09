@@ -28,7 +28,7 @@ $(document).ready(function() {
             $('#nombre_baja').html(responseText);
         });
     });
-//******** Alta de cliente *****************************************************
+//************** Alta de cliente *****************************************************
     $("#agregar_cliente").click(function() {
 
         var nom  = $("#nom_cliente").val();
