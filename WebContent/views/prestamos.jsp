@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_prestamos">
-                        <input type="button" value="Procesar" id="b_prestamos">
+                        <input type="button" value="Procesar" id="alta_prestamos">
                     </td>
                 </tr>
             </table>
@@ -68,18 +68,18 @@
         <form>
             <table>
                 <tr>
-                    <td class="columnas_formulario_prestamos" id="nombre_baja">
+                    <td class="columnas_formulario_prestamos" id="nombre_baja_p">
                         Cliente: <select></select>
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_formulario_prestamos" id="nombre_baja">
+                    <td class="columnas_formulario_prestamos" id="libro_baja_p">
                         Libros prestados: <select></select>
                     </td>
                 </tr>
                 <tr>
                     <td class="columnas_formulario_prestamos">
-                        <input type="button" value="Eliminar prestamo" id="eliminar_prestamo">
+                        <input type="button" value="Eliminar prestamo" id="baja_prestamos">
                     </td>
                 </tr>
             </table>

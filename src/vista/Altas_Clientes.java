@@ -41,7 +41,6 @@ public class Altas_Clientes extends HttpServlet {
 		String nombre_baja   = request.getParameter("nom_baja");
 		
 		if (tipo_peticion != null) {
-			System.out.println("no fue null");
 			int peticion = Integer.parseInt(tipo_peticion);
 			// Si la peticion es = 1 entonces es una alta
 			if(peticion == 1) {

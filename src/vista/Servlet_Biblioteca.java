@@ -46,6 +46,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		String sub_clasificacion  = request.getParameter("sub_clas");
 		String correo             = request.getParameter("Correo");
 		String clave              = request.getParameter("Clave");
+		String nom_completo       = request.getParameter("n_completo");
 		System.out.println("Servlet_Biblioteca");
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
@@ -191,6 +192,102 @@ public class Servlet_Biblioteca extends HttpServlet
 				}
 			}
 			
+			if (peticion == 24) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Lector order by Nombre asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Cliente: <select id=\"cliente_baja_prestamo\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}				
+			}
+			
+			if (peticion == 25) {
+				//variables para el nombre
+				String nombre_cliente = "";
+				String apellido_paterno = "";
+				String apellido_materno = "";
+				int tamaño = 0, id_lector = 0;
+				
+				String[] nombre_completo = nom_completo.split(" ");
+				tamaño = nombre_completo.length;
+				//si tiene un nombre
+				if (tamaño == 3) {
+					nombre_cliente   = nombre_completo[0];		
+					apellido_paterno = nombre_completo[1];
+					apellido_materno = nombre_completo[2];
+				}
+				//si tiene dos nombres
+				if(tamaño == 4) {
+					nombre_cliente   = nombre_completo[0];
+					nombre_cliente   += " ";
+					nombre_cliente   += nombre_completo[1];
+					apellido_paterno = nombre_completo[2];
+					apellido_materno = nombre_completo[3];			
+				}
+				//buscamos el id del lector
+				try {
+					Conexion c=new Conexion();
+					Connection miConexion=c.getCon();
+
+					Statement miStatement=miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Lector");
+					
+					while(miResultset.next()) {
+						if (nombre_cliente.equals(miResultset.getString("Nombre"))
+								&& apellido_paterno.equals(miResultset.getString("Apellido_Paterno"))
+								&& apellido_materno.equals(miResultset.getString("Apellido_Materno")))
+						{
+							id_lector = miResultset.getInt("ID_Lector");
+						}
+					}
+					miStatement.close();
+					miResultset.close();			
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				//buscamos los prestamos de ese lector
+				try {
+					Conexion c=new Conexion();
+					Connection miConexion=c.getCon();
+					
+					Statement miStatement=miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select Libro.Titulo, Prestamos.R_Lector"
+							+ "											from Prestamos inner join Libro"
+							+ "											on Prestamos.R_LIbro = Libro.ISBN"
+							+ "											ORDER BY Libro.Titulo");
+					
+					response.setContentType("text/html;charset=UTF-8");
+					PrintWriter salida = response.getWriter();
+					salida.println("Libros prestados: <select id=\"libro_baja_prestamo\">");	
+					
+					while(miResultset.next()) {
+						if(id_lector == miResultset.getInt("R_Lector")) 
+							salida.println("<option>" + miResultset.getString("Libro.Titulo") + "</option>");
+					}
+					salida.println("</select>");
+					
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 			if(peticion == 3)
 			{
 				try {
