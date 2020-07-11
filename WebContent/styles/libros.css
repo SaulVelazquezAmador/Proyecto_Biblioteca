@@ -24,11 +24,12 @@
 	padding-left: 50px;
 	color: black;
 }
-#formulario_libros{
+#formulario_altas_libros{
+	overflow		: auto;
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
-	height			: 50vh;
+	height			: 60vh;
 	width			: 100%;
 	margin-left     : 0%;
 	margin-top      : 0%;
@@ -47,9 +48,10 @@
 }
 /*       div        */
 #datos_libros{
+	overflow		: auto;
 	background-color: #ffffff;
 	border-radius	: 0%;
-	height			: 100vh;
+	height			: 40vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
 	margin-bottom	: 0%;
@@ -67,6 +69,37 @@
 	color          : black;
 	border-collapse: collapse;	
 }
-#cl5, #cl6, #cl1{
-	width: 90px;
+#cl1{
+	width: 20%;
+	padding-top	   : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;
+}
+#cl2{
+	width: 50%;
+	padding-left   : 1%;
+}
+#cl3, #cl4{
+	width: 15%;
+	padding-left   : 1%;
+}
+#div_opciones_l ul {
+	padding-left: 50px;
+	list-style  :none;
+	margin      : 0;
+}
+#div_opciones_l li{
+	cursor                    : pointer;
+	padding-right             : 10px;
+	padding-left              : 10px;
+	float                     :left;
+	border-left               : 1px solid #7C7C7C;
+	border-right              : 1px solid #7C7C7C;
+	border-bottom             : 1px solid #7C7C7C;
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+}
+#formulario_bajas_prestamos{
+	height			: 50vh;
+	width			: 100%;
 }

@@ -52,6 +52,8 @@ public class Control_Libros {
 			return false;
 	}
 //****************************************************************************
+//*******************  Alta de libros  ***************************************	
+//****************************************************************************
 	public void agregar_libros(String isbn, String titulo, String editorial, String clasificacion,
 			String subclasificacion, int n_autores, int año, int ejemplares, String ubicacion,
 			String autor1, String autor2, String autor3, String autor4, String autor5) 
@@ -210,4 +212,83 @@ public class Control_Libros {
 			e.printStackTrace();
 		}
 	}
+	//****************************************************************************
+	//*******************  Baja de libros  ***************************************	
+	//****************************************************************************
+	public String baja_libros(String titulo) {
+		this.titulo = titulo;
+		//******** buscamos el id del libro *************
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+
+			Statement miStatement=miConexion.createStatement();
+			ResultSet miResultset = miStatement.executeQuery("select * from Libro");
+					
+			while(miResultset.next()) {
+				if (this.titulo.equals(miResultset.getString("Titulo")))
+				{
+					this.isbn = miResultset.getString("ISBN");
+				}
+			}
+			miStatement.close();
+			miResultset.close();			
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//************* verificamos si se encuentra en prestamo *******************
+		int activos = 0;
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+
+			Statement miStatement=miConexion.createStatement();
+			ResultSet miResultset = miStatement.executeQuery("select * from Prestamos");
+					
+			while(miResultset.next()) {
+				if (this.isbn.equals(miResultset.getString("R_Libro")))
+				{
+					activos = 1;
+				}
+			}
+			miStatement.close();
+			miResultset.close();			
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (activos == 1)
+			return "tiene prestamos";
+		//************  Realizamos baja de tabla Autores_Libro *********************
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("delete from Autores_Libro where R_ISBN = ?");
+			sentencia.setString(1, this.isbn);
+			
+			sentencia.executeUpdate();
+			
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		//************  Realizamos la baja *********************
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("delete from Libro where ISBN = ?");
+			sentencia.setString(1, this.isbn);
+			
+			sentencia.executeUpdate();
+			
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return "exito";
+	}
+	
 }

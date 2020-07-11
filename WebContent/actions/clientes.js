@@ -88,8 +88,12 @@ $(document).ready(function() {
             peticion: 2,
             nom_baja: nom
         },
-            function(){
-                alert("hecho");
+            function(responseText){
+                if (responseText == 1)
+                    alert("El cliene tiene prestamos pendientes");
+                if (responseText == 2) 
+                    alert("Baja de cliente exitosa");
+                
                 $.post('Servlet_Biblioteca', 
                 {
                 	tipo_muestra: 4
