@@ -88,12 +88,15 @@ public class Control_Clientes {
 			e.printStackTrace();
 		}
 	}
-	public void eliminar_cliente(String nombre, String apellido_paterno, String apellido_materno) {
+	//******************************************************************
+	//***************** Eliminar cliente *******************************
+	//******************************************************************
+	public String eliminar_cliente(String nombre, String apellido_paterno, String apellido_materno) {
 		
 		this.nombre = nombre;
 		this.apellido_paterno = apellido_paterno;
 		this.apellido_materno = apellido_materno;
-
+	//********  Buscamos su ID **********
 		try {
 			Conexion c=new Conexion();
 			Connection miConexion=c.getCon();
@@ -110,13 +113,60 @@ public class Control_Clientes {
 				}
 			}
 			
-			PreparedStatement sentencia = miConexion.prepareStatement("DELETE From Lector WHERE ID_Lector = ?");
-
-			sentencia.setInt(1, this.id_lector);
-
+			//PreparedStatement sentencia = miConexion.prepareStatement("DELETE From Lector WHERE ID_Lector = ?");
+			//sentencia.setInt(1, this.id_lector);
+			
+			miStatement.close();
+			miResultset.close();			
 			c.cerrarConexion();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
+	//***************  Buscamos si tiene algun prestamo activo  ********************
+		int activos = 0;
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			Statement miStatement=miConexion.createStatement();
+			ResultSet miResultset = miStatement.executeQuery("select * from Prestamos");
+			
+			while(miResultset.next()) {
+				if (this.id_lector == miResultset.getInt("R_Lector"))
+				{
+					activos = 1;
+				}
+			}
+			
+			//PreparedStatement sentencia = miConexion.prepareStatement("DELETE From Lector WHERE ID_Lector = ?");
+			//sentencia.setInt(1, this.id_lector);
+			
+			miStatement.close();
+			miResultset.close();			
+			c.cerrarConexion();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if (activos == 1) {
+			System.out.println("tiene prestamos");
+			return "tiene prestamos";
+		}
+	//************  Realizamos la baja *********************
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("delete from Lector where ID_Lector = ?");
+			sentencia.setInt(1, this.id_lector);
+			
+			sentencia.executeUpdate();
+			
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return "exito";
 	}
 }

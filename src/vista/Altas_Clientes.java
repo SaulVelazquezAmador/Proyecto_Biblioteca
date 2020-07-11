@@ -26,6 +26,7 @@ public class Altas_Clientes extends HttpServlet {
 		doGet(request, response);
 		
 		boolean existe = false;
+		String resultado = "";
 		String apellido_paterno = "";
 		String apellido_materno = "";
 		int edad = 0;
@@ -93,7 +94,16 @@ public class Altas_Clientes extends HttpServlet {
 					apellido_materno = nombre_completo[3];			
 				}
 				Control_Clientes cliente = new Control_Clientes();
-				cliente.eliminar_cliente(nombre_cliente, apellido_paterno, apellido_materno);
+				resultado = cliente.eliminar_cliente(nombre_cliente, apellido_paterno, apellido_materno);
+				
+				if (resultado.equals("tiene prestamos")) {
+					PrintWriter salida = response.getWriter();
+					salida.println(1);
+				}
+				if (resultado.equals("exito")) {
+					PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}
 			}
 		}
 	}

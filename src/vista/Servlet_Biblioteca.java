@@ -464,6 +464,74 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}
 			}
+			if (peticion == 307) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Libro order by Titulo asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					int impares = 0;
+					PrintWriter salida = response.getWriter();
+					salida.println("<table id='tabla_libros'>");
+					salida.println("<tr bgcolor='#01a87a'>");
+					salida.println("<td id = 'cl1' class = 'col_tabla_libros'><label>ISBN  		</label></td>");
+                    salida.println("<td id = 'cl2' class = 'col_tabla_libros'><label>Titulo 		</label></td>");
+                    salida.println("<td id = 'cl3' class = 'col_tabla_libros'><label>Año  		</label></td>");
+                    salida.println("<td id = 'cl4' class = 'col_tabla_libros'><label>Ejemplares 	</label></td>");
+                    salida.println("</tr>");
+					while(miResultset.next()) {
+						if (impares % 2 != 0) {
+							salida.println("<tr bgcolor='#01a87a'>");
+							salida.println("<td id = 'cl1' class = 'col_tabla_libros'>" + miResultset.getString("ISBN") 	+   "</td>");
+							salida.println("<td id = 'cl2' class = 'col_tabla_libros'>" + miResultset.getString("Titulo") 	+ 	"</td>");
+							salida.println("<td id = 'cl3' class = 'col_tabla_libros'>" + miResultset.getInt("Año") 		+ 	"</td>");
+							salida.println("<td id = 'cl4' class = 'col_tabla_libros'>" + miResultset.getInt("Ejemplares") + "</td>");
+							salida.println("</tr>");
+						}		
+						else{
+							salida.println("<tr>");
+							salida.println("<td id = 'cl1' class = 'col_tabla_libros'>" + miResultset.getString("ISBN") 	+ 	"</td>");
+							salida.println("<td id = 'cl2' class = 'col_tabla_libros'>" + miResultset.getString("Titulo") 	+ 	"</td>");
+							salida.println("<td id = 'cl3' class = 'col_tabla_libros'>" + miResultset.getInt("Año") 		+ 	"</td>");
+							salida.println("<td id = 'cl4' class = 'col_tabla_libros'>" + miResultset.getInt("Ejemplares") + "</td>");
+							salida.println("</tr>");						
+						}
+						impares += 1;
+					}
+					salida.println("</table>");
+					
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 308) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Libro order by Titulo asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Libro: <select id=\"titulo_baja_libro\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Titulo")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 //****************************************************************************			
 			if (peticion == 4) {
 				try {
