@@ -9,11 +9,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="actions/autores.js"></script>
 </head>
+    <!--------------------------------------------------------------------->
 <body id="autores">
 	<div id="titulo_autores">
         <h2 id="h2_autores">Autores</h2>
     </div>
- 
+    <!--------------------------------------------------------------------->
+    <div id="div_opciones">
+        <ul>
+            <li id="pestaña_agregar">Agregar Editorial</li>
+            <li id="pestaña_eliminar">Eliminar Editorial</li>
+            <li id="pestaña_editar">Editar Editorial</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="formulario_autores">
         <form>
             <table>  
@@ -47,6 +56,7 @@
             </table>
         </form>
     </div> 
+    <!--------------------------------------------------------------------->
     <div id="datos_autores">
         <table id="tabla_autores">
             <tr>
