@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controlador.Control_Biblioteca;
+import controlador.Control_Editoriales;
 
 @WebServlet("/Altas_Editoriales")
 public class Altas_Editoriales extends HttpServlet {
@@ -25,26 +25,45 @@ public class Altas_Editoriales extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-		System.out.println("e");
+
 		boolean existe = false;
+		String resultado = "";
+		String tipo_peticion = request.getParameter("peticion");
 		String nombre_editorial   = request.getParameter("n_editorial");
 		String ciudad_editorial   = request.getParameter("n_ciudad");
 		//***********************************************************************
-		if (nombre_editorial != null && ciudad_editorial != null) {
+		if (tipo_peticion != null) {
+			int peticion = Integer.parseInt(tipo_peticion);
+			// Si la peticion es = 1 entonces es una alta
+			if(peticion == 1) {
 
-			Control_Biblioteca control_editorial = new Control_Biblioteca();
-			existe = control_editorial.consultar_editoriales(nombre_editorial, ciudad_editorial);
+				Control_Editoriales control_editorial = new Control_Editoriales();
+				existe = control_editorial.consultar_editoriales(nombre_editorial, ciudad_editorial);
 
-			if (existe == true) {
-				PrintWriter salida = response.getWriter();
-				salida.println(1);
+				if (existe == true) {
+					PrintWriter salida = response.getWriter();
+					salida.println(1);
+				}
+				else{
+					control_editorial.agregar_editorial(nombre_editorial, ciudad_editorial);
+					PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}				
 			}
-			else{
-				control_editorial.agregar_editorial(nombre_editorial, ciudad_editorial);
-				PrintWriter salida = response.getWriter();
-				salida.println(2);
-			}	
+			// Si la peticion es = 1 entonces es una baja
+			if (peticion == 2) {
+				Control_Editoriales baja = new Control_Editoriales();
+				resultado = baja.baja_editorial(nombre_editorial);
+				
+				if (resultado.equals("tiene libros")) {
+					PrintWriter salida = response.getWriter();
+					salida.println(1);
+				}
+				if (resultado.equals("exito")) {
+					PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}
+			}
 		}
 	}
-
 }

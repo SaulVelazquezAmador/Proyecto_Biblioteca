@@ -10,17 +10,25 @@
     <script src="actions/editoriales.js"></script>
 </head>
 <body id="editoriales"> 
-
+    <!--------------------------------------------------------------------->
     <div id="titulo_editoriales">
         <h2 id="h2_editoriales">Editoriales</h2>
     </div>  
-     
-    <div id="formulario_editoriales">
+    <!--------------------------------------------------------------------->
+    <div id="div_opciones">
+        <ul>
+            <li id="pestaña_agregar">Agregar Editorial</li>
+            <li id="pestaña_eliminar">Eliminar Editorial</li>
+            <li id="pestaña_editar">Editar Editorial</li>
+        </ul>
+    </div>
+    <!--------------------------------------------------------------------->
+    <div id="formulario_altas_editoriales">
         <form>
             <table>
                 <tr>
                     <td class="columnas_formulario_editoriales">
-                        <label>Agregar Editorial</label>
+                        <h3>Agregar Editorial</h3>
                     </td>
                 </tr>
                 <tr>
@@ -37,20 +45,40 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_editoriales">
-                        <input type="button" value="Agregar" id="b_editorial">
+                        <input type="button" value="Agregar" id="alta_editorial">
                     </td>
                 </tr>
             </table>
         </form>
     </div>
-
+    <!--------------------------------------------------------------------->
+    <div id="formulario_bajas_editoriales">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_formulario_editoriales">
+                        <h3>Eliminar Editorial</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_editoriales" id="nom_baja_editorial">
+                        Editorial: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_editoriales">
+                        <input type="button" value="Eliminar editorial" id="eliminar_editorial">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="datos_editoriales">
         <table id="tabla_editoriales">
             <tr>
                 <td id = "cole1" class = "col_tabla_editoriales"><label>Nombre    </label></td>
                 <td id = "cole2" class = "col_tabla_editoriales"><label>Ciudad    </label></td>
-                <td id = 'cole3' class = 'col_tabla_editoriales'><label>Editar    </label></td>
-                <td id = 'cole4' class = 'col_tabla_editoriales'><label>Eliminar  </label></td>
             </tr>
         </table>
     </div>

@@ -150,7 +150,6 @@ public class Control_Clientes {
 		}
 		
 		if (activos == 1) {
-			System.out.println("tiene prestamos");
 			return "tiene prestamos";
 		}
 	//************  Realizamos la baja *********************

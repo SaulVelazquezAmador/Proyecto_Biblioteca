@@ -605,6 +605,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}	
 			}
+//**************************************************************************************************
 			if (peticion == 6) {
 				try {
 					Conexion c            =new Conexion();
@@ -619,24 +620,18 @@ public class Servlet_Biblioteca extends HttpServlet
 					salida.println("<tr bgcolor='#01a87a'>");
 					salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'><label>Nombre    </label></td>");
                     salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'><label>Ciudad    </label></td>");
-					salida.println("<td id = 'cole3' class = 'col_tabla_editoriales'><label>Editar    </label></td>");
-                    salida.println("<td id = 'cole4' class = 'col_tabla_editoriales'><label>Eliminar  </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
 						if (imparese % 2 !=0) {
 							salida.println("<tr bgcolor='#01a87a'>");
 							salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
 							salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
-							salida.println("<td id = 'cole3' class = 'col_tabla_editoriales'></td>");
-		                    salida.println("<td id = 'cole4' class = 'col_tabla_editoriales'></td>");
 							salida.println("</tr>");							
 						}
 						else {
 							salida.println("<tr>");
 							salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
 							salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
-							salida.println("<td id = 'cole3' class = 'col_tabla_editoriales'></td>");
-		                    salida.println("<td id = 'cole4' class = 'col_tabla_editoriales'></td>");
 							salida.println("</tr>");
 						}
 						imparese += 1;
@@ -650,6 +645,29 @@ public class Servlet_Biblioteca extends HttpServlet
 					e.printStackTrace();
 				}		
 			}
+			if (peticion == 61) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Editorial: <select id=\"nombre_baja_editorial\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Editorial")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+//*************************************************************************************************
 			if (peticion == 7) {
 				try {
 					Conexion c            =new Conexion();
