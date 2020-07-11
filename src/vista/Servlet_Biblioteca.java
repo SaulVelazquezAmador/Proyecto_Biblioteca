@@ -684,8 +684,6 @@ public class Servlet_Biblioteca extends HttpServlet
                     salida.println("<td id = 'col_au2' class = 'col_tabla_autores'><label>Apellido paterno  </label></td>");
                     salida.println("<td id = 'col_au3' class = 'col_tabla_autores'><label>Apellido materno  </label></td>");
                     salida.println("<td id = 'col_au4' class = 'col_tabla_autores'><label>Nacionalidad      </label></td>");
-					salida.println("<td id = 'col_au5' class = 'col_tabla_autores'><label>Editar            </label></td>");
-                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'><label>Eliminar          </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
 						if (impares % 2 != 0) {
@@ -694,8 +692,6 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
 							salida.println("<td id = 'col_au3' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");
 							salida.println("<td id = 'col_au4' class = 'col_tabla_autores'>" + miResultset.getString("Nacionalidad") + "</td>");
-							salida.println("<td id = 'col_au5' class = 'col_tabla_autores'></td>");
-		                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'></td>");
 							salida.println("</tr>");
 						}		
 						else{
@@ -704,8 +700,6 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
 							salida.println("<td id = 'col_au3' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");
 							salida.println("<td id = 'col_au4' class = 'col_tabla_autores'>" + miResultset.getString("Nacionalidad") + "</td>");
-							salida.println("<td id = 'col_au5' class = 'col_tabla_autores'></td>");
-		                    salida.println("<td id = 'col_au6' class = 'col_tabla_autores'></td>");
 							salida.println("</tr>");						
 						} 
 						impares += 1;
@@ -718,6 +712,28 @@ public class Servlet_Biblioteca extends HttpServlet
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}		
+			}
+			if (peticion == 71) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select id=\"nombre_baja_autor\">");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor") + " " + miResultset.getString("Apellido_Paterno_Autor") + " " + miResultset.getString("Apellido_Materno_Autor") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		//***********************************************************************

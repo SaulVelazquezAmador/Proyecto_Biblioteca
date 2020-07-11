@@ -23,7 +23,7 @@
 	padding-left: 50px;
 	color: black;
 }
-#formulario_autores{
+#formulario_altas_autores{
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
@@ -45,7 +45,7 @@
     border-bottom:1px solid #B4AAA8;
 }
 #datos_autores{
-
+	overflow		: auto;
 	background-color: #ffffff;
 	border-radius	: 0%;
 	height			: 100vh;

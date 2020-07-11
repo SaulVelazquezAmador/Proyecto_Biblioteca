@@ -165,6 +165,12 @@ jQuery(document).ready(function() {
                 if (responseText == 1){
                     alert("Libro registrado exitosamente!");
                     $('input[type="text"]').val('');
+
+                        $.post('Servlet_Biblioteca', {
+                            tipo_muestra: 307
+                        }, function(responseText){
+                            $('#datos_libros').html(responseText);
+                        });
                 }
                 else{
                     alert("Libro ya en existencia");
@@ -199,6 +205,12 @@ jQuery(document).ready(function() {
                 if (responseText == 1){
                     alert("Libro registrado exitosamente!");
                     $('input[type="text"]').val('');
+
+                    $.post('Servlet_Biblioteca', {
+                        tipo_muestra: 307
+                    }, function(responseText){
+                        $('#datos_libros').html(responseText);
+                    });
                 }
                 else{
                     alert("Libro ya en existencia");
@@ -233,6 +245,12 @@ jQuery(document).ready(function() {
                 if (responseText == 1){
                     alert("Libro registrado exitosamente!");
                     $('input[type="text"]').val('');
+                    
+                    $.post('Servlet_Biblioteca', {
+                        tipo_muestra: 307
+                    }, function(responseText){
+                        $('#datos_libros').html(responseText);
+                    });
                 }
                 else{
                     alert("Libro ya en existencia");
@@ -268,6 +286,12 @@ jQuery(document).ready(function() {
                 if (responseText == 1){
                     alert("Libro registrado exitosamente!");
                     $('input[type="text"]').val('');
+
+                    $.post('Servlet_Biblioteca', {
+                        tipo_muestra: 307
+                    }, function(responseText){
+                        $('#datos_libros').html(responseText);
+                    });
                 }
                 else{
                     alert("Libro ya en existencia");
@@ -304,6 +328,12 @@ jQuery(document).ready(function() {
                 if (responseText == 1){
                     alert("Libro registrado exitosamente!");
                     $('input[type="text"]').val('');
+
+                    $.post('Servlet_Biblioteca', {
+                        tipo_muestra: 307
+                    }, function(responseText){
+                        $('#datos_libros').html(responseText);
+                    });
                 }
                 else{
                     alert("Libro ya en existencia");
