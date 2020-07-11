@@ -142,7 +142,7 @@ jQuery(document).ready(function() {
 
         if (autor == 1){
             var au1  = $("#aut_1").val();
-            $.post('Altas_Libros', 
+            $.post('Servlets_Libros', 
             {
                 peticion: 1,
                 Autor1: au1,
@@ -182,7 +182,7 @@ jQuery(document).ready(function() {
             alert("2 autores");
             var au1  = $("#aut_1").val();
             var au2  = $("#aut_2").val();
-            $.post('Altas_Libros', 
+            $.post('Servlets_Libros', 
             {
                 peticion: 1,
                 Autor1: au1,
@@ -222,7 +222,7 @@ jQuery(document).ready(function() {
             var au1  = $("#aut_1").val();
             var au2  = $("#aut_2").val();
             var au3  = $("#aut_3").val();
-            $.post('Altas_Libros', 
+            $.post('Servlets_Libros', 
             {
                 peticion: 1,
                 Autor1: au1,
@@ -263,7 +263,7 @@ jQuery(document).ready(function() {
             var au2  = $("#aut_2").val();
             var au3  = $("#aut_3").val();
             var au4  = $("#aut_4").val();
-            $.post('Altas_Libros', 
+            $.post('Servlets_Libros', 
             {
                 peticion: 1,
                 Autor1: au1,
@@ -305,7 +305,7 @@ jQuery(document).ready(function() {
             var au3  = $("#aut_3").val();
             var au4  = $("#aut_4").val();
             var au5  = $("#aut_5").val();
-            $.post('Altas_Libros', 
+            $.post('Servlets_Libros', 
             {
                 peticion: 1,
                 Autor1: au1,
@@ -345,7 +345,7 @@ jQuery(document).ready(function() {
     $("#boton_baja_libros").click(function() {
         var lib = $("#titulo_baja_libro").val();
 
-        $.post('Altas_Libros', 
+        $.post('Servlets_Libros', 
             {
                 peticion: 2,
                 Titulo: lib

@@ -69,7 +69,7 @@ $(document).ready(function() {
             alert("Agregue fecha final");
             return false;
         }
-        $.post('Altas_Prestamos', 
+        $.post('Servlet_Prestamos', 
             {
                 peticion: 1,
                 bibliotecario: correo,
@@ -105,7 +105,7 @@ $(document).ready(function() {
         var nom = $("#cliente_baja_prestamo").val();
         var lib = $("#libro_baja_prestamo").val();
 
-        $.post('Altas_Prestamos', 
+        $.post('Servlet_Prestamos', 
             {
                 peticion: 2,
                 nombre: nom,

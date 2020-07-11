@@ -49,7 +49,7 @@ $(document).ready(function() {
             return false
         }
 
-        $.post('Altas_Clientes', 
+        $.post('Servlet_Clientes', 
         {
             peticion: 1,
             n_cliente: nom,
@@ -83,7 +83,7 @@ $(document).ready(function() {
     $("#eliminar_cliente").click(function(){
         var nom = $("#sel_baja_cliente").val();
 
-        $.post('Altas_Clientes',
+        $.post('Servlet_Clientes',
         {
             peticion: 2,
             nom_baja: nom

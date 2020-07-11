@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controlador.Control_Biblioteca;
-import controlador.Control_Editoriales;
+import controlador.Control_Autores;
 
-@WebServlet("/Altas_Autores")
-public class Altas_Autores extends HttpServlet {
+@WebServlet("/Servlet_Autores")
+public class Servlet_Autores extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Altas_Autores() {
+    public Servlet_Autores() {
         super();
     }
 
@@ -55,7 +54,7 @@ public class Altas_Autores extends HttpServlet {
 					apellido_paterno = apellidos_a;
 					apellido_materno = "";
 				}
-				Control_Biblioteca control_autor = new Control_Biblioteca();
+				Control_Autores control_autor = new Control_Autores();
 				existe = control_autor.consultar_autores(nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
 			
 				if (existe == true) {
@@ -95,7 +94,7 @@ public class Altas_Autores extends HttpServlet {
 					apellido_materno = nombre_completo[3];			
 				}
 				
-				Control_Biblioteca baja = new Control_Biblioteca();
+				Control_Autores baja = new Control_Autores();
 				resultado = baja.baja_autor(nombre_autor, apellido_paterno, apellido_materno);
 				if (resultado.equals("tiene libros")) {
 					PrintWriter salida = response.getWriter();
@@ -110,3 +109,4 @@ public class Altas_Autores extends HttpServlet {
 	}
 
 }
+

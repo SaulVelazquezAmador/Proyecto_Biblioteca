@@ -32,7 +32,7 @@ $(document).ready(function() {
         var ap_a  = $("#ap_autor").val();
         var nac_a = $("#nac_autor").val();
         
-        $.post('Altas_Autores', 
+        $.post('Servlet_Autores', 
         {
             peticion: 1,
             nombre_autor: nom_a,
@@ -58,7 +58,7 @@ $(document).ready(function() {
 //****************** Da de baja un autor ***********************
     $("#eliminar_autor").click(function() {
         var nombre = $("#nombre_baja_autor").val();
-        $.post('Altas_Autores', 
+        $.post('Servlet_Autores', 
             {
                 peticion: 2,
                 n_autor: nombre

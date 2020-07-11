@@ -1,8 +1,6 @@
 package controlador;
 import modelo.Conexion;
 import java.sql.*;
-
-import javax.swing.JOptionPane;
  
 public class Usuario {
 	 private String nombre;

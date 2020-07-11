@@ -2,9 +2,7 @@ package controlador;
 import modelo.Conexion;
 import java.sql.*;
 
-import javax.swing.JOptionPane;
-
-public class Control_Biblioteca {
+public class Control_Autores {
 
 	private int id_autor;
 	private String nombre_autor;
