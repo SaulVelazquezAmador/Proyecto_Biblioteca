@@ -17,18 +17,18 @@
     <!--------------------------------------------------------------------->
     <div id="div_opciones">
         <ul>
-            <li id="pestaña_agregar">Agregar Editorial</li>
-            <li id="pestaña_eliminar">Eliminar Editorial</li>
-            <li id="pestaña_editar">Editar Editorial</li>
+            <li id="pestaña_agregar">Agregar Autor</li>
+            <li id="pestaña_eliminar">Eliminar Autor</li>
+            <li id="pestaña_editar">Editar Autor</li>
         </ul>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="formulario_autores">
+    <div id="formulario_altas_autores">
         <form>
             <table>  
                 <tr>
                     <td class="columnas_formulario_autores">
-                        <label>Agregar Autor</label>
+                        <h3>Agregar Autor</h3>
                     </td>
                 </tr>                    
                 <tr>
@@ -57,6 +57,28 @@
         </form>
     </div> 
     <!--------------------------------------------------------------------->
+    <div id="formulario_bajas_autores">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_formulario_autores">
+                        <h3>Eliminar Autor</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_autores" id="nom_baja_autor">
+                        Autor: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_autores">
+                        <input type="button" value="Eliminar autor" id="eliminar_autor">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="datos_autores">
         <table id="tabla_autores">
             <tr>
@@ -64,8 +86,6 @@
                 <td id = "col_au2" class = "col_tabla_autores"><label>Apellido paterno  </label></td>
                 <td id = "col_au3" class = "col_tabla_autores"><label>Apellido materno  </label></td>
                 <td id = "col_au4" class = "col_tabla_autores"><label>Nacionalidad      </label></td>
-                <td id = 'col_au5' class = 'col_tabla_autores'><label>Editar            </label></td>
-                <td id = 'col_au6' class = 'col_tabla_autores'><label>Eliminar          </label></td>
             </tr>
         </table>
     </div>

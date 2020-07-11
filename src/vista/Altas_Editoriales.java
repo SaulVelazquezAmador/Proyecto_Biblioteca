@@ -50,7 +50,7 @@ public class Altas_Editoriales extends HttpServlet {
 					salida.println(2);
 				}				
 			}
-			// Si la peticion es = 1 entonces es una baja
+			// Si la peticion es = 2 entonces es una baja
 			if (peticion == 2) {
 				Control_Editoriales baja = new Control_Editoriales();
 				resultado = baja.baja_editorial(nombre_editorial);
