@@ -28,7 +28,8 @@ public class Servlet_Editoriales extends HttpServlet {
 
 		boolean existe = false;
 		String resultado = "";
-		String tipo_peticion = request.getParameter("peticion");
+		String id_editorial       = request.getParameter("id");
+		String tipo_peticion      = request.getParameter("peticion");
 		String nombre_editorial   = request.getParameter("n_editorial");
 		String ciudad_editorial   = request.getParameter("n_ciudad");
 		//***********************************************************************
@@ -63,6 +64,11 @@ public class Servlet_Editoriales extends HttpServlet {
 					PrintWriter salida = response.getWriter();
 					salida.println(2);
 				}
+			}
+			if (peticion == 3) {
+				int ID_Edit = Integer.parseInt(id_editorial);
+				Control_Editoriales editar = new Control_Editoriales();
+				editar.editar_editorial(ID_Edit, nombre_editorial, ciudad_editorial);
 			}
 		}
 	}

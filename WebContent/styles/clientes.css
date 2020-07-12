@@ -27,7 +27,7 @@
 	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
-	height			: 40vh;
+	height			: 50vh;
 	width			: 100%;
 	margin-left     : 0%;
 	margin-top      : 0%;
@@ -51,11 +51,11 @@
 	height			: 100vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
-	margin-bottom	: 0%;
+	margin-bottom	: 2%;
 	width			: 100%;
 }
 #tabla_clientes{
-	border         : 1px solid;
+	border         : 0px solid;
 	border-collapse: collapse;
 	margin-top     : 50px;
 	margin-left    : 50px;

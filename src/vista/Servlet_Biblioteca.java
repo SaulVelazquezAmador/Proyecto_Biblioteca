@@ -47,7 +47,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		String correo             = request.getParameter("Correo");
 		String clave              = request.getParameter("Clave");
 		String nom_completo       = request.getParameter("n_completo");
-
+		String nom_editorial      = request.getParameter("editorial_edicion");
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
@@ -563,7 +563,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");
 						}		
 						else{
-							salida.println("<tr>");
+							salida.println("<tr bgcolor = '#B4AAA8'>");
 							salida.println("<td id = 'col_cli1' class = 'col_tabla_clientes'>" + miResultset.getString("Nombre") + "</td>");
 							salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Paterno") + "</td>");
 							salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Materno") + "</td>");
@@ -666,6 +666,66 @@ public class Servlet_Biblioteca extends HttpServlet
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			}
+			if (peticion == 62) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Editorial: <select id=\"nombre_edicion_editorial\">");
+					salida.println("<option>" + "---------------------" + "</option>");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Editorial")+ "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 63) {
+				
+				String[] datos_editorial = new String[3];
+				
+				datos_editorial[0] = nom_editorial;
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Editorial order by Nombre_Editorial asc");
+
+					response.setContentType("application/json");
+
+					while(miResultset.next()) {
+						if(nom_editorial.equals(miResultset.getString("Nombre_Editorial"))){
+								datos_editorial[1] = miResultset.getString("Ciudad");
+								datos_editorial[2] = miResultset.getString("ID_Editorial");
+						}
+					}
+
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				Gson gson = new Gson();
+				String autorJson = gson.toJson(datos_editorial);
+				
+				PrintWriter salida = response.getWriter();
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UFT-8");
+				salida.write(autorJson);
+				salida.close();	
 			}
 //*************************************************************************************************
 			if (peticion == 7) {

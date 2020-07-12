@@ -74,6 +74,40 @@
         </form>
     </div>
     <!--------------------------------------------------------------------->
+    <div id="formulario_editar_editoriales">
+    	<form>
+    		<table>
+    			<tr>
+    				<td class="columnas_formulario_editoriales">
+    					<h3>Editar Editorial</h3>
+    				</td>
+    			</tr>
+                <tr>
+                    <td class="columnas_formulario_editoriales" id="nom_edicion_editorial">
+                        Editorial: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_editoriales">
+                        <label>Nombre: </label>
+                        <input type="text" class="inputs_editoriales" id="n_editorial3">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_editoriales">
+                        <label>Ciudad: </label>
+                        <input type="text" class="inputs_editoriales" id="c_editorial3">
+                    </td>
+                </tr>   
+                <tr>
+                    <td class="columnas_formulario_editoriales">
+                        <input type="button" value="Editar editorial" id="editar_editorial">
+                    </td>
+                </tr>             
+    		</table>
+    	</form>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="datos_editoriales">
         <table id="tabla_editoriales">
             <tr>

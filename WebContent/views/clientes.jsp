@@ -28,7 +28,12 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_altas_clientes">
         <form>
-            <table>                   
+            <table>   
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <h3>Agregar Cliente</h3>
+                    </td>
+                </tr>                   
                 <tr>
                     <td class="columnas_datos_clientes">
                         <label>Nombre: </label>
@@ -73,6 +78,11 @@
         <form>
             <table>
                 <tr>
+                    <td class="columnas_datos_clientes">
+                        <h3>Eliminar Cliente</h3>
+                    </td>
+                </tr>   
+                <tr>
                     <td class="columnas_datos_clientes" id="nombre_baja">
                         Cliente: <select></select>
                     </td>
@@ -80,6 +90,59 @@
                 <tr>
                     <td class="columnas_datos_clientes">
                         <input type="button" value="Eliminar cliente" id="eliminar_cliente">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
+    <div id="formulario_editar_clientes">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <h3>Editar Cliente</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_datos_clientes" id="nombre_edicion">
+                        Cliente: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <label>Nombre: </label>
+                        <input type="text" class="inputs_clientes" id="nom_cliente3">
+                    </td>
+
+                    <td class="columnas_datos_clientes">
+                        <label>Apellidos: </label>
+                        <input type="text" class="inputs_clientes" id="ap_cliente3">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <label>Edad: </label>
+                        <input type="text" class="inputs_clientes" id="edad_cliente3">
+                    </td>
+                    <td class="columnas_datos_clientes">
+                        <label>Direccion: </label>
+                        <input type="text" class="inputs_clientes" id="direccion_cliente3">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <label>Correo electronico: </label>
+                        <input type="text" class="inputs_clientes" id="correo_cliente3">
+                    </td>
+                    <td class="columnas_datos_clientes">
+                        <label>Telefono: </label>
+                        <input type="text" class="inputs_clientes" id="telefono_cliente3">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_datos_clientes">
+                        <input type="button" value="Agregar cliente" id="editar_cliente">
                     </td>
                 </tr>
             </table>
