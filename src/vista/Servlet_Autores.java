@@ -93,9 +93,9 @@ public class Servlet_Autores extends HttpServlet {
 				if(tamaño == 4) {
 					nombre_autor     = nombre_completo[0];
 					nombre_autor     += " ";
-					nombre_autor     += nombre_completo[0];
-					apellido_paterno = nombre_completo[1];
-					apellido_materno = nombre_completo[2];			
+					nombre_autor     += nombre_completo[1];
+					apellido_paterno = nombre_completo[2];
+					apellido_materno = nombre_completo[3];			
 				}
 				
 				Control_Autores baja = new Control_Autores();
