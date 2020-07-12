@@ -32,7 +32,7 @@ jQuery(document).ready(function() {
         var nom = $("#n_editorial").val();
         var ciu = $("#c_editorial").val();
 
-        $.post('Altas_Editoriales', 
+        $.post('Servlet_Editoriales', 
         {
             peticion: 1,
             n_editorial: nom,
@@ -60,7 +60,7 @@ jQuery(document).ready(function() {
     $("#eliminar_editorial").click(function() {
         var nombre = $("#nombre_baja_editorial").val();
         
-        $.post('Altas_Editoriales', 
+        $.post('Servlet_Editoriales', 
             {
                 peticion: 2,
                 n_editorial: nombre

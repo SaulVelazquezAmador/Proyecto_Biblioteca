@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import controlador.Control_Prestamos;
 
-@WebServlet("/Altas_Prestamos")
-public class Altas_Prestamos extends HttpServlet {
+@WebServlet("/Servlet_Prestamos")
+public class Servlet_Prestamos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Altas_Prestamos() {
+    public Servlet_Prestamos() {
         super();
     }
 

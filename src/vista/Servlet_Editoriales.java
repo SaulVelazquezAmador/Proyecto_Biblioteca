@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import controlador.Control_Editoriales;
 
-@WebServlet("/Altas_Editoriales")
-public class Altas_Editoriales extends HttpServlet {
+@WebServlet("/Servlet_Editoriales")
+public class Servlet_Editoriales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Altas_Editoriales() {
+    public Servlet_Editoriales() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -67,3 +67,4 @@ public class Altas_Editoriales extends HttpServlet {
 		}
 	}
 }
+
