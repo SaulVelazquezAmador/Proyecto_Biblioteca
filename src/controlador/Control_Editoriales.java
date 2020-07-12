@@ -13,6 +13,29 @@ public class Control_Editoriales {
 	private String editorial;
 	private String ciudad_editorial;
 	
+	//*********************************Editar Editorial *****************************************
+	public void editar_editorial(int id_editorial, String nombre_editorial, String ciudad) {
+		
+		this.id_editorial = id_editorial;
+		this.editorial = nombre_editorial;
+		this.ciudad_editorial = ciudad;
+		
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Editorial set Nombre_Editorial=?, Ciudad=? WHERE ID_Editorial = ?");
+
+			sentencia.setString(1, this.editorial);
+			sentencia.setString(2, this.ciudad_editorial);
+			sentencia.setInt(3, this.id_editorial);
+
+			sentencia.executeUpdate();							
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	//********************************************************************************************
 		public String baja_editorial(String nombre_editorial) {
 			this.editorial = nombre_editorial;

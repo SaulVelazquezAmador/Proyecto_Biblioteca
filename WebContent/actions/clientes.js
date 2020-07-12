@@ -1,23 +1,17 @@
 $(document).ready(function() {
 
-//******* Tabla de los clientes ***********************************************
-    $.post('Servlet_Biblioteca', 
-        {
-            tipo_muestra: 4
-        }, 
-        function(responseText){
-        $('#datos_clientes').html(responseText);
-    });
-
     $("#formulario_bajas_clientes").fadeOut(0);
+    $("#formulario_editar_clientes").fadeOut(0);
 
     $("#pestaña_agregar").click(function(){
         $("#formulario_altas_clientes").fadeIn(0);
         $("#formulario_bajas_clientes").fadeOut(0);
+        $("#formulario_editar_clientes").fadeOut(0);
     });
 
     $("#pestaña_eliminar").click(function(){
         $("#formulario_altas_clientes").fadeOut(0);
+        $("#formulario_editar_clientes").fadeOut(0);
         $("#formulario_bajas_clientes").fadeIn(0);
     //******* Select con los nombres para baja *********************************************
         $.post('Servlet_Biblioteca', 
@@ -27,6 +21,20 @@ $(document).ready(function() {
             function(responseText){
             $('#nombre_baja').html(responseText);
         });
+    });
+
+    $("#pestaña_editar").click(function() {
+        $("#formulario_altas_clientes").fadeOut(0);
+        $("#formulario_editar_clientes").fadeIn(0);
+        $("#formulario_bajas_clientes").fadeOut(0);        
+    });
+//******* Tabla de los clientes ***********************************************
+    $.post('Servlet_Biblioteca', 
+        {
+            tipo_muestra: 4
+        }, 
+        function(responseText){
+        $('#datos_clientes').html(responseText);
     });
 //************** Alta de cliente *****************************************************
     $("#agregar_cliente").click(function() {
