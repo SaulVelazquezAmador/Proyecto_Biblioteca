@@ -79,6 +79,45 @@
         </form>
     </div>
     <!--------------------------------------------------------------------->
+    <div id="formulario_editar_autores">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_formulario_autores">
+                        <h3>Editar Autor</h3>
+                    </td>                   
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_autores" id="nom_edicion_autor">
+                        Autor: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_autores">
+                        <label>Nombre: </label>
+                        <input type="text" class="inputs_autores" id="nom3_autor">
+                    </td>
+
+                    <td class="columnas_formulario_autores">
+                        <label>Apellidos: </label>
+                        <input type="text" class="inputs_autores" id="ap3_autor">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_autores">
+                        <label>Nacionalidad: </label>
+                        <input type="text" class="inputs_autores" id="nac3_autor">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_autores">
+                        <input type="button" value="Editar autor" id="editar_autor">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
     <div id="datos_autores">
         <table id="tabla_autores">
             <tr>

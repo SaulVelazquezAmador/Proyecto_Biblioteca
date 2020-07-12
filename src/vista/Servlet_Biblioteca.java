@@ -41,7 +41,8 @@ public class Servlet_Biblioteca extends HttpServlet
 		doGet(request, response);
 				
 		String[] datos_usuario = new String[5];
-		String tipo_peticion      = request.getParameter("tipo_muestra");		
+		String tipo_peticion      = request.getParameter("tipo_muestra");
+		String autor_completo     = request.getParameter("autor_edicion");
 		String sub_clasificacion  = request.getParameter("sub_clas");
 		String correo             = request.getParameter("Correo");
 		String clave              = request.getParameter("Clave");
@@ -733,6 +734,96 @@ public class Servlet_Biblioteca extends HttpServlet
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			}
+			if (peticion == 72) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("text/html;charset=UTF-8");
+
+					PrintWriter salida = response.getWriter();
+					salida.println("Autor: <select id=\"nombre_edicion_autor\">");
+					salida.println("<option>" + "---------------------" + "</option>");
+					while(miResultset.next()) {
+						salida.println("<option>" + miResultset.getString("Nombre_Autor") + " " + miResultset.getString("Apellido_Paterno_Autor") + " " + miResultset.getString("Apellido_Materno_Autor") + "</option>");
+					}
+					salida.println("</select>");
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (peticion == 73) {
+				
+				String[] informacion_autor = new String[4];
+				String nombre_autor = "";
+				String apellido_paterno = "";
+				String apellido_materno = "";
+				int tamaño = 0;
+				
+				String[] datos_autor_edicion = autor_completo.split(" ");
+				tamaño = datos_autor_edicion.length;
+				
+				if(tamaño == 2) {
+					nombre_autor     = datos_autor_edicion[0];		
+					apellido_paterno = datos_autor_edicion[1];
+					apellido_materno = "";
+				}
+
+				if (tamaño == 3) {
+					nombre_autor     = datos_autor_edicion[0];		
+					apellido_paterno = datos_autor_edicion[1];
+					apellido_materno = datos_autor_edicion[2];	
+				}
+				if(tamaño == 4) {
+					nombre_autor     = datos_autor_edicion[0];
+					nombre_autor     += " ";
+					nombre_autor     += datos_autor_edicion[1];
+					apellido_paterno = datos_autor_edicion[2];
+					apellido_materno = datos_autor_edicion[3];	
+				}
+				
+				informacion_autor[0] = nombre_autor;
+				informacion_autor[1] = apellido_paterno + " " + apellido_materno;
+				
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					
+					Statement miStatement =miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Autor order by Nombre_Autor asc");
+
+					response.setContentType("application/json");
+
+					while(miResultset.next()) {
+						if(nombre_autor.equals(miResultset.getString("Nombre_Autor")) && 
+								apellido_paterno.equals(miResultset.getString("Apellido_Paterno_Autor")) &&
+								apellido_materno.equals(miResultset.getString("Apellido_Materno_Autor"))){
+								informacion_autor[2] = miResultset.getString("Nacionalidad");
+								informacion_autor[3] = miResultset.getString("ID_Autor");
+						}
+					}
+
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				Gson gson = new Gson();
+				String autorJson = gson.toJson(informacion_autor);
+				
+				PrintWriter salida = response.getWriter();
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UFT-8");
+				salida.write(autorJson);
+				salida.close();				
+				
 			}
 		}
 		//***********************************************************************

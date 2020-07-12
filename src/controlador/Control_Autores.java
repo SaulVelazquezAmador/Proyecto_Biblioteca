@@ -9,7 +9,31 @@ public class Control_Autores {
 	private String apellido_paterno;
 	private String apellido_materno;
 	private String nacionalidad_autor;
+//************************ Edita autor ********************************************************
+	public void edita_autor(int id, String nombre, String apellido_paterno, String apellido_materno, String nacionalidad) {
+		this.nombre_autor = nombre;
+		this.apellido_paterno = apellido_paterno;
+		this.apellido_materno = apellido_materno;
+		this.nacionalidad_autor = nacionalidad;
+		this.id_autor = id;
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Autor set Nombre_Autor=?, Apellido_Paterno_Autor=?, Apellido_Materno_Autor=?, Nacionalidad=? WHERE ID_Autor = ?");
 
+			sentencia.setString(1, this.nombre_autor);
+			sentencia.setString(2, this.apellido_paterno);
+			sentencia.setString(3, this.apellido_materno);
+			sentencia.setString(4, this.nacionalidad_autor);
+			sentencia.setInt(5, this.id_autor);
+
+			sentencia.executeUpdate();							
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 //************************ Baja de autor  *****************************************************
 	public String baja_autor(String nombre, String apellido_paterno, String apellido_materno) {
 		
@@ -127,10 +151,10 @@ public class Control_Autores {
 			
 			PreparedStatement sentencia = miConexion.prepareStatement("INSERT INTO Autor(Nombre_Autor, Apellido_Paterno_Autor,Apellido_Materno_Autor, Nacionalidad) VALUES (?,?,?,?)");
 
-			sentencia.setString(1, nombre_autor);
-			sentencia.setString(2, apellido_paterno);
-			sentencia.setString(3, apellido_materno);
-			sentencia.setString(4, nacionalidad_autor);
+			sentencia.setString(1, this.nombre_autor);
+			sentencia.setString(2, this.apellido_paterno);
+			sentencia.setString(3, this.apellido_materno);
+			sentencia.setString(4, this.nacionalidad_autor);
 
 			sentencia.executeUpdate();
 			c.cerrarConexion();

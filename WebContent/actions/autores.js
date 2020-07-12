@@ -1,16 +1,20 @@
 $(document).ready(function() {
+    var id_autor = 0;
 
     $("#formulario_bajas_autores").fadeOut(0);
-
+    $("#formulario_editar_autores").fadeOut(0);
+    //-----------------------------------------
     $("#pestaña_agregar").click(function(){
         $("#formulario_altas_autores").fadeIn(0);
         $("#formulario_bajas_autores").fadeOut(0);
+        $("#formulario_editar_autores").fadeOut(0);
     });
-
+    //-----------------------------------------
     $("#pestaña_eliminar").click(function(){
         $("#formulario_altas_autores").fadeOut(0);
+        $("#formulario_editar_autores").fadeOut(0);
         $("#formulario_bajas_autores").fadeIn(0);
-    //******* Select con los nombres para baja *********************************************
+
         $.post('Servlet_Biblioteca', 
             {
                 tipo_muestra: 71
@@ -18,7 +22,37 @@ $(document).ready(function() {
             function(responseText){
             $('#nom_baja_autor').html(responseText);
         });
-    });    
+    });  
+    //-----------------------------------------
+    $("#pestaña_editar").click(function() {
+        $("#formulario_altas_autores").fadeOut(0);
+        $("#formulario_bajas_autores").fadeOut(0);
+        $("#formulario_editar_autores").fadeIn(0);  
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 72
+            }, 
+            function(responseText){
+            $('#nom_edicion_autor').html(responseText);
+        });            
+    });  
+//*******************************************
+    $("#nom_edicion_autor").change(function() {
+        var n_autor = $("#nombre_edicion_autor").val();
+        
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 73,
+                autor_edicion: n_autor
+            }, 
+            function(responseText) {
+                alert(responseText);
+                $("#nom3_autor").val(responseText[0]);
+                $("#ap3_autor").val(responseText[1]);
+                $("#nac3_autor").val(responseText[2]);
+                id_autor = responseText[3];
+        });
+    });
 //*****  Tabla de autores  ******************
     $.post('Servlet_Biblioteca', {
         tipo_muestra: 7
@@ -76,6 +110,39 @@ $(document).ready(function() {
                     function(responseText){
                     $('#datos_autores').html(responseText);
                 });           
+        });
+    });
+//***************** Editar un autor ***********************
+    $("#editar_autor").click(function() {
+        var nom_a = $("#nom3_autor").val();
+        var ap_a  = $("#ap3_autor").val();
+        var nac_a = $("#nac3_autor").val();
+        
+        $.post('Servlet_Autores', 
+            {
+                peticion: 3,
+                id: id_autor,
+                nombre_autor: nom_a,
+                apellido_autor: ap_a,
+                nacionalidad_autor: nac_a
+            }, function() {
+                alert("Modificación exitosa");
+
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 7
+                }, function(responseText){
+                    $('#datos_autores').html(responseText);
+                });
+
+                $.post('Servlet_Biblioteca', 
+                    {
+                        tipo_muestra: 72
+                    }, 
+                    function(responseText){
+                    $('#nom_edicion_autor').html(responseText);
+                });  
+
+                $('input[type="text"]').val('');
         });
     });
 });

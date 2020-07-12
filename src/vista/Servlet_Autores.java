@@ -26,11 +26,13 @@ public class Servlet_Autores extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		
-		boolean existe = false;
-		String resultado = "";
-		String apellido_paterno = "";
-		String apellido_materno = "";
-		String nombre_completo_a    = request.getParameter("n_autor");
+		boolean existe            = false;
+		String resultado          = "";
+		String nombre_autor       = "";
+		String apellido_paterno   = "";
+		String apellido_materno   = "";
+		String id_autor           = request.getParameter("id");
+		String nombre_completo_a  = request.getParameter("n_autor");
 		String tipo_peticion      = request.getParameter("peticion");
 		String nombre_a           = request.getParameter("nombre_autor");
 		String apellidos_a        = request.getParameter("apellido_autor");
@@ -43,14 +45,17 @@ public class Servlet_Autores extends HttpServlet {
 			
 			if(peticion == 1) {
 				int espacio = 0;
+				//regresa -1 si lo encuentra
 				espacio = apellidos_a.indexOf(" ");
 				
-				if(espacio == 1) {
+				if(espacio != -1) {
+					System.out.println("tiene espacio");
 					String[] apellidos = apellidos_a.split(" ");
 					apellido_paterno = apellidos[0];
 					apellido_materno = apellidos[1];	
 				}
 				else {
+					System.out.println("else");
 					apellido_paterno = apellidos_a;
 					apellido_materno = "";
 				}
@@ -68,8 +73,7 @@ public class Servlet_Autores extends HttpServlet {
 				}				
 			}
 			if(peticion == 2) {
-				
-				String nombre_autor = "";
+			
 				int tamaño = 0;
 				
 				String[] nombre_completo = nombre_completo_a.split(" ");
@@ -89,9 +93,9 @@ public class Servlet_Autores extends HttpServlet {
 				if(tamaño == 4) {
 					nombre_autor     = nombre_completo[0];
 					nombre_autor     += " ";
-					nombre_autor     += nombre_completo[1];
-					apellido_paterno = nombre_completo[2];
-					apellido_materno = nombre_completo[3];			
+					nombre_autor     += nombre_completo[0];
+					apellido_paterno = nombre_completo[1];
+					apellido_materno = nombre_completo[2];			
 				}
 				
 				Control_Autores baja = new Control_Autores();
@@ -104,6 +108,25 @@ public class Servlet_Autores extends HttpServlet {
 					PrintWriter salida = response.getWriter();
 					salida.println(2);
 				}				
+			}
+			if (peticion == 3) {
+				
+				int espacio = 0;
+				espacio = apellidos_a.indexOf(" ");
+				
+				if(espacio != -1) {
+					String[] apellidos = apellidos_a.split(" ");
+					apellido_paterno = apellidos[0];
+					apellido_materno = apellidos[1];	
+				}
+				else {
+					apellido_paterno = apellidos_a;
+					apellido_materno = "";
+				}
+				
+				int ID_Aut = Integer.parseInt(id_autor);
+				Control_Autores editar = new Control_Autores();
+				editar.edita_autor(ID_Aut, nombre_a, apellido_paterno, apellido_materno, nacionalidad_a);
 			}
 		}
 	}
