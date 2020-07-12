@@ -46,7 +46,6 @@ $(document).ready(function() {
                 autor_edicion: n_autor
             }, 
             function(responseText) {
-                alert(responseText);
                 $("#nom3_autor").val(responseText[0]);
                 $("#ap3_autor").val(responseText[1]);
                 $("#nac3_autor").val(responseText[2]);
