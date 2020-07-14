@@ -1,15 +1,29 @@
 $(document).ready(function() {
+    var id = 0;
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = now.getFullYear()+"-"+(month)+"-"+(day);
+    var devolucion = now.getFullYear()+"-"+(month)+"-"+(now.getDate()+5);
 //****** muestra/oculta los formularios**********
     $("#formulario_bajas_prestamos").fadeOut(0);
+    $("#formulario_edicion_prestamos").fadeOut(0);
 
     $("#pestaña_agregar_p").click(function(){
         $("#formulario_altas_prestamos").fadeIn(0);
+        $("#formulario_edicion_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeOut(0);
     });
 
     $("#pestaña_eliminar_p").click(function(){
+        $("#formulario_edicion_prestamos").fadeOut(0);
         $("#formulario_altas_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeIn(0);
+    });
+    $("#pestaña_editar_p").click(function(){
+        $("#formulario_altas_prestamos").fadeOut(0);
+        $("#formulario_bajas_prestamos").fadeOut(0);
+        $("#formulario_edicion_prestamos").fadeIn(0);
     });
 //****** Actualiza los select **********
     $.post('Servlet_Biblioteca', {
@@ -35,22 +49,23 @@ $(document).ready(function() {
     }, function(responseText){
         $('#datos_prestamos').html(responseText);
     });
-//******* Select de bajas *********************************
-    $.post('Servlet_Biblioteca', {
-        tipo_muestra: 24
-    }, function(responseText){
-        $('#nombre_baja_p').html(responseText);
-    });
-//************** Select de libros prestados al cliente ******************************
-    $("#nombre_baja_p").change(function() {
-        var cte = $("#cliente_baja_prestamo").val();
-        $.post('Servlet_Biblioteca', 
-            {
-                tipo_muestra: 25,
-                n_completo: cte
-            }, function(responseText) {
-                $('#libro_baja_p').html(responseText);
-        });
+//******* Fecha de hoy ************************************
+    $("#f_actual").val(today);
+    $("#f_actual").prop('disabled', 'disabled');
+    $("#f_inicio3").prop('disabled', 'disabled');
+    $("#f_devolucion3").prop('disabled', 'disabled');
+//********************************************************
+    $("#select_tipo").change(function() {
+        var tipo = $("#prest_tipo").val();
+
+        if (tipo == "Para Biblioteca") {
+            $("#f_devolucion").val(today);
+            $("#f_devolucion").prop('disabled', 'disabled');       
+        }
+        else{
+            $("#f_devolucion").val(devolucion);
+            $("#f_devolucion").prop('disabled', 'disabled'); 
+        }
     });
 //******* Alta de prestamos *******************************
     $("#alta_prestamos").click(function() {
@@ -99,6 +114,26 @@ $(document).ready(function() {
                 }
         });
     });
+//*********************************************************
+//********* Zona de bajas *********************************
+//*********************************************************
+//******* Select de bajas *********************************
+    $.post('Servlet_Biblioteca', {
+        tipo_muestra: 24
+    }, function(responseText){
+        $('#nombre_baja_p').html(responseText);
+    });
+//**Select de libros prestados al cliente *****************
+    $("#nombre_baja_p").change(function() {
+        var cte = $("#cliente_baja_prestamo").val();
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 25,
+                n_completo: cte
+            }, function(responseText) {
+                $('#libro_baja_p').html(responseText);
+        });
+    });
 //********** Baja de prestamos *****************************
     $("#baja_prestamos").click(function() {
 
@@ -118,7 +153,105 @@ $(document).ready(function() {
                     tipo_muestra: 23
                 }, function(responseText){
                     $('#datos_prestamos').html(responseText);
-                });                
+                });    
+                
+                var cte = $("#cliente_baja_prestamo").val();
+                $.post('Servlet_Biblioteca', 
+                    {
+                        tipo_muestra: 25,
+                        n_completo: cte
+                    }, function(responseText) {
+                        $('#libro_baja_p').html(responseText);
+                });            
         });
+    });
+//***********************************************************
+//********* Zona de edicion *********************************
+//***********************************************************
+//******* Select de edicion *********************************
+    $.post('Servlet_Biblioteca', {
+        tipo_muestra: 26
+    }, function(responseText){
+        $('#col_cliente_edicion').html(responseText);
+    });
+//**Select de libros prestados al cliente *****************
+    $("#col_cliente_edicion").change(function() {
+
+        var cte = $("#sel_cliente_edicion").val();
+
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 27,
+                n_completo: cte
+            }, function(responseText) {
+                $('#col_libro_edicion').html(responseText);
+                $("#select_tipo3").val("---------------");
+                $("#select_tipo3").prop('disabled', 'disabled');
+        });
+    });
+
+    $('#col_libro_edicion').change(function() {
+        var cte = $("#sel_cliente_edicion").val();
+        var lib = $("#sel_libro_edicion").val();
+
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 28,
+                n_completo: cte,
+                titulo: lib
+            }, function(responseText) 
+            {
+                $("#f_inicio3").val(responseText[0]);
+                $("#f_devolucion3").val(responseText[1]);
+
+                if (responseText[2] == "Para Biblioteca") {
+                    $("#select_tipo3").prop('disabled', false);
+                    $("#select_tipo3").val("Para Biblioteca");
+                }
+                    
+                if (responseText[2] == "Para Casa")
+                {
+                    $("#select_tipo3").val("Para Casa");
+                    $("#select_tipo3").prop('disabled', 'disabled');
+                }
+                id = responseText[3];
+            });
+    });
+
+    $("#select_tipo3").change(function() {
+        
+        var tipo = $("#select_tipo3").val();
+        
+        if (tipo == "Para Casa") 
+            $("#f_devolucion3").val(devolucion);
+        
+        if (tipo == "Para Biblioteca") 
+            $("#f_devolucion3").val(today);       
+    });
+
+    $("#boton_edicion").click(function() {
+        fech_d = $("#f_devolucion3").val();
+        tip    = $("#select_tipo3").val();
+
+        if (tip == "Para Biblioteca")
+            return false;
+
+        alert(fech_d);
+        alert(tip);
+        $.post('Servlet_Prestamos', 
+            {
+                peticion: 3,
+                id_prestamo: id,
+                f_devolucion: fech_d,
+            }, function() {
+                alert("Edicion exitosa");
+                $("#select_tipo3").prop('disabled', 'disabled');
+
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 23
+                }, function(responseText){
+                    $('#datos_prestamos').html(responseText);
+                });
+            });
     });
 });

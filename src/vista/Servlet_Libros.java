@@ -47,7 +47,7 @@ public class Servlet_Libros extends HttpServlet {
 		String año              = request.getParameter("Year");
 		String ejemplares       = request.getParameter("Ejemplares");
 		String ubicacion        = request.getParameter("Ubicacion");
-		
+		System.out.println(tipo_peticion);
 		if (tipo_peticion != null) {
 			int peticion = Integer.parseInt(tipo_peticion);
 			// Si la peticion es = 1 entonces es una alta
@@ -107,6 +107,13 @@ public class Servlet_Libros extends HttpServlet {
 					PrintWriter salida = response.getWriter();
 					salida.println(2);
 				}
+			}
+			if (peticion == 3) {
+				System.out.println("peticion3");
+				int year         = Integer.parseInt(año);
+				int n_ejemplares = Integer.parseInt(ejemplares);
+				Control_Libros editar = new Control_Libros();
+				editar.editar_libro(isbn, titulo, editorial, clasificacion, subclasificacion, year, n_ejemplares);
 			}
 		}
 	}

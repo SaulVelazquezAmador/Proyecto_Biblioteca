@@ -26,7 +26,7 @@
             <table>
                 <tr>
                     <td class="columnas_formulario_prestamos">
-                        <label>Datos del prestamo:</label>
+                        <h3>Seleccione datos del prestamo</h3>
                     </td>
                 </tr>
                 <tr>
@@ -40,6 +40,12 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="columnas_formulario_prestamos" id="select_tipo">
+                        <label >Tipo de prestamo:</label>
+                        <select></select>
+                    </td>
+                </tr>
+                <tr>
                     <td class="columnas_formulario_prestamos">
                         <label>Fecha de inicio</label>
                         <input type="date" name="f_inicio" id="f_actual">
@@ -47,12 +53,6 @@
                     <td class="columnas_formulario_prestamos">
                         <label>Fecha devolucion</label>
                         <input type="date" name="f_devolucion" id="f_devolucion">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="columnas_formulario_prestamos" id="select_tipo">
-                        <label >Tipo de prestamo:</label>
-                        <select></select>
                     </td>
                 </tr>
                 <tr>
@@ -68,6 +68,11 @@
         <form>
             <table>
                 <tr>
+                    <td class="columnas_formulario_prestamos">
+                        <h3>Seleccione prestamo a eliminar</h3>
+                    </td>
+                </tr>
+                <tr>
                     <td class="columnas_formulario_prestamos" id="nombre_baja_p">
                         Cliente: <select></select>
                     </td>
@@ -80,6 +85,51 @@
                 <tr>
                     <td class="columnas_formulario_prestamos">
                         <input type="button" value="Eliminar prestamo" id="baja_prestamos">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <!--------------------------------------------------------------------->
+    <div id="formulario_edicion_prestamos">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_formulario_prestamos">
+                        <h3>Seleccione prestamo a editar</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_prestamos" id="col_cliente_edicion">
+                        Cliente: <select></select>
+                    </td>
+                    <td class="columnas_formulario_prestamos" id="col_libro_edicion">
+                        Libros prestados: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_prestamos">
+                        <label>Tipo de prestamo:</label>
+                        <select  id="select_tipo3">
+                            <option>---------------</option>
+                            <option>Para Casa</option>
+                            <option>Para Biblioteca</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_prestamos">
+                        <label>Fecha de inicio</label>
+                        <input type="date" name="f_inicio" id="f_inicio3">
+                    </td>
+                    <td class="columnas_formulario_prestamos">
+                        <label>Fecha devolucion</label>
+                        <input type="date" name="f_devolucion" id="f_devolucion3">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_prestamos">
+                        <input type="button" value="Editar prestamo" id="boton_edicion">
                     </td>
                 </tr>
             </table>

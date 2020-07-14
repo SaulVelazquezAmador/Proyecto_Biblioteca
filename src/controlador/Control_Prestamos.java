@@ -15,6 +15,7 @@ public class Control_Prestamos {
 	private int ejemplares_libro = 0;
 	private int id_lector = 0;
 	private int id_bibliotecario = 0;
+	private int id_prestamo;
 	private String nombre;
 	private String apellido_paterno;
 	private String apellido_materno;
@@ -24,6 +25,28 @@ public class Control_Prestamos {
 	private String tipo;
 	private String bibliotecario;
 	
+//************************************************************************************************	
+	public void editar_prestamo(int id, String fecha_devolucion) {
+		this.id_prestamo = id;
+		this.fecha_devolucion = fecha_devolucion;
+		
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Prestamos set Fecha_Devolucion=?, R_Tipo_Prestamo=? WHERE ID_Prestamo = ?");
+
+			sentencia.setString(1, this.fecha_devolucion);
+			sentencia.setInt(2, 2);
+			sentencia.setInt(3, this.id_prestamo);
+
+			sentencia.executeUpdate();							
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+//************************************************************************************************
 	public void baja_prestamos(String nombre, String apellido_paterno, String apellido_materno,
 			String libro) {
 		this.libro = libro;

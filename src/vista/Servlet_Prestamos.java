@@ -30,6 +30,7 @@ public class Servlet_Prestamos extends HttpServlet {
 		String nombre_cliente   = "";
 		String apellido_paterno = "";
 		String apellido_materno = "";
+		String id               = request.getParameter("id_prestamo");
 		String tipo_peticion    = request.getParameter("peticion");
 		String Correo           = request.getParameter("bibliotecario");
 		String Nombre           = request.getParameter("nombre");
@@ -95,6 +96,12 @@ public class Servlet_Prestamos extends HttpServlet {
 				
 				Control_Prestamos baja = new Control_Prestamos();
 				baja.baja_prestamos(nombre_cliente, apellido_paterno, apellido_materno, Libro);
+			}
+			if (peticion == 3)
+			{
+				int id_p = Integer.parseInt(id);
+				Control_Prestamos edita = new Control_Prestamos();
+				edita.editar_prestamo(id_p, F_devolucion);
 			}
 		}
 		

@@ -105,7 +105,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="columnas_datos_clientes" id="nombre_edicion">
+                    <td class="columnas_datos_clientes" id="nombre_edicion_cliente">
                         Cliente: <select></select>
                     </td>
                 </tr>
@@ -142,7 +142,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_datos_clientes">
-                        <input type="button" value="Agregar cliente" id="editar_cliente">
+                        <input type="button" value="Editar cliente" id="editar_cliente">
                     </td>
                 </tr>
             </table>
