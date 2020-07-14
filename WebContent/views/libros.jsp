@@ -15,11 +15,11 @@
         <h2 id="h2_libros">Líbros</h2>
     </div>   
     <!--------------------------------------------------------------------->
-    <div id="div_opciones_l">
+    <div id="div_opciones">
         <ul>
-            <li id="pestaña_agregar_lib">Agregar Libro</li>
-            <li id="pestaña_eliminar_lib">Eliminar Libro</li>
-            <li id="pestaña_editar_lib">Editar Libro</li>
+            <li id="pestaña_agregar">Agregar Libro</li>
+            <li id="pestaña_eliminar">Eliminar Libro</li>
+            <li id="pestaña_editar">Editar Libro</li>
         </ul>
     </div>
     <!--------------------------------------------------------------------->
@@ -27,8 +27,8 @@
         <form>
             <table>
                 <tr>
-                    <td class="columnas_formulario_libros">
-                        <label>Datos del libro</label>
+                    <td class="columnas_formulario_libros" id="titulo2">
+                        <h3>Datos del libro</h3>
                     </td>
                 </tr>
                 <tr>
@@ -100,7 +100,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Agregar Libro" id="b_libros">
+                        <input type="button" value="Agregar" id="boton_alta_libros">
                     </td>
                 </tr>
             </table>
@@ -123,6 +123,55 @@
                 <tr>
                     <td class="columnas_formulario_libros">
                         <input type="button" value="Eliminar libro" id="boton_baja_libros">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+<!--------------------------------------------------------------------->       
+    <div id="formulario_editar_libros">
+        <form>
+            <table>
+                <tr>
+                    <td class="columnas_formulario_libros">
+                        <h3>Seleccione libro a editar</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_libros" id="columna_libro_a_editar">
+                        Libro: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_libros">
+                        <label>Titulo: </label>
+                        <input type="text" class="inputs_libros" id="titulo_lib3">
+                    </td>
+                    <td class="columnas_formulario_libros">
+                        <label>Año: </label>
+                        <input type="text" class="inputs_libros" id="year_lib3">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_libros">
+                        <label>Ejemplares: </label>
+                        <input type="text" class="inputs_libros" id="ejemplares_lib3">
+                    </td>
+                    <td class="columnas_formulario_libros" id="col_select_editorial">
+                        Editorial: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_libros" id="col_editar_clasificacion">
+                        Clasificacion: <select></select>    
+                    </td>
+                    <td colspan="2" class="columnas_formulario_libros" id="col_editar_subclasificacion">
+                        Subclasificacion: <select></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="columnas_formulario_libros">
+                        <input type="button" value="Editar libro" id="boton_editar_libros">
                     </td>
                 </tr>
             </table>

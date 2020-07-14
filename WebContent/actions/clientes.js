@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    var id_cliente = 0;
+
     $("#formulario_bajas_clientes").fadeOut(0);
     $("#formulario_editar_clientes").fadeOut(0);
 
@@ -26,9 +28,36 @@ $(document).ready(function() {
     $("#pestaña_editar").click(function() {
         $("#formulario_altas_clientes").fadeOut(0);
         $("#formulario_editar_clientes").fadeIn(0);
-        $("#formulario_bajas_clientes").fadeOut(0);        
+        $("#formulario_bajas_clientes").fadeOut(0); 
+
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 42
+            }, 
+            function(responseText){
+            $('#nombre_edicion_cliente').html(responseText);
+        });          
     });
-//******* Tabla de los clientes ***********************************************
+// Actualiza los datos del cliente que se va a editar cuando cambia el select del nombre
+    $("#nombre_edicion_cliente").change(function() {
+        var n_cliente = $("#nom_edicion_cliente").val();
+        
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 43,
+                cliente_edicion: n_cliente
+            }, 
+            function(responseText) {
+                $("#nom_cliente3").val(responseText[0]);
+                $("#ap_cliente3").val(responseText[1]);
+                $("#edad_cliente3").val(responseText[2]);
+                $("#direccion_cliente3").val(responseText[3]);
+                $("#correo_cliente3").val(responseText[4]);
+                $("#telefono_cliente3").val(responseText[5]);
+                id_cliente = responseText[6];
+        });
+    });
+//Actualiza la tabla de los clientes
     $.post('Servlet_Biblioteca', 
         {
             tipo_muestra: 4
@@ -111,5 +140,58 @@ $(document).ready(function() {
                 });
         });
     });
-});    
+//************ Editar cliente *************************************
+    $("#editar_cliente").click(function() {
+        var nom  = $("#nom_cliente3").val();
+        var ap   = $("#ap_cliente3").val();
+        var ed   = $("#edad_cliente3").val();
+        var dir  = $("#direccion_cliente3").val();
+        var corr = $("#correo_cliente3").val();
+        var tel  = $("#telefono_cliente3").val();
+
+        if (isNaN(ed) == true){
+            alert("Ingrese un numero en la edad");
+            $("#edad_cliente").focus();
+            return false
+        }
+        if (isNaN(tel) == true){
+            alert("Ingrese solo numeros en el telefono");
+            $("#telefono_cliente").focus();
+            return false
+        }
+
+        $.post('Servlet_Clientes', 
+        {
+            peticion: 3,
+            n_cliente: nom,
+            a_cliente: ap,
+            e_cliente: ed,
+            d_cliente: dir,
+            c_cliente: corr,
+            t_cliente: tel,
+            i_cliente: id_cliente
+        }, 
+        function(responseText) {
+            // si tuvo exito limpia los campos y actualiza la tabla
+
+            alert("Modificación exitosa");
+
+            $.post('Servlet_Biblioteca', {
+                tipo_muestra: 4
+            }, function(responseText){
+                $('#datos_clientes').html(responseText);
+            });
+
+            $.post('Servlet_Biblioteca', 
+                {
+                    tipo_muestra: 42
+                }, 
+                function(responseText){
+                $('#nom_edicion_cliente').html(responseText);
+            });  
+
+            $('input[type="text"]').val(''); 
+        });
+    });
+});
     

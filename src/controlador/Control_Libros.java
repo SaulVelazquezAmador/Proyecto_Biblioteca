@@ -25,6 +25,81 @@ public class Control_Libros {
 	private int ejemplares;
 	private String ubicacion;
 //************************************************************
+	public void editar_libro(String isbn, String titulo, String editorial, String clasificacion,
+			String subclasificacion, int año, int ejemplares) {
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.editorial = editorial;
+		this.clasificacion = clasificacion;
+		this.subclasificacion = subclasificacion;
+		this.year = año;
+		this.ejemplares = ejemplares;
+		
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+//************** buscamos el id de la editorial **************************************
+			Statement miStatement2=miConexion.createStatement();
+			ResultSet miResultset2 = miStatement2.executeQuery("select * from Editorial");
+			
+			int id_editorial = 0;
+			while(miResultset2.next()) {
+				if (this.editorial.equals(miResultset2.getString("Nombre_Editorial")))
+				{
+					id_editorial= miResultset2.getInt("ID_Editorial");
+				}
+			}
+			miStatement2.close();
+			miResultset2.close();
+//************** buscamos el id de la clasificacion ***********************************
+			Statement miStatement3=miConexion.createStatement();
+			ResultSet miResultset3 = miStatement3.executeQuery("select * from Clasificacion");
+			
+			int id_clasif = 0;
+			while(miResultset3.next()) {
+				if (this.clasificacion.equals(miResultset3.getString("Nombre_Clasificacion")))
+				{
+					id_clasif= miResultset3.getInt("ID_Clasificacion");
+				}
+			}
+			miStatement3.close();
+			miResultset3.close();
+//************** buscamos el id de la subclasificacion ********************************
+			Statement miStatement4=miConexion.createStatement();
+			ResultSet miResultset4 = miStatement4.executeQuery("select * from Subclasificacion");
+			
+			int id_subclasif = 0;
+			while(miResultset4.next()) {
+				if (this.subclasificacion.equals(miResultset4.getString("Nombre_Subclasificacion")))
+				{
+					id_subclasif= miResultset4.getInt("ID_Subclasificacion");
+				}
+			}
+			miStatement4.close();
+			miResultset4.close();
+//*********************************************************************************************
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Libro set Titulo=?, R_Editorial=?, R_Clasificacion=?, R_Subclasificacion=?, Año=?, Ejemplares=? WHERE ISBN = ?");
+
+			sentencia.setString(1, this.titulo);
+			sentencia.setInt(2, id_editorial);
+			sentencia.setInt(3, id_clasif);
+			sentencia.setInt(4, id_subclasif);
+			sentencia.setInt(5, this.year);
+			sentencia.setInt(6, this.ejemplares);
+			sentencia.setString(7, this.isbn);
+
+			sentencia.executeUpdate();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		
+	}
+	//****************************************************************************
+	//******************* Consultar **********************************************
+	//****************************************************************************
 	public Boolean consultar_libros(String isbn) {
 		int encontrado = 0;
 		this.isbn = isbn;

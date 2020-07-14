@@ -49,13 +49,11 @@ public class Servlet_Autores extends HttpServlet {
 				espacio = apellidos_a.indexOf(" ");
 				
 				if(espacio != -1) {
-					System.out.println("tiene espacio");
 					String[] apellidos = apellidos_a.split(" ");
 					apellido_paterno = apellidos[0];
 					apellido_materno = apellidos[1];	
 				}
 				else {
-					System.out.println("else");
 					apellido_paterno = apellidos_a;
 					apellido_materno = "";
 				}

@@ -17,6 +17,40 @@ public class Control_Clientes {
 	private String direccion;
 	private String correo;
 	private String telefono;
+	//********************************************************************************************
+	public void editar_clientes(int id, String nombre, String apellido_paterno, String apellido_materno,
+			int edad, String direccion, String correo, String telefono) {
+		
+		this.id_lector = id;
+		this.nombre = nombre;
+		this.apellido_paterno = apellido_paterno;
+		this.apellido_materno = apellido_materno;
+		this.edad = edad;
+		this.direccion = direccion;
+		this.correo = correo;
+		this.telefono = telefono;
+		
+		try {
+			Conexion c=new Conexion();
+			Connection miConexion=c.getCon();
+			
+			PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Lector set Nombre=?, Apellido_Paterno=?, Apellido_Materno=?, Edad=?, Direccion = ?, Correo_Electronico=?, Telefono=? WHERE ID_Lector = ?");
+
+			sentencia.setString(1, this.nombre);
+			sentencia.setString(2, this.apellido_paterno);
+			sentencia.setString(3, this.apellido_materno);
+			sentencia.setInt(4, this.edad);
+			sentencia.setString(5, this.direccion);
+			sentencia.setString(6, this.correo);
+			sentencia.setString(7, this.telefono);
+			sentencia.setInt(8, this.id_lector);
+
+			sentencia.executeUpdate();							
+			c.cerrarConexion();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
  	//********************************************************************************************
 	public Boolean consultar_clientes(String nombre, String apellido_paterno, String apellido_materno,
 			String correo, String telefono) 

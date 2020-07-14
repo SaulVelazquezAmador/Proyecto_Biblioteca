@@ -54,20 +54,44 @@
 	height			: 40vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
-	margin-bottom	: 0%;
+	margin-bottom	: 2%;
 	width			: 100%;
 }
 #tabla_libros{
-	border         : 1px solid;
-	border-collapse: collapse;
+	border-collapse: collapse;	
 	margin-top     : 50px;
 	margin-left    : 50px;
 	width          : 90%;
+	box-shadow     : 4px 4px 4px #B4AAA8;
 }
 .col_tabla_libros{
-	border         : 1px solid black;
 	color          : black;
 	border-collapse: collapse;	
+}
+.enc_tabla_libros{
+	border-collapse: collapse;
+	
+	
+}
+#cle1{
+	border-top-left-radius: 10px;
+	width: 20%;
+	padding-top	   : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;	
+}
+#cle2{
+	width: 50%;
+	padding-left   : 1%;
+}
+#cle3{
+	width: 15%;
+	padding-left   : 1%;
+}
+#cle4{
+	border-top-right-radius: 10px;
+	width: 15%;
+	padding-left   : 1%;
 }
 #cl1{
 	width: 20%;
@@ -83,12 +107,12 @@
 	width: 15%;
 	padding-left   : 1%;
 }
-#div_opciones_l ul {
+#div_opciones ul {
 	padding-left: 50px;
 	list-style  :none;
 	margin      : 0;
 }
-#div_opciones_l li{
+#div_opciones li{
 	cursor                    : pointer;
 	padding-right             : 10px;
 	padding-left              : 10px;
@@ -99,7 +123,13 @@
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 }
-#formulario_bajas_prestamos{
-	height			: 50vh;
+h3{
+	padding-bottom: 0%;
+	margin-bottom: 0%;
+}
+#formulario_editar_libros{
+	overflow		: auto;
+	height			: 40vh;
 	width			: 100%;
+	margin-bottom: 0%;
 }

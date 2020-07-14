@@ -38,6 +38,7 @@ public class Servlet_Clientes extends HttpServlet {
 		String direccion     = request.getParameter("d_cliente");
 		String correo        = request.getParameter("c_cliente");
 		String telefono      = request.getParameter("t_cliente");
+		String id_cliente    = request.getParameter("i_cliente");
 		String nombre_baja   = request.getParameter("nom_baja");
 		
 		if (tipo_peticion != null) {
@@ -104,6 +105,26 @@ public class Servlet_Clientes extends HttpServlet {
 					PrintWriter salida = response.getWriter();
 					salida.println(2);
 				}
+			}
+			if (peticion == 3) {
+				int espacio = 0;
+				//regresa -1 si lo encuentra
+				espacio = apellidos.indexOf(" ");
+				
+				if(espacio != -1) {
+					String[] apellidos_cliente = apellidos.split(" ");
+					apellido_paterno = apellidos_cliente[0];
+					apellido_materno = apellidos_cliente[1];	
+				}
+				else {
+					apellido_paterno = apellidos;
+					apellido_materno = "";
+				}
+				
+				int id = Integer.parseInt(id_cliente);
+				edad = Integer.parseInt(e);
+				Control_Clientes editar = new Control_Clientes();
+				editar.editar_clientes(id, nombre, apellido_paterno, apellido_materno, edad, direccion, correo, telefono);
 			}
 		}
 	}
