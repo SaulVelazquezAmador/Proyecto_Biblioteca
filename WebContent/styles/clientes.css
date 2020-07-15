@@ -24,7 +24,6 @@
 	color: black;
 }
 #formulario_altas_clientes{
-	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
 	height			: 50vh;
@@ -46,7 +45,7 @@
 }
 #datos_clientes{
 	overflow		: auto;
-	background-color: #ffffff;
+	background-color: #c1bdba;
 	border-radius	: 0%;
 	height			: 100vh;
 	margin-left     : 0%;
@@ -54,24 +53,43 @@
 	margin-bottom	: 2%;
 	width			: 100%;
 }
+/******************************************/
 #tabla_clientes{
-	border         : 0px solid;
-	border-collapse: collapse;
-	margin-top     : 50px;
+	border-collapse: collapse;	
+	margin-top     : 25px;
 	margin-left    : 50px;
 	width          : 90%;
+	box-shadow     : 4px 4px 4px #757575;
 }
 .col_tabla_clientes{
-	border         : 1px solid black;
 	color          : black;
 	border-collapse: collapse;	
-	width		   : 80%;
+}
+.enc_tabla_clientes{
+	border-collapse: collapse;
+}
+#enc_cli1{
+	border-top-left-radius: 10px;
+	width: 20%;
 	padding-top	   : 1.5%;
 	padding-bottom : 1.5%;
 	padding-left   : 1%;
 }
+#enc_cli2, #enc_cli3{
+	width: 22%;
+}
+#enc_cli4{
+	width: 20%;
+}
+#enc_cli5{
+	border-top-right-radius: 10px;
+	width: 15%;
+}
 #col_cli1{
 	width: 20%;
+	padding-top	   : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;
 }
 #col_cli2, #col_cli3{
 	width: 22%;
@@ -101,4 +119,67 @@
 #formulario_bajas_clientes{
 	height			: 40vh;
 	width			: 100%;
+}
+#div_opciones ul {
+	padding-left: 50px;
+	list-style  :none;
+	margin      : 0;
+	color: #ffffff;
+}
+#div_opciones li{
+	background-color: #01a87a;
+	cursor                    : pointer;
+	padding-right             : 10px;
+	padding-left              : 10px;
+	float                     :left;
+	border-left               : 1px solid #7C7C7C;
+	border-right              : 1px solid #7C7C7C;
+	border-bottom             : 1px solid #7C7C7C;
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+}
+#tabla_altas{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom: 			 	1%;
+	width                     : 70%;
+	height  				  : 40vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow     : 4px 4px 4px #757575;
+}
+#tabla_bajas{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 24%;
+	margin-bottom: 			 	1%;
+	width                     : 50%;
+	height  				  : 35vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow     : 4px 4px 4px #757575;
+}
+#tabla_edicion{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom: 			 	1%;
+	width                     : 70%;
+	height  				  : 40vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow     : 4px 4px 4px #757575;
 }

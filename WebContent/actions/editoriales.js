@@ -3,14 +3,21 @@ jQuery(document).ready(function() {
 
     $("#formulario_bajas_editoriales").fadeOut(0);
     $("#formulario_editar_editoriales").fadeOut(0);
+    $("#pestaña_agregar").css('background-color', '#018A64');
 
     $("#pestaña_agregar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_editoriales").fadeIn(0);
         $("#formulario_bajas_editoriales").fadeOut(0);
         $("#formulario_editar_editoriales").fadeOut(0);
     });
 
     $("#pestaña_eliminar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_editoriales").fadeOut(0);
         $("#formulario_bajas_editoriales").fadeIn(0);
         $("#formulario_editar_editoriales").fadeOut(0);
@@ -25,6 +32,9 @@ jQuery(document).ready(function() {
     });
     //-----------------------------------------
     $("#pestaña_editar").click(function() {
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
         $("#formulario_altas_editoriales").fadeOut(0);
         $("#formulario_bajas_editoriales").fadeOut(0);
         $("#formulario_editar_editoriales").fadeIn(0);  

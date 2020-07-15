@@ -49,25 +49,51 @@
 /*       div        */
 #datos_prestamos{
 	overflow		: auto;
-	background-color: #ffffff;
+	background-color: #c1bdba;
 	border-radius	: 0%;
-	height			: 100vh;
+	height			: 40vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
 	margin-bottom	: 2%;
 	width			: 100%;
 }
+/******** tabla de abajo *********************/
 #tabla_prestamos{
-	border         : 1px solid;
-	border-collapse: collapse;
-	margin-top     : 50px;
+	border-collapse: collapse;	
+	margin-top     : 25px;
 	margin-left    : 50px;
 	width          : 90%;
+	box-shadow     : 4px 4px 4px #757575;
 }
 .col_tabla_prestamos{
-	border         : 1px solid black;
 	color          : black;
 	border-collapse: collapse;	
+}
+.enc_tabla_prestamos{
+	border-collapse: collapse;
+}
+#colp1{
+	border-top-left-radius: 10px;
+	width		   : 27%;
+	padding-top	   : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;
+}
+#colp7{
+	border-top-right-radius: 10px;
+	width: 10%
+}
+#colp6{
+	width: 10%;
+}
+#colp3, #colp4{
+	width: 10%;
+}
+#colp5{
+	padding-left: 2%;
+}
+#colp2{
+	width: 30%;
 }
 #p1{
 	width		   : 27%;
@@ -87,12 +113,15 @@
 #p2{
 	width: 30%;
 }
-#div_opciones_p ul {
+/*****************************************************/
+#div_opciones ul {
 	padding-left: 50px;
 	list-style  :none;
 	margin      : 0;
+	color: #ffffff;
 }
-#div_opciones_p li{
+#div_opciones li{
+	background-color: #01a87a;
 	cursor                    : pointer;
 	padding-right             : 10px;
 	padding-left              : 10px;
@@ -103,6 +132,7 @@
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 }
+/*****************************************************/
 #formulario_bajas_prestamos{
 	height			: 40vh;
 	width			: 100%;
@@ -112,12 +142,79 @@
 	margin: auto;
 	border-collapse: collapse;
 	background-color          : #ffffff;
-	margin-top                : 1%;
-	margin-left               : 2%;
-	width                     : 90%;
-	height  				  : 60vh; 
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom: 			 	1%;
+	width                     : 70%;
+	height  				  : 40vh; 
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
+	box-shadow     : 4px 4px 4px #757575;
+}
+/*boton*/
+#alta_prestamos{
+	background-color: #01a87a;
+	border: none;
+	padding-top: 2%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 2%;
+	color: #ffffff;
+	font-size: 18px;
+	border-radius: 8px;
+}
+#tabla_bajas{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom: 			 	1%;
+	width                     : 70%;
+	height  				  : 35vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow     : 4px 4px 4px #757575;
+}
+/*boton*/
+#baja_prestamos{
+	background-color: #E01D1D;
+	border: none;
+	padding-top: 1%;
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-bottom: 1%;
+	color: #ffffff;
+	font-size: 16px;
+	border-radius: 8px;
+}
+#tabla_edicion{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom: 			 	1%;
+	width                     : 70%;
+	height  				  : 40vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow     : 4px 4px 4px #757575;
+}
+#boton_edicion{
+	background-color: #23AFF0;
+	border: none;
+	padding-top: 2%;
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-bottom: 2%;
+	color: #ffffff;
+	font-size: 16px;
+	border-radius: 8px;
 }

@@ -4,14 +4,21 @@ $(document).ready(function() {
 
     $("#formulario_bajas_clientes").fadeOut(0);
     $("#formulario_editar_clientes").fadeOut(0);
+    $("#pestaña_agregar").css('background-color', '#018A64');
 
     $("#pestaña_agregar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_clientes").fadeIn(0);
         $("#formulario_bajas_clientes").fadeOut(0);
         $("#formulario_editar_clientes").fadeOut(0);
     });
 
     $("#pestaña_eliminar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_clientes").fadeOut(0);
         $("#formulario_editar_clientes").fadeOut(0);
         $("#formulario_bajas_clientes").fadeIn(0);
@@ -26,6 +33,9 @@ $(document).ready(function() {
     });
 
     $("#pestaña_editar").click(function() {
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
         $("#formulario_altas_clientes").fadeOut(0);
         $("#formulario_editar_clientes").fadeIn(0);
         $("#formulario_bajas_clientes").fadeOut(0); 

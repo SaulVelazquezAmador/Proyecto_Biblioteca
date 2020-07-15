@@ -142,12 +142,12 @@ public class Servlet_Biblioteca extends HttpServlet
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_prestamos'>");
 					salida.println("<tr bgcolor='#01a87a'>");
-					salida.println("<td id = 'p1' class = 'col_tabla_prestamos'><label>Libro    </label></td>");
-					salida.println("<td id = 'p2' class = 'col_tabla_prestamos'><label>Cliente  </label></td>");
-					salida.println("<td id = 'p3' class = 'col_tabla_prestamos'><label>Inicio   </label></td>");
-					salida.println("<td id = 'p4' class = 'col_tabla_prestamos'><label>Fin      </label></td>");
-					salida.println("<td id = 'p5' class = 'col_tabla_prestamos'><label>Terminar </label></td>");
-					salida.println("<td id = 'p6' class = 'col_tabla_prestamos'><label>         </label></td>");
+					salida.println("<td id = 'colp1' class = 'enc_tabla_prestamos'><label>Libro    </label></td>");
+					salida.println("<td id = 'colp2' class = 'enc_tabla_prestamos'><label>Cliente  </label></td>");
+					salida.println("<td id = 'colp3' class = 'enc_tabla_prestamos'><label>Inicio   </label></td>");
+					salida.println("<td id = 'colp4' class = 'enc_tabla_prestamos'><label>Fin      </label></td>");
+					salida.println("<td id = 'colp5' class = 'enc_tabla_prestamos'><label>Tipo     </label></td>");
+					salida.println("<td id = 'colp6' class = 'enc_tabla_prestamos'><label>Sancion  </label></td>");
 					salida.println("</tr>");
 					while(miResultset.next()) {
 						if (impares % 2 != 0) {
@@ -161,7 +161,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");
 						}		
 						else{
-							salida.println("<tr id='fila_tabla_prestamos'>");
+							salida.println("<tr bgcolor='#ffffff' id='fila_tabla_prestamos'>");
 							salida.println("<td id = 'p1' class = 'col_tabla_prestamos'>" + miResultset.getString("Titulo") + "</td>");
 							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre")+" "+miResultset.getString("Apellido_Paterno")+" "+miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
@@ -923,11 +923,11 @@ public class Servlet_Biblioteca extends HttpServlet
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_clientes'>");
 					salida.println("<tr bgcolor='#01a87a'>");
-					salida.println("<td id = 'col_cli1' class = 'col_tabla_clientes'><label>Nombre            </label></td>");
-                    salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'><label>Apellido paterno  </label></td>");
-                    salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'><label>Apellido materno  </label></td>");
-                    salida.println("<td id = 'col_cli4' class = 'col_tabla_clientes'><label>Correo Electronico</label></td>");
-					salida.println("<td id = 'col_cli5' class = 'col_tabla_clientes'><label>Prestamos          </label></td>");
+					salida.println("<td id = 'enc_cli1' class = 'enc_tabla_clientes'><label>Nombre            </label></td>");
+                    salida.println("<td id = 'enc_cli2' class = 'enc_tabla_clientes'><label>Apellido paterno  </label></td>");
+                    salida.println("<td id = 'enc_cli3' class = 'enc_tabla_clientes'><label>Apellido materno  </label></td>");
+                    salida.println("<td id = 'enc_cli4' class = 'enc_tabla_clientes'><label>Correo Electronico</label></td>");
+					salida.println("<td id = 'enc_cli5' class = 'enc_tabla_clientes'><label>Prestamos          </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
 						if (impares % 2 != 0) {
@@ -940,7 +940,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");
 						}		
 						else{
-							salida.println("<tr bgcolor = '#B4AAA8'>");
+							salida.println("<tr bgcolor = '#ffffff'>");
 							salida.println("<td id = 'col_cli1' class = 'col_tabla_clientes'>" + miResultset.getString("Nombre") + "</td>");
 							salida.println("<td id = 'col_cli2' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Paterno") + "</td>");
 							salida.println("<td id = 'col_cli3' class = 'col_tabla_clientes'>" + miResultset.getString("Apellido_Materno") + "</td>");
@@ -1089,8 +1089,8 @@ public class Servlet_Biblioteca extends HttpServlet
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_editoriales'>");
 					salida.println("<tr bgcolor='#01a87a'>");
-					salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'><label>Nombre    </label></td>");
-                    salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'><label>Ciudad    </label></td>");
+					salida.println("<td id = 'enc_e1' class = 'enc_tabla_editoriales'><label>Nombre    </label></td>");
+                    salida.println("<td id = 'enc_e2' class = 'enc_tabla_editoriales'><label>Ciudad    </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
 						if (imparese % 2 !=0) {
@@ -1100,7 +1100,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");							
 						}
 						else {
-							salida.println("<tr>");
+							salida.println("<tr bgcolor='#ffffff'>");
 							salida.println("<td id = 'cole1' class = 'col_tabla_editoriales'>" + miResultset.getString("Nombre_Editorial") + "</td>");
 							salida.println("<td id = 'cole2' class = 'col_tabla_editoriales'>" + miResultset.getString("Ciudad") + "</td>");
 							salida.println("</tr>");

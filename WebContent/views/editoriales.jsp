@@ -25,7 +25,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_altas_editoriales">
         <form>
-            <table>
+            <table id="tabla_altas">
                 <tr>
                     <td class="columnas_formulario_editoriales">
                         <h3>Agregar Editorial</h3>
@@ -54,7 +54,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_bajas_editoriales">
         <form>
-            <table>
+            <table id="tabla_bajas">
                 <tr>
                     <td class="columnas_formulario_editoriales">
                         <h3>Eliminar Editorial</h3>
@@ -76,7 +76,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_editar_editoriales">
     	<form>
-    		<table>
+    		<table id="tabla_edicion">
     			<tr>
     				<td class="columnas_formulario_editoriales">
     					<h3>Editar Editorial</h3>

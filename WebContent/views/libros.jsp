@@ -100,7 +100,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Agregar" id="boton_alta_libros" class="botones_libros">
+                        <input type="button" value="Agregar" id="boton_alta_libros">
                     </td>
                 </tr>
             </table>
@@ -122,7 +122,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Eliminar libro" id="boton_baja_libros" class="botones_libros">
+                        <input type="button" value="Eliminar libro" id="boton_baja_libros">
                     </td>
                 </tr>
             </table>
@@ -171,7 +171,7 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Editar libro" id="boton_editar_libros" class="botones_libros">
+                        <input type="button" value="Editar libro" id="boton_editar_libros">
                     </td>
                 </tr>
             </table>
