@@ -24,9 +24,12 @@
 	padding-left: 50px;
 	color: black;
 }
-#formulario_altas_libros{
+#div_opciones{
+	padding-bottom: 2%;
+}
+.divs_formularios{
 	overflow		: auto;
-	background-color: #ffffff;
+	background-color: #c1bdba;
 	border-radius	: 0%;
 	color			: black;
 	height			: 60vh;
@@ -35,6 +38,22 @@
 	margin-top      : 0%;
 	margin-bottom	: 0%;
 	font-size		: 16px;
+}
+.divs_formularios::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.divs_formularios::-webkit-scrollbar-thumb {
+  background: #494848;
+  border-radius: 4px;
+}
+.divs_formularios::-webkit-scrollbar-thumb:hover {
+  background: #2E2D2D;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.divs_formularios::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
 }
 .columnas_formulario_libros{
 	padding-top   : 10px;
@@ -49,7 +68,7 @@
 /*       div        */
 #datos_libros{
 	overflow		: auto;
-	background-color: #ffffff;
+	background-color: #c1bdba;
 	border-radius	: 0%;
 	height			: 40vh;
 	margin-left     : 0%;
@@ -59,10 +78,10 @@
 }
 #tabla_libros{
 	border-collapse: collapse;	
-	margin-top     : 50px;
+	margin-top     : 25px;
 	margin-left    : 50px;
 	width          : 90%;
-	box-shadow     : 4px 4px 4px #B4AAA8;
+	box-shadow     : 4px 4px 4px #757575;
 }
 .col_tabla_libros{
 	color          : black;
@@ -70,8 +89,6 @@
 }
 .enc_tabla_libros{
 	border-collapse: collapse;
-	
-	
 }
 #cle1{
 	border-top-left-radius: 10px;
@@ -111,8 +128,10 @@
 	padding-left: 50px;
 	list-style  :none;
 	margin      : 0;
+	color: #ffffff;
 }
 #div_opciones li{
+	background-color: #01a87a;
 	cursor                    : pointer;
 	padding-right             : 10px;
 	padding-left              : 10px;
@@ -123,13 +142,45 @@
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 }
-h3{
+#titulo2{
+	margin-top: 0%;
+	margin-bottom: 0%;
 	padding-bottom: 0%;
 	margin-bottom: 0%;
 }
-#formulario_editar_libros{
-	overflow		: auto;
-	height			: 40vh;
-	width			: 100%;
-	margin-bottom: 0%;
+.form_libros{
+	background-color: #ffffff;
+	margin-left    	: 50px;
+	width          	: 90%;
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.botones_libros{
+	background-color: #01a87a;
+	border: none;
+	padding-top: 3%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 3%;
+	color: #ffffff;
+	font-size: 18px;
+	border-radius: 8px;
+}
+.divs_tabla::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.divs_tabla::-webkit-scrollbar-thumb {
+  background: #494848;
+  border-radius: 4px;
+}
+.divs_tabla::-webkit-scrollbar-thumb:hover {
+  background: #2E2D2D;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.divs_tabla::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
 }

@@ -6,20 +6,30 @@ $(document).ready(function() {
 //**Pestañas de Agregar/Eliminar/Editar los libros*******
     $("#formulario_bajas_libros").fadeOut(0);           //*
     $("#formulario_editar_libros").fadeOut(0);          //*
+    $("#pestaña_agregar").css('background-color', '#018A64');
                                                         //*
     $("#pestaña_agregar").click(function(){             //*
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_libros").fadeIn(0);        //*
         $("#formulario_bajas_libros").fadeOut(0);       //*
         $("#formulario_editar_libros").fadeOut(0);      //*
     });                                                 //*
                                                         //*
     $("#pestaña_eliminar").click(function(){            //*
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_libros").fadeOut(0);       //*
         $("#formulario_bajas_libros").fadeIn(0);        //*
         $("#formulario_editar_libros").fadeOut(0);      //*
     });                                                 //*
                                                         //*
   $("#pestaña_editar").click(function(){                //*
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
         $("#formulario_altas_libros").fadeOut(0);       //*
         $("#formulario_bajas_libros").fadeOut(0);       //*
         $("#formulario_editar_libros").fadeIn(0);       //*

@@ -17,18 +17,18 @@
     <!--------------------------------------------------------------------->
     <div id="div_opciones">
         <ul>
-            <li id="pestaña_agregar">Agregar Libro</li>
-            <li id="pestaña_eliminar">Eliminar Libro</li>
-            <li id="pestaña_editar">Editar Libro</li>
+            <li class="lis" id="pestaña_agregar">Agregar Libro</li>
+            <li class="lis" id="pestaña_eliminar">Eliminar Libro</li>
+            <li class="lis" id="pestaña_editar">Editar Libro</li>
         </ul>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="formulario_altas_libros">
-        <form>
+    <div id="formulario_altas_libros" class="divs_formularios">
+        <form class="form_libros">
             <table>
                 <tr>
-                    <td class="columnas_formulario_libros" id="titulo2">
-                        <h3>Datos del libro</h3>
+                    <td class="columnas_formulario_libros">
+                        <h3 id="titulo2">Datos del libro</h3>
                     </td>
                 </tr>
                 <tr>
@@ -100,15 +100,15 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Agregar" id="boton_alta_libros">
+                        <input type="button" value="Agregar" id="boton_alta_libros" class="botones_libros">
                     </td>
                 </tr>
             </table>
         </form>
     </div>
 <!--------------------------------------------------------------------->       
-    <div id="formulario_bajas_libros">
-        <form>
+    <div id="formulario_bajas_libros" class="divs_formularios">
+        <form class="form_libros">
             <table>
                 <tr>
                     <td class="columnas_formulario_libros">
@@ -122,15 +122,15 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Eliminar libro" id="boton_baja_libros">
+                        <input type="button" value="Eliminar libro" id="boton_baja_libros" class="botones_libros">
                     </td>
                 </tr>
             </table>
         </form>
     </div>
 <!--------------------------------------------------------------------->       
-    <div id="formulario_editar_libros">
-        <form>
+    <div id="formulario_editar_libros" class="divs_formularios">
+        <form class="form_libros">
             <table>
                 <tr>
                     <td class="columnas_formulario_libros">
@@ -171,14 +171,14 @@
                 </tr>
                 <tr>
                     <td class="columnas_formulario_libros">
-                        <input type="button" value="Editar libro" id="boton_editar_libros">
+                        <input type="button" value="Editar libro" id="boton_editar_libros" class="botones_libros">
                     </td>
                 </tr>
             </table>
         </form>
     </div>
 <!--------------------------------------------------------------------->       
-    <div id="datos_libros">
+    <div id="datos_libros" class="div_tabla">
         <table id="tabla_libros">
             <tr>
                 <td id = "cl1" class = "col_tabla_libros"><label>ISBN       </label></td>

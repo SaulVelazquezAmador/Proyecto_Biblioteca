@@ -154,7 +154,7 @@ public class Control_Prestamos {
 //***************************************************************************
 	public String altas_prestamos(String libro, String nombre, 
 			String apellido_paterno, String apellido_materno,
-			String bibliotecario, String fecha_actual, 
+			String fecha_actual, 
 			String fecha_devolucion, String tipo) {
 		
 		int encontrado = 0;
@@ -213,26 +213,6 @@ public class Control_Prestamos {
 		}
 		if (this.ejemplares_libro == 0)
 			return "no hay libros";
-//************** buscamos el id del bibliotecario ******************************
-		try {
-			Conexion c=new Conexion();
-			Connection miConexion=c.getCon();
-
-			Statement miStatement=miConexion.createStatement();
-			ResultSet miResultset = miStatement.executeQuery("select * from Bibliotecario");
-					
-			while(miResultset.next()) {
-				if (this.bibliotecario.equals(miResultset.getString("Correo_Bibliotecario")))
-				{
-					this.id_bibliotecario = miResultset.getInt("ID_Bibliotecario");
-				}
-			}
-			miStatement.close();
-			miResultset.close();			
-			c.cerrarConexion();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 //************** buscamos el prestamo **************************************
 		try {
 			Conexion c=new Conexion();
@@ -270,17 +250,16 @@ public class Control_Prestamos {
 				Conexion c=new Conexion();
 				Connection miConexion=c.getCon();
 				
-				PreparedStatement sentencia = miConexion.prepareStatement("INSERT INTO Prestamos(R_Libro, R_Lector, R_Bibliotecario, Fecha_Entrega, Fecha_Devolucion, Sancion, R_Tipo_Prestamo) VALUES (?,?,?,?,?,?,?)");
+				PreparedStatement sentencia = miConexion.prepareStatement("INSERT INTO Prestamos(R_Libro, R_Lector, Fecha_Entrega, Fecha_Devolucion, Sancion, R_Tipo_Prestamo) VALUES (?,?,?,?,?,?)");
 				
 				sentencia.setString(1, this.id_libro);
 				sentencia.setInt(2, this.id_lector);
-				sentencia.setInt(3, this.id_bibliotecario);
-				sentencia.setString(4, this.fecha_actual);
-				sentencia.setString(5, this.fecha_devolucion);
-				sentencia.setFloat(6, 0);
-				sentencia.setInt(7, id_tipo);
-
-				sentencia.executeUpdate();							
+				sentencia.setString(3, this.fecha_actual);
+				sentencia.setString(4, this.fecha_devolucion);
+				sentencia.setFloat(5, 0);
+				sentencia.setInt(6, id_tipo);
+				sentencia.executeUpdate();	
+				
 				c.cerrarConexion();
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -100,6 +100,7 @@ $(document).ready(function(){
         $("#op_9").css('background-color', '#222222');
     });
     $("#op_8").click(function(){
+        $('#vistas').load("views/usuarios.jsp");
         $(this).css('background-color', '#23303e');
         $("#op_1").css('background-color', '#222222');
         $("#op_2").css('background-color', '#222222');

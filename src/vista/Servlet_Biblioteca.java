@@ -55,20 +55,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		if (tipo_peticion != null) {
 
 			int peticion = Integer.parseInt(tipo_peticion);
-			if (peticion == 0) {
-				//*********** rescatar datos de usuario ******************************
-				Usuario user = new Usuario(correo, clave);
-				datos_usuario = user.buscar_usuario(correo, clave);
-				
-				Gson gson = new Gson();
-				String usrJson = gson.toJson(datos_usuario);
-				
-				PrintWriter salida0 = response.getWriter();
-				response.setContentType("application/json");
-				response.setCharacterEncoding("UFT-8");
-				salida0.write(usrJson);
-				salida0.close();
-			}
+
 			if (peticion == 20) {
 				try {
 					Conexion c            =new Conexion();
@@ -120,7 +107,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					Conexion c            =new Conexion();
 					Connection miConexion =c.getCon();
 					Statement miStatement =miConexion.createStatement();
-					ResultSet miResultset = miStatement.executeQuery("select * from Tipo_prestamo order by Tipo desc");
+					ResultSet miResultset = miStatement.executeQuery("select * from Tipo_prestamo order by Tipo asc");
 
 					response.setContentType("text/html;charset=UTF-8");
 
@@ -705,7 +692,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");
 						}		
 						else{
-							salida.println("<tr>");
+							salida.println("<tr bgcolor='#ffffff'>");
 							salida.println("<td id = 'cl1' class = 'col_tabla_libros'>" + miResultset.getString("ISBN") 	+ 	"</td>");
 							salida.println("<td id = 'cl2' class = 'col_tabla_libros'>" + miResultset.getString("Titulo") 	+ 	"</td>");
 							salida.println("<td id = 'cl3' class = 'col_tabla_libros'>" + miResultset.getInt("Año") 		+ 	"</td>");
@@ -1368,6 +1355,20 @@ public class Servlet_Biblioteca extends HttpServlet
 				salida.write(autorJson);
 				salida.close();				
 				
+			}
+			if (peticion == 8) {
+				//*********** rescatar datos de usuario ******************************
+				Usuario user = new Usuario(correo, clave);
+				datos_usuario = user.buscar_usuario(correo, clave);
+				
+				Gson gson = new Gson();
+				String usrJson = gson.toJson(datos_usuario);
+				
+				PrintWriter salida0 = response.getWriter();
+				response.setContentType("application/json");
+				response.setCharacterEncoding("UFT-8");
+				salida0.write(usrJson);
+				salida0.close();
 			}
 		}
 		//***********************************************************************

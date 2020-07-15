@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+#usuarios{
+	border-radius	: 0px;
+	background-color: #ffffff;
+	display			: flex;
+	flex-direction	: column;
+	font-size       : 20;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	width			: 100vw;
+	height          : 100vh;
+}
+#titulo_usuarios{
+	background-color: #01a87a;
+	border-radius	: 0%;	
+	height			: 10vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+}
+.hs{
+	padding-left: 50px;
+	color: black;
+}
+.columnas_ficha{
+	padding-top   : 0px;
+	padding-left  : 22%;
+	padding-bottom: 0px;
+}
+.columnas_ficha2{
+	padding-top   : 0px;
+	padding-left  : 5%;
+	padding-bottom: 1%;
+}
+.fichas{
+	overflow		: auto;
+	background-color: #c1bdba;
+	border-radius	: 0%;
+	color			: black;
+	height			: 80vh;
+	width			: 100%;
+	margin-left     : 0%;
+	margin-top      : 0%;
+	margin-bottom	: 0%;
+	font-size		: 16px;
+}
+#tabla_principal{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 5%;
+	margin-left               : 20%;
+	width                     : 40%;
+	height  				  : 60vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+}
+#tabla_edicion{
+	background-color          : #ffffff;
+	margin-top                : 10%;
+	margin-left               : 10%;
+	width                     : 75%;
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+}
+#boton_editar2{
+	background-color: #01a87a;
+	border          : none;
+	padding-top     : 3%;
+	padding-left    : 30%;
+	padding-right   : 30%;
+	padding-bottom  : 3%;
+	color           : #ffffff;
+	font-size       : 18px;
+	border-radius   : 8px;
+	margin-left     : 15%;
+	margin-top      : 5%;
+	margin-bottom   : 2%;
+	cursor          : pointer;
+}
+#boton_editar1{
+	background-color: #01a87a;
+	border          : none;
+	padding-top     : 3%;
+	padding-left    : 30%;
+	padding-right   : 30%;
+	padding-bottom  : 3%;
+	margin-left     : 14%;
+	margin-top      : 2%;
+	margin-bottom   : 2%;
+	color           : #ffffff;
+	font-size       : 18px;
+	border-radius   : 8px;
+	cursor          : pointer;
+}
+#h4{
+	margin-left     : 25%;	
+}
+#boton_baja{
+	background-color: #E01D1D;
+	border          : none;
+	padding-top     : 3%;
+	padding-left    : 32%;
+	padding-right   : 32%;
+	padding-bottom  : 3%;
+	margin-left     : 14%;
+	margin-top      : 5%;
+	margin-bottom   : 2%;
+	color           : #ffffff;
+	font-size       : 18px;
+	border-radius   : 8px;
+	cursor          : pointer;
+}
+.inputs_usuarios{
+	padding-top: 15px;
+	border:none;
+    border-bottom:1px solid #B4AAA8;
+}

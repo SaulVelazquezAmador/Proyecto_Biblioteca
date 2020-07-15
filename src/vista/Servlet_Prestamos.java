@@ -32,7 +32,6 @@ public class Servlet_Prestamos extends HttpServlet {
 		String apellido_materno = "";
 		String id               = request.getParameter("id_prestamo");
 		String tipo_peticion    = request.getParameter("peticion");
-		String Correo           = request.getParameter("bibliotecario");
 		String Nombre           = request.getParameter("nombre");
 		String Libro            = request.getParameter("libro");
 		String F_inicio         = request.getParameter("f_actual");
@@ -61,7 +60,7 @@ public class Servlet_Prestamos extends HttpServlet {
 				}
 				
 				Control_Prestamos prestamo = new Control_Prestamos();
-				resultado = prestamo.altas_prestamos(Libro, nombre_cliente, apellido_paterno, apellido_materno, Correo, F_inicio, F_devolucion, Tipo);
+				resultado = prestamo.altas_prestamos(Libro, nombre_cliente, apellido_paterno, apellido_materno, F_inicio, F_devolucion, Tipo);
 				if (resultado.equals("no hay libros")) {
 					PrintWriter salida = response.getWriter();
 					salida.println(1);
