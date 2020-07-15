@@ -52,6 +52,8 @@ $(document).ready(function() {
 //******* Fecha de hoy ************************************
     $("#f_actual").val(today);
     $("#f_actual").prop('disabled', 'disabled');
+    $("#f_devolucion").val(today);
+    $("#f_devolucion").prop('disabled', 'disabled');
     $("#f_inicio3").prop('disabled', 'disabled');
     $("#f_devolucion3").prop('disabled', 'disabled');
 //********************************************************
@@ -59,12 +61,10 @@ $(document).ready(function() {
         var tipo = $("#prest_tipo").val();
 
         if (tipo == "Para Biblioteca") {
-            $("#f_devolucion").val(today);
-            $("#f_devolucion").prop('disabled', 'disabled');       
+            $("#f_devolucion").val(today);       
         }
         else{
             $("#f_devolucion").val(devolucion);
-            $("#f_devolucion").prop('disabled', 'disabled'); 
         }
     });
 //******* Alta de prestamos *******************************
@@ -74,20 +74,14 @@ $(document).ready(function() {
         var fa  = $("#f_actual").val();
         var fd  = $("#f_devolucion").val();
         var tip = $("#prest_tipo").val();
-        let correo = localStorage.getItem("correo");
 
-        if (fa == "") {
-            alert("Agregue fecha inicial");
-            return false;
-        }
-        if (fd == "") {
-            alert("Agregue fecha final");
+        if (tip == "---------------") {
+            alert("Seleccione un tipo de prestamo");
             return false;
         }
         $.post('Servlet_Prestamos', 
             {
                 peticion: 1,
-                bibliotecario: correo,
                 nombre: nom,
                 libro: lib,
                 f_actual : fa,

@@ -23,7 +23,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_altas_prestamos">
         <form>
-            <table>
+            <table id="tabla_altas">
                 <tr>
                     <td class="columnas_formulario_prestamos">
                         <h3>Seleccione datos del prestamo</h3>

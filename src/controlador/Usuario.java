@@ -1,6 +1,8 @@
 package controlador;
 import modelo.Conexion;
 import java.sql.*;
+
+import com.google.gson.Gson;
  
 public class Usuario {
 	 private String nombre;
@@ -24,7 +26,7 @@ public class Usuario {
 	 }
 //****************************************************************************************
 	 public String[] buscar_usuario(String correo, String clave) {
-		 String[] datos = new String[5];
+		 String[] datos = new String[6];
 		 this.correo = correo;
 		 this.clave = clave;
 			try {
@@ -41,6 +43,8 @@ public class Usuario {
 							datos[2] = miResultset.getString("Apellido_Materno_B");
 							datos[3] = miResultset.getString("Correo_Bibliotecario");
 							datos[4] = miResultset.getString("Contraseña_Bibliotecario");
+							int id 	 = miResultset.getInt("ID_Bibliotecario");
+							datos[5] = Integer.toString(id);
 					}
 				}
 				miStatement.close();
