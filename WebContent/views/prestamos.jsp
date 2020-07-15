@@ -13,11 +13,11 @@
         <h2 id="h2_prestamos">Prestamos</h2>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="div_opciones_p">
+    <div id="div_opciones">
         <ul>
-            <li id="pestaña_agregar_p">Agregar Prestamo</li>
-            <li id="pestaña_eliminar_p">Eliminar Prestamo</li>
-            <li id="pestaña_editar_p">Editar Prestamo</li>
+            <li id="pestaña_agregar">Agregar Prestamo</li>
+            <li id="pestaña_eliminar">Eliminar Prestamo</li>
+            <li id="pestaña_editar">Editar Prestamo</li>
         </ul>
     </div>
     <!--------------------------------------------------------------------->
@@ -66,7 +66,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_bajas_prestamos">
         <form>
-            <table>
+            <table id="tabla_bajas">
                 <tr>
                     <td class="columnas_formulario_prestamos">
                         <h3>Seleccione prestamo a eliminar</h3>
@@ -93,7 +93,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_edicion_prestamos">
         <form>
-            <table>
+            <table id="tabla_edicion">
                 <tr>
                     <td class="columnas_formulario_prestamos">
                         <h3>Seleccione prestamo a editar</h3>

@@ -8,19 +8,29 @@ $(document).ready(function() {
 //****** muestra/oculta los formularios**********
     $("#formulario_bajas_prestamos").fadeOut(0);
     $("#formulario_edicion_prestamos").fadeOut(0);
+    $("#pestaña_agregar").css('background-color', '#018A64');
 
-    $("#pestaña_agregar_p").click(function(){
+    $("#pestaña_agregar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_altas_prestamos").fadeIn(0);
         $("#formulario_edicion_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeOut(0);
     });
 
-    $("#pestaña_eliminar_p").click(function(){
+    $("#pestaña_eliminar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_editar").css('background-color', '#01a87a');
         $("#formulario_edicion_prestamos").fadeOut(0);
         $("#formulario_altas_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeIn(0);
     });
-    $("#pestaña_editar_p").click(function(){
+    $("#pestaña_editar").click(function(){
+        $(this).css('background-color', '#018A64');
+        $("#pestaña_agregar").css('background-color', '#01a87a');
+        $("#pestaña_eliminar").css('background-color', '#01a87a');
         $("#formulario_altas_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeOut(0);
         $("#formulario_edicion_prestamos").fadeIn(0);

@@ -28,7 +28,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_altas_clientes">
         <form>
-            <table>   
+            <table id="tabla_altas">   
                 <tr>
                     <td class="columnas_datos_clientes">
                         <h3>Agregar Cliente</h3>
@@ -76,7 +76,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_bajas_clientes">
         <form>
-            <table>
+            <table id="tabla_bajas">
                 <tr>
                     <td class="columnas_datos_clientes">
                         <h3>Eliminar Cliente</h3>
@@ -98,7 +98,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_editar_clientes">
         <form>
-            <table>
+            <table id="tabla_edicion">
                 <tr>
                     <td class="columnas_datos_clientes">
                         <h3>Editar Cliente</h3>
