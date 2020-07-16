@@ -120,8 +120,11 @@ $(document).ready(function() {
                     $('#datos_clientes').html(responseText);
                 });               
             }
-            else{
+            if (responseText == 2){
                 alert("El cliente ya existe");
+            }
+            if (responseText == 3){
+                alert("Ingrese un correo valido:\n@gmail.com\n@hotmail.com\n@outlook.com");
             }
         });
     });
@@ -182,25 +185,28 @@ $(document).ready(function() {
             i_cliente: id_cliente
         }, 
         function(responseText) {
-            // si tuvo exito limpia los campos y actualiza la tabla
+            if (responseText == 1) {
+                alert("Ingrese un correo valido:\n@gmail.com\n@hotmail.com\n@outlook.com");
+            }
+            if (responseText == 2) {
+                alert("Modificación exitosa");
 
-            alert("Modificación exitosa");
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 4
+                }, function(responseText){
+                    $('#datos_clientes').html(responseText);
+                });
 
-            $.post('Servlet_Biblioteca', {
-                tipo_muestra: 4
-            }, function(responseText){
-                $('#datos_clientes').html(responseText);
-            });
+                $.post('Servlet_Biblioteca', 
+                    {
+                        tipo_muestra: 42
+                    }, 
+                    function(responseText){
+                    $('#nom_edicion_cliente').html(responseText);
+                });  
 
-            $.post('Servlet_Biblioteca', 
-                {
-                    tipo_muestra: 42
-                }, 
-                function(responseText){
-                $('#nom_edicion_cliente').html(responseText);
-            });  
-
-            $('input[type="text"]').val(''); 
+                $('input[type="text"]').val(''); 
+            }
         });
     });
 });

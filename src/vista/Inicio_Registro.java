@@ -50,12 +50,20 @@ public class Inicio_Registro extends HttpServlet {
 			Usuario user = new Usuario(nombre_registro, apellido_paterno, apellido_materno, correo_registro, password_registro);
 			existe = user.consultar_para_registro(nombre_registro,  apellido_paterno, apellido_materno, correo_registro, password_registro);
 			
+			int gm = correo_registro.indexOf("@gmail.com");
+			int hm = correo_registro.indexOf("@hotmail.com");
+			int ol = correo_registro.indexOf("@outlook.com");
+			
 			//Si el usuario ya existe, entonces ya no se hace nada
 			if(existe == true) 
 			{
 				PrintWriter salida = response.getWriter();
 				salida.println(2);
 			} 
+			else if (gm == -1 && hm == -1 && ol == -1) {
+				PrintWriter salida = response.getWriter();
+				salida.println(3);
+			}
 			//si no hay que darlo de alta y mandar a la pagina principal
 			else 
 			{

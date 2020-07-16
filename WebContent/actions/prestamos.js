@@ -5,6 +5,21 @@ $(document).ready(function() {
     var month = ("0" + (now.getMonth() + 1)).slice(-2);
     var today = now.getFullYear()+"-"+(month)+"-"+(day);
     var devolucion = now.getFullYear()+"-"+(month)+"-"+(now.getDate()+5);
+
+    $.post('Servlet_Biblioteca', 
+        {
+            tipo_muestra: 29,
+            hoy: today
+        }, function() {
+
+            $.post('Servlet_Biblioteca', {
+                tipo_muestra: 23,
+            }, function(responseText){
+                $('#datos_prestamos').html(responseText);
+            });
+
+    });
+
 //****** muestra/oculta los formularios**********
     $("#formulario_bajas_prestamos").fadeOut(0);
     $("#formulario_edicion_prestamos").fadeOut(0);
@@ -26,6 +41,25 @@ $(document).ready(function() {
         $("#formulario_edicion_prestamos").fadeOut(0);
         $("#formulario_altas_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeIn(0);
+    
+        $.post('Servlet_Biblioteca', {
+            tipo_muestra: 26
+        }, function(responseText){
+            $('#col_cliente_edicion').html(responseText);
+        });
+        $.post('Servlet_Biblioteca', {
+            tipo_muestra: 24
+        }, function(responseText){
+            $('#nombre_baja_p').html(responseText);
+        });
+        var cte = $("#cliente_baja_prestamo").val();
+        $.post('Servlet_Biblioteca', 
+            {
+                tipo_muestra: 25,
+                n_completo: cte
+            }, function(responseText) {
+                $('#libro_baja_p').html(responseText);
+        }); 
     });
     $("#pestaña_editar").click(function(){
         $(this).css('background-color', '#018A64');
@@ -55,7 +89,7 @@ $(document).ready(function() {
     });
 
     $.post('Servlet_Biblioteca', {
-        tipo_muestra: 23
+        tipo_muestra: 23,
     }, function(responseText){
         $('#datos_prestamos').html(responseText);
     });
@@ -158,7 +192,17 @@ $(document).ready(function() {
                 }, function(responseText){
                     $('#datos_prestamos').html(responseText);
                 });    
-                
+                //libros prestados por esa persona
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 26
+                }, function(responseText){
+                    $('#col_cliente_edicion').html(responseText);
+                });
+                $.post('Servlet_Biblioteca', {
+                    tipo_muestra: 24
+                }, function(responseText){
+                    $('#nombre_baja_p').html(responseText);
+                });
                 var cte = $("#cliente_baja_prestamo").val();
                 $.post('Servlet_Biblioteca', 
                     {
@@ -166,7 +210,7 @@ $(document).ready(function() {
                         n_completo: cte
                     }, function(responseText) {
                         $('#libro_baja_p').html(responseText);
-                });            
+                }); 
         });
     });
 //***********************************************************

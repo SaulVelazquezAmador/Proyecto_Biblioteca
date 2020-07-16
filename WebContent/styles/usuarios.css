@@ -36,7 +36,6 @@
 }
 .fichas{
 	overflow		: auto;
-	background-color: #c1bdba;
 	border-radius	: 0%;
 	color			: black;
 	height			: 80vh;
@@ -58,6 +57,7 @@
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
+	box-shadow : 4px 4px 4px 4px #757575
 }
 #tabla_edicion{
 	background-color          : #ffffff;
@@ -68,6 +68,7 @@
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
+	box-shadow : 4px 4px 4px 4px #757575
 }
 #boton_editar2{
 	background-color: #01a87a;

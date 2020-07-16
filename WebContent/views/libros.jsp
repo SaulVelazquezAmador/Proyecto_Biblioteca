@@ -23,9 +23,9 @@
         </ul>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="formulario_altas_libros" class="divs_formularios">
-        <form class="form_libros">
-            <table>
+    <div id="formulario_altas_libros">
+        <form>
+            <table id="tabla_altas">
                 <tr>
                     <td class="columnas_formulario_libros">
                         <h3 id="titulo2">Datos del libro</h3>
@@ -107,9 +107,9 @@
         </form>
     </div>
 <!--------------------------------------------------------------------->       
-    <div id="formulario_bajas_libros" class="divs_formularios">
-        <form class="form_libros">
-            <table>
+    <div id="formulario_bajas_libros">
+        <form>
+            <table id="tabla_bajas">
                 <tr>
                     <td class="columnas_formulario_libros">
                         <h3>Seleccione libro a eliminar</h3>
@@ -129,9 +129,9 @@
         </form>
     </div>
 <!--------------------------------------------------------------------->       
-    <div id="formulario_editar_libros" class="divs_formularios">
-        <form class="form_libros">
-            <table>
+    <div id="formulario_editar_libros">
+        <form>
+            <table id="tabla_edicion">
                 <tr>
                     <td class="columnas_formulario_libros">
                         <h3>Seleccione libro a editar</h3>

@@ -53,12 +53,15 @@
 	margin-top      : 0%;
 	margin-bottom	: 0%;
 	width			: 100%;
+	border-radius: 10px;
 }
 #tabla_editoriales{
 	border-collapse: collapse;
 	margin-top     : 50px;
 	margin-left    : 50px;
 	width          : 90%;
+	box-shadow : 4px 4px 4px 4px #757575;
+	border-radius: 10px;
 }
 .col_tabla_editoriales{
 	color          : black;
@@ -120,7 +123,7 @@
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575;
 }
 #tabla_bajas{
 	margin: auto;
@@ -134,7 +137,7 @@
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575;
 }
 #tabla_edicion{
 	margin: auto;
@@ -148,9 +151,10 @@
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575;
 }
 #alta_editorial{
+	cursor          : pointer;
 	background-color: #01a87a;
 	border          : none;
 	padding-top     : 2%;
@@ -162,6 +166,7 @@
 	border-radius   : 8px;
 }
 #eliminar_editorial{
+	cursor          : pointer;
 	background-color: #E01D1D;
 	border          : none;
 	padding-top     : 1%;
@@ -173,6 +178,7 @@
 	border-radius   : 8px;
 }
 #editar_editorial{
+	cursor          : pointer;
 	background-color: #23AFF0;
 	border          : none;
 	padding-top     : 2%;

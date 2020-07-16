@@ -44,8 +44,9 @@
     border-bottom:1px solid #B4AAA8;
 }
 #datos_clientes{
+	border-radius: 10px;
 	overflow		: auto;
-	background-color: #c1bdba;
+	background-color: #ffffff;
 	border-radius	: 0%;
 	height			: 100vh;
 	margin-left     : 0%;
@@ -55,11 +56,12 @@
 }
 /******************************************/
 #tabla_clientes{
+	border-radius: 10px;
 	border-collapse: collapse;	
 	margin-top     : 25px;
 	margin-left    : 50px;
 	width          : 90%;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575;
 }
 .col_tabla_clientes{
 	color          : black;
@@ -124,10 +126,10 @@
 	padding-left: 50px;
 	list-style  :none;
 	margin      : 0;
-	color: #ffffff;
+	color       : #ffffff;
 }
 #div_opciones li{
-	background-color: #01a87a;
+	background-color          : #01a87a;
 	cursor                    : pointer;
 	padding-right             : 10px;
 	padding-left              : 10px;
@@ -139,47 +141,83 @@
 	border-bottom-right-radius: 10px;
 }
 #tabla_altas{
-	margin: auto;
-	border-collapse: collapse;
+	margin                    : auto;
+	border-collapse           : collapse;
 	background-color          : #ffffff;
 	margin-top                : 2%;
 	margin-left               : 14%;
-	margin-bottom: 			 	1%;
+	margin-bottom             : 1%;
 	width                     : 70%;
-	height  				  : 40vh; 
+	height                    : 40vh; 
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575
 }
 #tabla_bajas{
-	margin: auto;
-	border-collapse: collapse;
+	margin                    : auto;
+	border-collapse           : collapse;
 	background-color          : #ffffff;
 	margin-top                : 2%;
 	margin-left               : 24%;
-	margin-bottom: 			 	1%;
+	margin-bottom             : 1%;
 	width                     : 50%;
-	height  				  : 35vh; 
+	height                    : 35vh; 
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575
 }
 #tabla_edicion{
-	margin: auto;
-	border-collapse: collapse;
+	margin                    : auto;
+	border-collapse           : collapse;
 	background-color          : #ffffff;
 	margin-top                : 2%;
 	margin-left               : 14%;
-	margin-bottom: 			 	1%;
+	margin-bottom             : 1%;
 	width                     : 70%;
-	height  				  : 40vh; 
+	height                    : 40vh; 
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
 	border-top-right-radius   : 10px;
-	box-shadow     : 4px 4px 4px #757575;
+	box-shadow : 4px 4px 4px 4px #757575
+}
+#agregar_cliente{
+	cursor          : pointer;
+	background-color: #01a87a;
+	border          : none;
+	padding-top     : 2%;
+	padding-left    : 5%;
+	padding-right   : 5%;
+	padding-bottom  : 2%;
+	color           : #ffffff;
+	font-size       : 18px;
+	border-radius   : 8px;
+}
+#eliminar_cliente{
+	cursor          : pointer;
+	background-color: #E01D1D;
+	border          : none;
+	padding-top     : 1%;
+	padding-left    : 3%;
+	padding-right   : 3%;
+	padding-bottom  : 1%;
+	color           : #ffffff;
+	font-size       : 16px;
+	border-radius   : 8px;
+}
+#editar_cliente{
+	cursor          : pointer;
+	background-color: #23AFF0;
+	border          : none;
+	padding-top     : 2%;
+	padding-left    : 4%;
+	padding-right   : 4%;
+	padding-bottom  : 2%;
+	color           : #ffffff;
+	font-size       : 16px;
+	border-radius   : 8px;
 }

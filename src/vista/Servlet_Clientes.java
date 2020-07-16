@@ -62,15 +62,23 @@ public class Servlet_Clientes extends HttpServlet {
 				
 				Control_Clientes cliente = new Control_Clientes();
 				existe = cliente.consultar_clientes(nombre, apellido_paterno, apellido_materno, correo, telefono);
-				
-				if(existe == false) {
+
+				int gm = correo.indexOf("@gmail.com");
+				int hm = correo.indexOf("@hotmail.com");
+				int ol = correo.indexOf("@outlook.com");
+
+				if(existe == true) {
+		    		PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}
+				else if (gm == -1 && hm == -1 && ol == -1) {
+					PrintWriter salida = response.getWriter();
+					salida.println(3);
+				}
+				else {
 					cliente.agregar_cliente(nombre, apellido_paterno, apellido_materno, edad, direccion, correo, telefono);
 		    		PrintWriter salida = response.getWriter();
 					salida.println(1);
-				}
-				else {
-		    		PrintWriter salida = response.getWriter();
-					salida.println(2);
 				}	
 			}
 			//Si la peticion = 2 entonces es una baja
@@ -120,11 +128,23 @@ public class Servlet_Clientes extends HttpServlet {
 					apellido_paterno = apellidos;
 					apellido_materno = "";
 				}
-				
-				int id = Integer.parseInt(id_cliente);
-				edad = Integer.parseInt(e);
-				Control_Clientes editar = new Control_Clientes();
-				editar.editar_clientes(id, nombre, apellido_paterno, apellido_materno, edad, direccion, correo, telefono);
+
+				int gm = correo.indexOf("@gmail.com");
+				int hm = correo.indexOf("@hotmail.com");
+				int ol = correo.indexOf("@outlook.com");
+
+				if (gm == -1 && hm == -1 && ol == -1){
+		    		PrintWriter salida = response.getWriter();
+					salida.println(1);					
+				}
+				else{
+					int id = Integer.parseInt(id_cliente);
+					edad = Integer.parseInt(e);
+					Control_Clientes editar = new Control_Clientes();
+					editar.editar_clientes(id, nombre, apellido_paterno, apellido_materno, edad, direccion, correo, telefono);
+		    		PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}
 			}
 		}
 	}
