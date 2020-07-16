@@ -4,14 +4,14 @@ $(document).ready(function() {
 
 //----------------------------------------------------------------------------------------------------------
 	let mail = localStorage.getItem("correo");
-	let clave = localStorage.getItem("clave");
+	let clave_global = localStorage.getItem("clave");
 	let id = 0;
 //----------------------------------------------------------------------------------------------------------
 	$.post('Servlet_Biblioteca', 
 	{
 		tipo_muestra: 8,
 		Correo: mail,
-		Clave: clave
+		Clave: clave_global
 	}, function(responseText) 
 	{
 		$("#nombre").text("Nombre: " + responseText[0] + " " + responseText[1] + " " + responseText[2]);
@@ -26,7 +26,7 @@ $(document).ready(function() {
 		{
 			tipo_muestra: 8,
 			Correo: mail,
-			Clave: clave
+			Clave: clave_global
 		}, function(responseText) 
 		{
 			$("#edit_nombre").val(responseText[0]);
@@ -38,7 +38,7 @@ $(document).ready(function() {
 	});
 //----------------------------------------------------------------------------------------------------------
 	$("#boton_baja").click(function() {
-		var respuesta = window.confirm("Save data?");
+		var respuesta = window.confirm("¿Desea darse de baja?");
 		if (respuesta == false) {
 			return false;
 		}
@@ -64,16 +64,22 @@ $(document).ready(function() {
 		var clav = $("#edit_clave").val();
 	
 		$.post('Servlet_Usuarios', 
-			{
-				peticion: 1,
-				ID: id,
-				nombre: nom,
-				apellido_paterno: ap1,
-				apellido_materno: ap2,
-				correo: corr,
-				clave: clav
-			}, function() {
+		{
+			peticion: 1,
+			ID: id,
+			nombre: nom,
+			apellido_paterno: ap1,
+			apellido_materno: ap2,
+			correo: corr,
+			clave: clav
+		}, function(responseText) {
 
+			if (responseText == 1) {
+				alert("Ingrese un correo valido:\n@gmail.com\n@hotmail.com\n@outlook.com");
+			}
+			if (responseText == 2) {
+				localStorage.setItem("clave", clav);
+				clave_global = localStorage.getItem("clave");
 				$("#ficha_edicion").fadeOut(0);	
 				$("#ficha_principal").fadeIn(0);
 
@@ -81,13 +87,13 @@ $(document).ready(function() {
 				{
 					tipo_muestra: 8,
 					Correo: mail,
-					Clave: clave
+					Clave: clave_global
 				}, function(responseText) 
 				{
-					alert(responseText);
 					$("#nombre").text("Nombre: " + responseText[0] + " " + responseText[1] + " " + responseText[2]);
 					$("#correo").text("Correo electronico: " + responseText[3]);
-				});			
+				});	
+			}		
 		});
 	});
 });

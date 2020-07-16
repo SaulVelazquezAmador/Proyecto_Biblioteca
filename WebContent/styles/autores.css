@@ -24,7 +24,6 @@
 	color: black;
 }
 #formulario_altas_autores{
-	background-color: #ffffff;
 	border-radius	: 0%;
 	color			: black;
 	height			: 40vh;
@@ -46,46 +45,64 @@
 }
 #datos_autores{
 	overflow		: auto;
-	background-color: #ffffff;
 	border-radius	: 0%;
 	height			: 100vh;
 	margin-left     : 0%;
 	margin-top      : 0%;
 	margin-bottom	: 0%;
 	width			: 100%;
+	border-radius: 10px;
 }
 #tabla_autores{
-	border         : 1px solid;
 	border-collapse: collapse;
 	margin-top     : 50px;
 	margin-left    : 50px;
 	width          : 90%;
+	border-radius: 10px;
+	box-shadow : 4px 4px 4px 4px #757575;
 }
 .col_tabla_autores{
-	border         : 1px solid black;
 	color          : black;
 	border-collapse: collapse;	
+}
+.enc_tabla_autores{
+	border-collapse: collapse;
+}
+#enc_au1{
+	border-top-left-radius: 10px;
 	padding-top    : 1.5%;
 	padding-bottom : 1.5%;
 	padding-left   : 1%;
-	
-	width: 80%
+	width: 15%;
 }
-#col_au1, #col_au4{
+#enc_au4{
+	border-top-right-radius: 10px;
+	width: 15%;
+}
+#enc_au2, #enc_au3{
+	width: 25%;
+}
+#col_au1{
+	padding-top    : 1.5%;
+	padding-bottom : 1.5%;
+	padding-left   : 1%;
+	width: 15%;
+}
+#col_au4{
 	width: 15%;
 }
 #col_au2, #col_au3{
 	width: 25%;
 }
-#col_au5, #col_au6{
-	width: 10%;
-}
+/*****************************************************/
 #div_opciones ul {
 	padding-left: 50px;
 	list-style  :none;
 	margin      : 0;
+	color: #ffffff;
 }
 #div_opciones li{
+	background-color: #01a87a;
 	cursor                    : pointer;
 	padding-right             : 10px;
 	padding-left              : 10px;
@@ -95,4 +112,86 @@
 	border-bottom             : 1px solid #7C7C7C;
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
+}
+/*****************************************************/
+#tabla_altas{
+	margin: auto;
+	border-collapse: collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom: 			 	1%;
+	width                     : 70%;
+	height  				  : 35vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow : 4px 4px 4px 4px #757575;
+}
+#tabla_bajas{
+	margin                    : auto;
+	border-collapse           : collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom             : 			 	1%;
+	width                     : 70%;
+	height                    : 35vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow : 4px 4px 4px 4px #757575;
+}
+#tabla_edicion{
+	margin                    : auto;
+	border-collapse           : collapse;
+	background-color          : #ffffff;
+	margin-top                : 2%;
+	margin-left               : 14%;
+	margin-bottom             : 			 	1%;
+	width                     : 70%;
+	height                    : 35vh; 
+	border-bottom-left-radius : 10px;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius    : 10px;
+	border-top-right-radius   : 10px;
+	box-shadow : 4px 4px 4px 4px #757575;
+}
+#b_autores{
+	cursor          : pointer;
+	background-color: #01a87a;
+	border          : none;
+	padding-top     : 2%;
+	padding-left    : 5%;
+	padding-right   : 5%;
+	padding-bottom  : 2%;
+	color           : #ffffff;
+	font-size       : 18px;
+	border-radius   : 8px;
+}
+#eliminar_autor{
+	cursor          : pointer;
+	background-color: #E01D1D;
+	border          : none;
+	padding-top     : 1%;
+	padding-left    : 3%;
+	padding-right   : 3%;
+	padding-bottom  : 1%;
+	color           : #ffffff;
+	font-size       : 16px;
+	border-radius   : 8px;
+}
+#editar_autor{
+	cursor          : pointer;
+	background-color: #23AFF0;
+	border          : none;
+	padding-top     : 2%;
+	padding-left    : 4%;
+	padding-right   : 4%;
+	padding-bottom  : 2%;
+	color           : #ffffff;
+	font-size       : 16px;
+	border-radius   : 8px;
 }

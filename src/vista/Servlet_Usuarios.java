@@ -1,6 +1,8 @@
 package vista;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,6 @@ public class Servlet_Usuarios extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,11 +38,22 @@ public class Servlet_Usuarios extends HttpServlet {
 		
 		if (tipo_peticion != null) {
 			int peticion = Integer.parseInt(tipo_peticion);
-			// Si la peticion es = 1 entonces es una alta
+			// Si la peticion es = 1 entonces es una edicion
 			if(peticion == 1) {
+				int gm = correo.indexOf("@gmail.com");
+				int hm = correo.indexOf("@hotmail.com");
+				int ol = correo.indexOf("@outlook.com");	
 				
-				Control_Usuarios editar = new Control_Usuarios();
-				editar.editar_usuario(id, nombre, a_paterno, a_materno, correo, clave);		
+				if (gm == -1 && hm == -1 && ol == -1) {
+					PrintWriter salida = response.getWriter();
+					salida.println(1);
+				}
+				else {
+					Control_Usuarios editar = new Control_Usuarios();
+					editar.editar_usuario(id, nombre, a_paterno, a_materno, correo, clave);
+					PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}	
 			}
 			if (peticion == 2) {
 				Control_Usuarios baja = new Control_Usuarios();

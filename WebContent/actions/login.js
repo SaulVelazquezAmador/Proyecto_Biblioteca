@@ -55,7 +55,10 @@ $(document).ready(function(){
     			correo  : correoVar,
     			clave   : claveVar
     		}, function(responseText) {
-    			
+                alert(responseText);
+    			if (responseText == 3){
+                    alert("Ingrese un correo valido:\n@gmail.com\n@hotmail.com\n@outlook.com");
+                }
     			if (responseText == 2)
     				alert("Datos ya existentes");
     			if (responseText == 1){

@@ -3,10 +3,14 @@ package vista;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 //import controlador.Control_Biblioteca;
 //import controlador.Usuario;
@@ -51,6 +55,7 @@ public class Servlet_Biblioteca extends HttpServlet
 		String nom_editorial      = request.getParameter("editorial_edicion");
 		String nom_cliente        = request.getParameter("cliente_edicion");
 		String titulo             = request.getParameter("titulo");
+		String hoy                = request.getParameter("hoy");
 		//************************* Actualizaciones dinamicas de paginas*****************
 		if (tipo_peticion != null) {
 
@@ -130,11 +135,13 @@ public class Servlet_Biblioteca extends HttpServlet
 					Conexion c            =new Conexion();
 					Connection miConexion =c.getCon();
 					Statement miStatement =miConexion.createStatement();
-					ResultSet miResultset = miStatement.executeQuery("select Prestamos.Fecha_Entrega, Prestamos.Fecha_Devolucion, Libro.Titulo, Lector.Nombre, Lector.Apellido_Paterno, Lector.Apellido_Materno"
+					ResultSet miResultset = miStatement.executeQuery("select Prestamos.Sancion, Prestamos.Fecha_Entrega, Prestamos.Fecha_Devolucion, Libro.Titulo, Lector.Nombre, Lector.Apellido_Paterno, Lector.Apellido_Materno, Tipo_prestamo.Tipo"
 							+ "											from Prestamos inner join Libro"
 							+ "											on Prestamos.R_LIbro = Libro.ISBN"
 							+ "											inner join Lector"
 							+ "											on Prestamos.R_Lector = Lector.ID_Lector"
+							+ "											inner join Tipo_prestamo"
+							+ "											on R_Tipo_Prestamo = ID_tipo_prestamo"
 							+ "                                         ORDER BY Lector.Nombre");
 
 					response.setContentType("text/html;charset=UTF-8");
@@ -150,14 +157,15 @@ public class Servlet_Biblioteca extends HttpServlet
 					salida.println("<td id = 'colp6' class = 'enc_tabla_prestamos'><label>Sancion  </label></td>");
 					salida.println("</tr>");
 					while(miResultset.next()) {
+
 						if (impares % 2 != 0) {
 							salida.println("<tr bgcolor='#01a87a' id='fila_tabla_prestamos'>");
 							salida.println("<td id = 'p1' class = 'col_tabla_prestamos'>" + miResultset.getString("Titulo") + "</td>");
 							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre") + " " + miResultset.getString("Apellido_Paterno") + " " + miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
 							salida.println("<td id = 'p4' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Devolucion") + "</td>");
-							salida.println("<td id = 'p5' class = 'col_tabla_prestamos'> </td>");
-							salida.println("<td id = 'p6' class = 'col_tabla_prestamos'> </td>");
+							salida.println("<td id = 'p5' class = 'col_tabla_prestamos'>" + miResultset.getString("Tipo") + "</td>");
+							salida.println("<td id = 'p6' class = 'col_tabla_prestamos'>" + "$" + " " + miResultset.getString("Sancion") + "</td>");
 							salida.println("</tr>");
 						}		
 						else{
@@ -166,8 +174,8 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("<td id = 'p2' class = 'col_tabla_prestamos'>" + miResultset.getString("Nombre")+" "+miResultset.getString("Apellido_Paterno")+" "+miResultset.getString("Apellido_Materno") + "</td>");
 							salida.println("<td id = 'p3' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Entrega") + "</td>");
 							salida.println("<td id = 'p4' class = 'col_tabla_prestamos'>" + miResultset.getString("Fecha_Devolucion") + "</td>");
-							salida.println("<td id = 'p5' class = 'col_tabla_prestamos'> </td>");
-							salida.println("<td id = 'p6' class = 'col_tabla_prestamos'> </td>");
+							salida.println("<td id = 'p5' class = 'col_tabla_prestamos'>" + miResultset.getString("Tipo") + "</td>");
+							salida.println("<td id = 'p6' class = 'col_tabla_prestamos'>" + "$" + " " + miResultset.getString("Sancion") + "</td>");
 							salida.println("</tr>");						
 						}
 						impares += 1;
@@ -488,6 +496,45 @@ public class Servlet_Biblioteca extends HttpServlet
 				salida0.write(datos_p);
 				salida0.close();
 			}
+			if (peticion == 29) {
+				try {
+					Conexion c            =new Conexion();
+					Connection miConexion =c.getCon();
+					Statement miStatement =miConexion.createStatement();
+					
+					ResultSet miResultset = miStatement.executeQuery("select * from Prestamos");
+					
+					while(miResultset.next()) {
+						System.out.println(hoy);
+					    try {
+  
+					        Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(hoy);  
+					        Date date2=new SimpleDateFormat("yyyy-MM-dd").parse(miResultset.getString("Fecha_Devolucion"));
+
+							int r = date1.compareTo(date2);
+
+							if(r > 0) {
+								PreparedStatement sentencia = miConexion.prepareStatement("UPDATE Prestamos set Sancion = ? WHERE ID_Prestamo = ?");
+
+								sentencia.setInt(1, 5);
+								sentencia.setInt(2, miResultset.getInt("ID_Prestamo"));
+
+								sentencia.executeUpdate();
+						    }
+
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					miStatement.close();
+					miResultset.close();
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}					
+			}
+//************************************************************************************************
 			if(peticion == 3)
 			{
 				try {
@@ -1211,10 +1258,10 @@ public class Servlet_Biblioteca extends HttpServlet
 					PrintWriter salida = response.getWriter();
 					salida.println("<table id='tabla_autores'>");
 					salida.println("<tr bgcolor='#01a87a'>");
-					salida.println("<td id = 'col_au1' class = 'col_tabla_autores'><label>Nombre            </label></td>");
-                    salida.println("<td id = 'col_au2' class = 'col_tabla_autores'><label>Apellido paterno  </label></td>");
-                    salida.println("<td id = 'col_au3' class = 'col_tabla_autores'><label>Apellido materno  </label></td>");
-                    salida.println("<td id = 'col_au4' class = 'col_tabla_autores'><label>Nacionalidad      </label></td>");
+					salida.println("<td id = 'enc_au1' class = 'enc_tabla_autores'><label>Nombre            </label></td>");
+                    salida.println("<td id = 'enc_au2' class = 'enc_tabla_autores'><label>Apellido paterno  </label></td>");
+                    salida.println("<td id = 'enc_au3' class = 'enc_tabla_autores'><label>Apellido materno  </label></td>");
+                    salida.println("<td id = 'enc_au4' class = 'enc_tabla_autores'><label>Nacionalidad      </label></td>");
                     salida.println("</tr>");
 					while(miResultset.next()) {
 						if (impares % 2 != 0) {
@@ -1226,7 +1273,7 @@ public class Servlet_Biblioteca extends HttpServlet
 							salida.println("</tr>");
 						}		
 						else{
-							salida.println("<tr>");
+							salida.println("<tr bgcolor='#ffffff'>");
 							salida.println("<td id = 'col_au1' class = 'col_tabla_autores'>" + miResultset.getString("Nombre_Autor") + "</td>");
 							salida.println("<td id = 'col_au2' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Paterno_Autor") + "</td>");
 							salida.println("<td id = 'col_au3' class = 'col_tabla_autores'>" + miResultset.getString("Apellido_Materno_Autor") + "</td>");

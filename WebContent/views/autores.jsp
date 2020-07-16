@@ -25,7 +25,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_altas_autores">
         <form>
-            <table>  
+            <table id="tabla_altas">  
                 <tr>
                     <td class="columnas_formulario_autores">
                         <h3>Agregar Autor</h3>
@@ -59,7 +59,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_bajas_autores">
         <form>
-            <table>
+            <table id="tabla_bajas">
                 <tr>
                     <td class="columnas_formulario_autores">
                         <h3>Eliminar Autor</h3>
@@ -81,7 +81,7 @@
     <!--------------------------------------------------------------------->
     <div id="formulario_editar_autores">
         <form>
-            <table>
+            <table id="tabla_edicion">
                 <tr>
                     <td class="columnas_formulario_autores">
                         <h3>Editar Autor</h3>
