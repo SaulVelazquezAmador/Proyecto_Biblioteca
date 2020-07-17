@@ -79,6 +79,8 @@ $(document).ready(function() {
 			}
 			if (responseText == 2) {
 				localStorage.setItem("clave", clav);
+				localStorage.setItem("correo", corr);
+				mail = localStorage.getItem("correo");
 				clave_global = localStorage.getItem("clave");
 				$("#ficha_edicion").fadeOut(0);	
 				$("#ficha_principal").fadeIn(0);
