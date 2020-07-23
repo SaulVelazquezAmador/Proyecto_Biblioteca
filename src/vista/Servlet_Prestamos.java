@@ -92,9 +92,22 @@ public class Servlet_Prestamos extends HttpServlet {
 					apellido_paterno = nombre_completo[2];
 					apellido_materno = nombre_completo[3];			
 				}
-				
+				String sancion = "";
 				Control_Prestamos baja = new Control_Prestamos();
-				baja.baja_prestamos(nombre_cliente, apellido_paterno, apellido_materno, Libro);
+				sancion = baja.baja_prestamos(nombre_cliente, apellido_paterno, apellido_materno, Libro);
+			
+				if(sancion.equals("con sancion"))
+				{
+					System.out.println("con");
+					PrintWriter salida = response.getWriter();
+					salida.println(1);
+				}
+				if(sancion.equals("sin sancion"))
+				{
+					System.out.println("sin");
+					PrintWriter salida = response.getWriter();
+					salida.println(2);
+				}
 			}
 			if (peticion == 3)
 			{

@@ -275,7 +275,7 @@ public class Servlet_Biblioteca extends HttpServlet
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter salida = response.getWriter();
 					salida.println("Libros prestados: <select id=\"libro_baja_prestamo\">");	
-					
+					salida.println("<option>--------------------------------</option>");
 					while(miResultset.next()) {
 						if(id_lector == miResultset.getInt("R_Lector")) 
 							salida.println("<option>" + miResultset.getString("Libro.Titulo") + "</option>");

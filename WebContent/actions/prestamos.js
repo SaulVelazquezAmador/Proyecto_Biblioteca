@@ -68,6 +68,12 @@ $(document).ready(function() {
         $("#formulario_altas_prestamos").fadeOut(0);
         $("#formulario_bajas_prestamos").fadeOut(0);
         $("#formulario_edicion_prestamos").fadeIn(0);
+
+        $.post('Servlet_Biblioteca', {
+            tipo_muestra: 26
+        }, function(responseText){
+            $('#col_cliente_edicion').html(responseText);
+        });
     });
 //****** Actualiza los select **********
     $.post('Servlet_Biblioteca', {
@@ -178,12 +184,25 @@ $(document).ready(function() {
         var nom = $("#cliente_baja_prestamo").val();
         var lib = $("#libro_baja_prestamo").val();
 
+        if (nom == "--------------------------------") {
+            alert("Seleccione un cliente");
+            return false;
+        }
+
+        if (lib == "--------------------------------") {
+            alert("Seleccione un libro");
+            return false;
+        }
+
         $.post('Servlet_Prestamos', 
             {
                 peticion: 2,
                 nombre: nom,
                 libro: lib
-            }, function() {
+            }, function(responseText) {
+
+                if (responseText == 1)
+                    alert("Sancion de $5.00");
 
                 alert("Baja exitosa!");
                 
@@ -283,9 +302,7 @@ $(document).ready(function() {
 
         if (tip == "Para Biblioteca")
             return false;
-
-        alert(fech_d);
-        alert(tip);
+        
         $.post('Servlet_Prestamos', 
             {
                 peticion: 3,

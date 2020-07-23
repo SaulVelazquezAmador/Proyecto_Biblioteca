@@ -195,3 +195,19 @@
 	font-size       : 16px;
 	border-radius   : 8px;
 }
+.divs_tabla::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.divs_tabla::-webkit-scrollbar-thumb {
+  background: #494848;
+  border-radius: 4px;
+}
+.divs_tabla::-webkit-scrollbar-thumb:hover {
+  background: #2E2D2D;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+.divs_tabla::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}

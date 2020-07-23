@@ -16,6 +16,7 @@ public class Control_Prestamos {
 	private int id_lector = 0;
 	private int id_bibliotecario = 0;
 	private int id_prestamo;
+	private float sancion;
 	private String nombre;
 	private String apellido_paterno;
 	private String apellido_materno;
@@ -47,7 +48,7 @@ public class Control_Prestamos {
 		}
 	}
 //************************************************************************************************
-	public void baja_prestamos(String nombre, String apellido_paterno, String apellido_materno,
+	public String baja_prestamos(String nombre, String apellido_paterno, String apellido_materno,
 			String libro) {
 		this.libro = libro;
 		this.nombre = nombre;
@@ -98,7 +99,26 @@ public class Control_Prestamos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+//************** buscamos el adeudo **************************************
+				try {
+					Conexion c=new Conexion();
+					Connection miConexion=c.getCon();
+
+					Statement miStatement=miConexion.createStatement();
+					ResultSet miResultset = miStatement.executeQuery("select * from Prestamos");
+					
+					while(miResultset.next()) {
+						if (this.id_lector == miResultset.getInt("R_Lector") && this.id_libro.equals(miResultset.getString("R_Libro")))
+						{
+							this.sancion = miResultset.getFloat("Sancion");
+						}
+					}
+					miStatement.close();
+					miResultset.close();			
+					c.cerrarConexion();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}		
 //*******************  Hacemos la baja  **************************************
 		try {
 			Conexion c=new Conexion();
@@ -148,6 +168,10 @@ public class Control_Prestamos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		if(this.sancion == 5) 
+			return "con sancion";
+		else
+			return "sin sancion";
 	}
 //***************************************************************************
 //*************************** Altas de prestamos *****************************

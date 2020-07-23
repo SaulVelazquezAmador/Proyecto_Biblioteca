@@ -118,7 +118,7 @@
         </form>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="datos_autores">
+    <div id="datos_autores" class="divs_tabla">
         <table id="tabla_autores">
             <tr>
                 <td id = "col_au1" class = "col_tabla_autores"><label>Nombre            </label></td>

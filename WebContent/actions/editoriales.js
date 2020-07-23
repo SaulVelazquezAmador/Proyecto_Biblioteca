@@ -57,7 +57,6 @@ jQuery(document).ready(function() {
                 editorial_edicion: n_editorial
             }, 
             function(responseText) {
-                alert(responseText);
                 $("#n_editorial3").val(responseText[0]);
                 $("#c_editorial3").val(responseText[1]);
                 id_editorial = responseText[2];

@@ -136,7 +136,7 @@
         </form>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="datos_prestamos">
+    <div id="datos_prestamos"  class="divs_tabla">
         <table id="tabla_prestamos">
             <tr>
                 <td id = "c1" class = "col_tabla_prestamos"><label>Libro    </label></td>

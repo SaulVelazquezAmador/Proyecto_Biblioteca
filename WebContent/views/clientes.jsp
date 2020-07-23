@@ -149,7 +149,7 @@
         </form>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="datos_clientes">
+    <div id="datos_clientes"  class="divs_tabla">
         <table id="tabla_clientes">
             <tr>
                 <td id = "col_cli1" class = "col_tabla_clientes"><label>Nombre            </label></td>

@@ -108,7 +108,7 @@
     	</form>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="datos_editoriales">
+    <div id="datos_editoriales"  class="divs_tabla">
         <table id="tabla_editoriales">
             <tr>
                 <td id = "cole1" class = "col_tabla_editoriales"><label>Nombre    </label></td>

@@ -23,7 +23,7 @@
         </ul>
     </div>
     <!--------------------------------------------------------------------->
-    <div id="formulario_altas_libros">
+    <div id="formulario_altas_libros" class="divs_formularios">
         <form>
             <table id="tabla_altas">
                 <tr>
@@ -178,7 +178,7 @@
         </form>
     </div>
 <!--------------------------------------------------------------------->       
-    <div id="datos_libros" class="div_tabla">
+    <div id="datos_libros" class="divs_tabla">
         <table id="tabla_libros">
             <tr>
                 <td id = "cl1" class = "col_tabla_libros"><label>ISBN       </label></td>

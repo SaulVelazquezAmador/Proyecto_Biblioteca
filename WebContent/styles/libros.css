@@ -19,28 +19,15 @@
 	margin-top      : 0%;
 	margin-bottom	: 0%;
 }
+#formulario_altas_libros{
+	overflow		: auto;
+}
 #h2_libros{
 	padding-left: 50px;
 	color: black;
 }
 #div_opciones{
 	padding-bottom: 2%;
-}
-.divs_formularios::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-.divs_formularios::-webkit-scrollbar-thumb {
-  background: #494848;
-  border-radius: 4px;
-}
-.divs_formularios::-webkit-scrollbar-thumb:hover {
-  background: #2E2D2D;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-}
-.divs_formularios::-webkit-scrollbar-track {
-  background: #e1e1e1;
-  border-radius: 4px;
 }
 .columnas_formulario_libros{
 	padding-top   : 10px;
@@ -58,11 +45,12 @@
 	border-radius	: 0%;
 	height			: 40vh;
 	margin-left     : 0%;
-	margin-top      : 0%;
-	margin-bottom	: 2%;
+	margin-top      : 3%;
+	margin-bottom	: 0%;
 	width			: 100%;
 	border-radius: 10px;
 }
+
 #tabla_libros{
 	border-collapse: collapse;	
 	margin-top     : 25px;
@@ -142,9 +130,9 @@
 	background-color          : #ffffff;
 	margin-top                : 2%;
 	margin-left               : 14%;
-	margin-bottom             : 			 	1%;
+
 	width                     : 70%;
-	height                    : 40vh; 
+	height                    : 30vh; 
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
@@ -172,9 +160,9 @@
 	background-color          : #ffffff;
 	margin-top                : 2%;
 	margin-left               : 14%;
-	margin-bottom             : 			 	1%;
+	margin-bottom             : 0%;
 	width                     : 70%;
-	height                    : 40vh; 
+	height                    : 30vh; 
 	border-bottom-left-radius : 10px;
 	border-bottom-right-radius: 10px;
 	border-top-left-radius    : 10px;
